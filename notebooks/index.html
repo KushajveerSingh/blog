@@ -3,17 +3,17 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Search | Kushajveer Singh</title>
+<title>Notebooks | Kushajveer Singh</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Search" />
+<meta property="og:title" content="Notebooks" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning" />
 <meta property="og:description" content="Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning" />
-<link rel="canonical" href="https://kushajveersingh.github.io/blog/search/" />
-<meta property="og:url" content="https://kushajveersingh.github.io/blog/search/" />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/notebooks/" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/notebooks/" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <script type="application/ld+json">
-{"description":"Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning","headline":"Search","@type":"WebPage","url":"https://kushajveersingh.github.io/blog/search/","@context":"https://schema.org"}</script>
+{"description":"Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning","headline":"Notebooks","@type":"WebPage","url":"https://kushajveersingh.github.io/blog/notebooks/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -22,17 +22,17 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-123402359-3','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Search | Kushajveer Singh</title>
+<title>Notebooks | Kushajveer Singh</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Search" />
+<meta property="og:title" content="Notebooks" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning" />
 <meta property="og:description" content="Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning" />
-<link rel="canonical" href="https://kushajveersingh.github.io/blog/search/" />
-<meta property="og:url" content="https://kushajveersingh.github.io/blog/search/" />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/notebooks/" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/notebooks/" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <script type="application/ld+json">
-{"description":"Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning","headline":"Search","@type":"WebPage","url":"https://kushajveersingh.github.io/blog/search/","@context":"https://schema.org"}</script>
+{"description":"Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning","headline":"Notebooks","@type":"WebPage","url":"https://kushajveersingh.github.io/blog/notebooks/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -106,17 +106,64 @@ window.onload = wrap_img;
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <!-- adapted from https://github.com/pmarsceill/just-the-docs -->
-<script type="text/javascript" src="/blog/assets/js/search.js"></script>
-<script type="text/javascript" src="/blog/assets/js/vendor/lunr.min.js"></script>
+        <article class="post">
 
-<div class="search">
-    <div class="search-input-wrap">
-    <input type="text" class="js-search-input search-input input-block form-control" tabindex="0" placeholder="Search Kushajveer Singh" aria-label="Search Kushajveer Singh" autocomplete="off">
-    </div>
-    <br>
-    <div class="js-search-results search-results-wrap"></div>
-</div>
+  <header class="post-header">
+    <h1 class="post-title">Notebooks</h1>
+  </header>
+
+  <div class="post-content">
+    <p>I use <a href="https://pytorch.org/">Pytorch</a> and <a href="https://www.fast.ai/">fastai</a> as my main deep learning libraries. Check this <a href="https://github.com/KushajveerSingh/deep_learning">repo</a> for more details.</p>
+
+<p>Summary of few of my jupyter notebooks</p>
+
+<ul>
+  <li>
+    <p><strong>Mish activation function</strong> is tested for transfer learning. Here mish is used only in the last fully-connected layers of a pretrainened Resnet50 model. I test the activation function of CIFAR10, CIFAR100 using three different learning rate values. I found that Mish gave better results than ReLU. <a href="https://github.com/KushajveerSingh/deep_learning/tree/master/deep_learning/paper_implementations/Study%20of%20Mish%20activation%20function%20in%20transfer%20learning%20with%20code%20and%20discussion">notebook</a>, <a href="https://arxiv.org/abs/1908.08681">paper</a></p>
+  </li>
+  <li>
+    <p><strong>Multi Sample Dropout</strong> is implemented and tested on CIFAR-100 using cyclic learning. My losses converged 4x faster when using num_samples=8 than using simple dropout. <a href="https://github.com/KushajveerSingh/deep_learning/blob/master/deep_learning/paper_implementations/Multi%20Sample%20Dropout/multi_sample_dropout.ipynb">notebook</a>, <a href="https://arxiv.org/abs/1908.08681">paper</a></p>
+  </li>
+  <li><strong>Data Augmentation in Computer Vision</strong>
+    <ul>
+      <li>Notebook implementing single image data augmentation techniques using just Python <a href="https://github.com/KushajveerSingh/deep_learning/blob/master/deep_learning/paper_implementations/Data%20Augmentation%20in%20Computer%20Vision/single_example_data_augmentations.ipynb">notebook</a></li>
+    </ul>
+  </li>
+  <li><strong>Summarizing Leslie N. Smith’s research</strong> in cyclic learning and hyper-parameter setting techniques. <a href="https://github.com/KushajveerSingh/deep_learning/blob/master/deep_learning/paper_implementations/Leslie%20N.%20Smith%20papers%20notebook/main.ipynb">notebook</a>
+    <ul>
+      <li>A disciplined approach to neural network hyper-parameters: Part 1 – learning rate, batch size, momentum, and weight decay <a href="https://arxiv.org/abs/1803.09820">paper</a></li>
+      <li>Super-Convergence: Very Fast Training of Neural Networks Using Learning Rates <a href="https://arxiv.org/abs/1708.07120">paper</a></li>
+      <li>Exploring loss function topology with cyclical learning rates <a href="https://arxiv.org/abs/1702.04283">paper</a></li>
+      <li>Cyclical Learning Rates for Training Neural Networks <a href="https://arxiv.org/abs/1506.01186">paper</a></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Photorealisitc Style Transfer</strong>. Implementation of the <em>High-Resolution Network for Photorealistic Style Transfer paper</em>. <a href="https://github.com/KushajveerSingh/Photorealistic-Style-Transfer/tree/master">notebook</a>, <a href="https://arxiv.org/abs/1904.11617">paper</a></p>
+  </li>
+  <li>
+    <p><strong>Weight Standardization</strong> is implemented and tested using cyclic learning. I find that it does not work well with cyclic learning when using CIFAR-10. <a href="https://github.com/KushajveerSingh/deep_learning/blob/master/deep_learning/paper_implementations/Weight%20Standardization:%20A%20New%20Normalization%20in%20town/Weight%20Standardization%20on%20CIFAR-10.ipynb">notebook</a>, <a href="https://arxiv.org/abs/1903.10520">paper</a></p>
+  </li>
+  <li>
+    <p><strong>Learning Rate Finder</strong>. Implementation of learning rate finder as introduced in the paper <a href="https://arxiv.org/abs/1903.10520">Cyclical Learning Rates for Training Neural Networks</a>. A general template for custom models is provided. <a href="https://github.com/KushajveerSingh/fastai_without_fastai/blob/master/notebooks/lr_find.ipynb">notebook</a></p>
+  </li>
+  <li><strong>PyTorch computer vision tutorial</strong>. AlexNet with tips and checks on how to train CNNs. The following things are included: <a href="https://github.com/KushajveerSingh/deep_learning/blob/master/deep_learning/paper_implementations/Training%20AlexNet%20with%20tips%20and%20checks%20on%20how%20to%20train%20CNNs/training_alexnet.ipynb">notebook</a>
+    <ul>
+      <li>Dataloader creation</li>
+      <li>Plotting dataloader results</li>
+      <li>Weight Initialization</li>
+      <li>Simple training loop</li>
+      <li>Overfitting a mini-batch</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/KushajveerSingh/deep_learning/blob/master/deep_learning/paper_implementations/How%20to%20deal%20with%20outliers/How%20to%20deal%20with%20outliers.ipynb">How to deal with outliers</a></p>
+  </li>
+  <li><a href="https://github.com/KushajveerSingh/deep_learning/blob/master/deep_learning/paper_implementations/Number%20of%20bins%20of%20a%20Histogram/How%20to%20choose%20bins%20for%20Histograms.ipynb">How to choose number of bins in a histogram</a></li>
+</ul>
+
+  </div>
+
+</article>
 
       </div>
     </main><footer class="site-footer h-card">

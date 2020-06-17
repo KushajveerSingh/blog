@@ -3,17 +3,17 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Search | Kushajveer Singh</title>
+<title>Projects | Kushajveer Singh</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Search" />
+<meta property="og:title" content="Projects" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning" />
 <meta property="og:description" content="Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning" />
-<link rel="canonical" href="https://kushajveersingh.github.io/blog/search/" />
-<meta property="og:url" content="https://kushajveersingh.github.io/blog/search/" />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/projects/" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/projects/" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <script type="application/ld+json">
-{"description":"Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning","headline":"Search","@type":"WebPage","url":"https://kushajveersingh.github.io/blog/search/","@context":"https://schema.org"}</script>
+{"description":"Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning","headline":"Projects","@type":"WebPage","url":"https://kushajveersingh.github.io/blog/projects/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -22,17 +22,17 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-123402359-3','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Search | Kushajveer Singh</title>
+<title>Projects | Kushajveer Singh</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Search" />
+<meta property="og:title" content="Projects" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning" />
 <meta property="og:description" content="Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning" />
-<link rel="canonical" href="https://kushajveersingh.github.io/blog/search/" />
-<meta property="og:url" content="https://kushajveersingh.github.io/blog/search/" />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/projects/" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/projects/" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <script type="application/ld+json">
-{"description":"Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning","headline":"Search","@type":"WebPage","url":"https://kushajveersingh.github.io/blog/search/","@context":"https://schema.org"}</script>
+{"description":"Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning","headline":"Projects","@type":"WebPage","url":"https://kushajveersingh.github.io/blog/projects/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -106,17 +106,51 @@ window.onload = wrap_img;
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <!-- adapted from https://github.com/pmarsceill/just-the-docs -->
-<script type="text/javascript" src="/blog/assets/js/search.js"></script>
-<script type="text/javascript" src="/blog/assets/js/vendor/lunr.min.js"></script>
+        <article class="post">
 
-<div class="search">
-    <div class="search-input-wrap">
-    <input type="text" class="js-search-input search-input input-block form-control" tabindex="0" placeholder="Search Kushajveer Singh" aria-label="Search Kushajveer Singh" autocomplete="off">
-    </div>
-    <br>
-    <div class="js-search-results search-results-wrap"></div>
-</div>
+  <header class="post-header">
+    <h1 class="post-title">Projects</h1>
+  </header>
+
+  <div class="post-content">
+    <p>I use <a href="https://pytorch.org/">Pytorch</a> and <a href="https://www.fast.ai/">fastai</a> as my main deep learning libraries. Check this <a href="https://github.com/KushajveerSingh/deep_learning">repo</a> for more details.</p>
+
+<ul>
+  <li>
+    <p><strong><a href="https://github.com/KushajveerSingh/Unsupervised-Parking-Lot-Detection">Unsupervised Parking Lot Detection</a></strong></p>
+
+    <p>A complete approach to detect parking lot spaces from images and then tell which spaces are occupied or not. Here I do not use any dataset for training my model to detect parking spaces. My implementation can be divided into these three modules:</p>
+    <ul>
+      <li><em>Object Detection Module</em> :- Use COCO pretrained model, no need to do finetuning.</li>
+      <li><em>Label Processing Module</em> :- As out model is not finetuned, there are some tricks that I add to overcome these limitations</li>
+      <li><em>Classification Module</em> :- Use the processed labels/bounding_boxes to tell if that parking space is occupied or not.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong><a href="https://github.com/KushajveerSingh/SPADE-PyTorch">SPADE by Nvidia</a></strong></p>
+
+    <p>Unofficial implementation of SPDAE for image-to-translation from segmentation maps to the colored pictures. Due to compute limit I test it out for a simplified model on Cityscapes dataset and get descent results after 80 epochs with batch_size=2.</p>
+  </li>
+  <li>
+    <p><strong><a href="https://github.com/KushajveerSingh/deep_learning/tree/master/deep_learning/projects/Waste%20Seggregation%20using%20trashnet">Waste Seggregation using trashnet</a></strong></p>
+
+    <p>Contains the code to train models for trashnet and then export them using ONNX. It was part of a bigger project where we ran these models on Rasberry Pi, which controlled wooden planks to classify the waste into different categories (code for rasberry pi not included here).</p>
+  </li>
+  <li>
+    <p><strong><a href="https://github.com/KushajveerSingh/deep_learning/tree/master/deep_learning/random/unscramble_android_game">Unscramble game</a></strong></p>
+
+    <p>Python script to solve the unscramble android game. You are given 5 random letters and you have to find 3-letter, 4-letter, 5-letter english words from these 5 random letters. It is a simple brute force method with a english dictionary lookup.</p>
+  </li>
+  <li>
+    <p><strong><a href="https://github.com/KushajveerSingh/Random-Duty-List">Random Duty List</a></strong></p>
+
+    <p>A PHP and MySQL based work where the aim is to assign duties from a list to various stations and make sure the duties are not repeated and the repetition occurs only after the list is exhasuted.</p>
+  </li>
+</ul>
+
+  </div>
+
+</article>
 
       </div>
     </main><footer class="site-footer h-card">
