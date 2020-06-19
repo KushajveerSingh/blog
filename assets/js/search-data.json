@@ -13,11 +13,11 @@
   
     
         ,"post1": {
-            "title": "Title",
-            "content": "",
-            "url": "https://kushajveersingh.github.io/blog/2020/06/17/Untitled.html",
-            "relUrl": "/2020/06/17/Untitled.html",
-            "date": " • Jun 17, 2020"
+            "title": "How to setup personal blog using Ghost and Github hosting",
+            "content": ". Important: I have moved to fastpages. fastpages is the best option is you want to write jupyter notebook and share them as posts. All the details of setup are provided on the fastpages homepage. . The website looks as shown below: . . My system info . Ubuntu 20.04 LTS | Ghost 3.15.3 | Yarn 1.22.4 | Nodejs 12.16.3 | . Short summary of what we are going to do. . Install Ghost locally from source | Use default casper theme to make the website | Generate a static site using gssg | Host the static site on Github | Install Ghost locally and it&#39;s dependencies . Install NodeJS. (v12 is the recommended for Ghost). curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash sudo apt install -y nodejs . | Install Yarn. curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - echo &quot;deb https://dl.yarnpkg.com/debian/ stable main&quot; | sudo tee /etc/apt/sources.list.d/yarn.list sudo apt update &amp;&amp; sudo apt install yarn . | Install Ghost from source. (The official setup guide can be found here Note: Replace KushajveerSingh with your Github username. git clone --recurse-submodules git@github.com:TryGhost/Ghost cd Ghost cd core/client cd ../../ . | This is a hack. If you follow the official setup guide then you would have forked the Ghost repo and added that as your upstream in the previous step. . I skipped that step, as I was having some problems with that. Instead I deleted the .git folder and initialized a new github repo for version control. . So go the main Ghost folder and delete .git folder. Then go to core/client and delete the .git folder and submodule file and you are done. . | Install dependencies (We are in home directory of Ghost) sudo npm install sudo npm install -g knex-migrator knex-migrator i . | Make your Ghost folder a github repo. Goto Github and create a new repo where you want to store the Ghost folder. | In the Ghost folder run these commands to push it to github. | | Create website using Ghost . Use npm start to start the Ghost server. This will open the server at http://localhost:2368. . Goto http://localhost:2368/ghost from where you can start creating your website. . Now create your website locally, and when you are done move to the next step. .",
+            "url": "https://kushajveersingh.github.io/blog/tutorial/2020/05/13/post-008.html",
+            "relUrl": "/tutorial/2020/05/13/post-008.html",
+            "date": " • May 13, 2020"
         }
         
     
