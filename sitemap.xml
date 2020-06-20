@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://kushajveersingh.github.io/blog/machine-learning/2018/09/14/post-001.html</loc>
+<loc>https://kushajveersingh.github.io/blog/notes/machine-learning/2018/09/14/post-001.html</loc>
 <lastmod>2018-09-14T00:00:00-05:00</lastmod>
 </url>
 <url>
@@ -23,10 +23,6 @@
 <url>
 <loc>https://kushajveersingh.github.io/blog/tutorial/2020/05/13/post-008.html</loc>
 <lastmod>2020-05-13T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>https://kushajveersingh.github.io/blog/tutorial/2020/06/18/Untitled.html</loc>
-<lastmod>2020-06-18T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>https://kushajveersingh.github.io/blog/notes/conference/2020/06/19/post-009.html</loc>
