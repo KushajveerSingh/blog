@@ -308,11 +308,15 @@ $$G=V^TV$$
     
     
 <div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
     <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">'GPU is not available'</span><span class="p">)</span>
@@ -332,6 +336,7 @@ $$G=V^TV$$
 </div>
 </div>
 
+    </details>
 </div>
     
 
@@ -346,11 +351,15 @@ $$G=V^TV$$
     
     
 <div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">content_img</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">img_root</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">content_img</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
+<span class="n">content_img</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">img_root</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">content_img</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">content_img</span> <span class="o">=</span> <span class="n">content_img</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 
 <span class="n">style_img</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">img_root</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">style_img</span><span class="p">))</span>
@@ -402,6 +411,7 @@ $$G=V^TV$$
 </div>
 </div>
 
+    </details>
 </div>
     
 
@@ -451,11 +461,15 @@ $$G=V^TV$$
     
     
 <div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Downsampling function</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
+<span class="c1"># Downsampling function</span>
 <span class="k">def</span> <span class="nf">conv_down</span><span class="p">(</span><span class="n">in_c</span><span class="p">,</span> <span class="n">out_c</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_c</span><span class="p">,</span> <span class="n">out_c</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="n">stride</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
@@ -468,6 +482,7 @@ $$G=V^TV$$
 </div>
 </div>
 
+    </details>
 </div>
     
 
@@ -494,11 +509,15 @@ $$G=V^TV$$
     
     
 <div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Helper class for BottleneckBlock</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
+<span class="c1"># Helper class for BottleneckBlock</span>
 <span class="k">class</span> <span class="nc">ConvLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -559,6 +578,7 @@ $$G=V^TV$$
 </div>
 </div>
 
+    </details>
 </div>
     
 
@@ -573,11 +593,15 @@ $$G=V^TV$$
     
     
 <div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">HRNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
+<span class="k">class</span> <span class="nc">HRNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="sd">"""</span>
 <span class="sd">    For model reference see Figure 2 of the paper https://arxiv.org/pdf/1904.11617v1.pdf.</span>
 <span class="sd">    </span>
@@ -635,6 +659,7 @@ $$G=V^TV$$
 </div>
 </div>
 
+    </details>
 </div>
     
 
@@ -669,11 +694,15 @@ $$G=V^TV$$
     
     
 <div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_features</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
+<span class="k">def</span> <span class="nf">get_features</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">"""</span>
 <span class="sd">    Use VGG19 to extract features from the intermediate layers.</span>
 <span class="sd">    """</span>
@@ -702,6 +731,7 @@ $$G=V^TV$$
 </div>
 </div>
 
+    </details>
 </div>
     
 
@@ -763,11 +793,15 @@ $$l_{style}^{\phi,j}(y,\hat{y})=\left\|G_j^{\phi}(y)-G_j^{\phi}(\hat{y})\right\|
     
     
 <div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_gram_matrix</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
+<span class="k">def</span> <span class="nf">get_gram_matrix</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
     <span class="sd">"""</span>
 <span class="sd">    Compute the gram matrix by converting to 2D tensor and doing dot product</span>
 <span class="sd">    img: (batch, channel, height, width)</span>
@@ -794,6 +828,7 @@ $$l_{style}^{\phi,j}(y,\hat{y})=\left\|G_j^{\phi}(y)-G_j^{\phi}(\hat{y})\right\|
 </div>
 </div>
 
+    </details>
 </div>
     
 
