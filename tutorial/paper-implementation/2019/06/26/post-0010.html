@@ -8,15 +8,15 @@
 <meta property="og:title" content="Reproducing Cyclic Learning papers + SuperConvergence using fastai" />
 <meta name="author" content="Kushajveer Singh" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Four papers by Leslie N. Smith are reproduced in this post using pytorch+fastai." />
-<meta property="og:description" content="Four papers by Leslie N. Smith are reproduced in this post using pytorch+fastai." />
+<meta name="description" content="Four papers by Leslie N. Smith, introducing cyclic learning and Superconvergence are reproduced in this post using pytorch+fastai." />
+<meta property="og:description" content="Four papers by Leslie N. Smith, introducing cyclic learning and Superconvergence are reproduced in this post using pytorch+fastai." />
 <link rel="canonical" href="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html" />
 <meta property="og:url" content="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-06-26T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Four papers by Leslie N. Smith are reproduced in this post using pytorch+fastai.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html","headline":"Reproducing Cyclic Learning papers + SuperConvergence using fastai","dateModified":"2019-06-26T00:00:00-05:00","datePublished":"2019-06-26T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Four papers by Leslie N. Smith, introducing cyclic learning and Superconvergence are reproduced in this post using pytorch+fastai.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html","headline":"Reproducing Cyclic Learning papers + SuperConvergence using fastai","dateModified":"2019-06-26T00:00:00-05:00","datePublished":"2019-06-26T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -30,15 +30,15 @@
 <meta property="og:title" content="Reproducing Cyclic Learning papers + SuperConvergence using fastai" />
 <meta name="author" content="Kushajveer Singh" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Four papers by Leslie N. Smith are reproduced in this post using pytorch+fastai." />
-<meta property="og:description" content="Four papers by Leslie N. Smith are reproduced in this post using pytorch+fastai." />
+<meta name="description" content="Four papers by Leslie N. Smith, introducing cyclic learning and Superconvergence are reproduced in this post using pytorch+fastai." />
+<meta property="og:description" content="Four papers by Leslie N. Smith, introducing cyclic learning and Superconvergence are reproduced in this post using pytorch+fastai." />
 <link rel="canonical" href="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html" />
 <meta property="og:url" content="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-06-26T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Four papers by Leslie N. Smith are reproduced in this post using pytorch+fastai.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html","headline":"Reproducing Cyclic Learning papers + SuperConvergence using fastai","dateModified":"2019-06-26T00:00:00-05:00","datePublished":"2019-06-26T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Four papers by Leslie N. Smith, introducing cyclic learning and Superconvergence are reproduced in this post using pytorch+fastai.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html","headline":"Reproducing Cyclic Learning papers + SuperConvergence using fastai","dateModified":"2019-06-26T00:00:00-05:00","datePublished":"2019-06-26T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -115,7 +115,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Reproducing Cyclic Learning papers + SuperConvergence using fastai</h1><p class="page-description">Four papers by Leslie N. Smith are reproduced in this post using pytorch+fastai.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-06-26T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Reproducing Cyclic Learning papers + SuperConvergence using fastai</h1><p class="page-description">Four papers by Leslie N. Smith, introducing cyclic learning and Superconvergence are reproduced in this post using pytorch+fastai.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-06-26T00:00:00-05:00" itemprop="datePublished">
         Jun 26, 2019
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -123,7 +123,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      31 min read
+      28 min read
     
 </span></p>
 
@@ -314,6 +314,13 @@ window.onload = wrap_img;
 <li>
 <strong>Weight Decay</strong> :- Larger value when using smaller dataset and model. Smaller value when using bigger datasets and models. Use a constant value.</li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Hyper-params-not-discussed">
 <a class="anchor" href="#Hyper-params-not-discussed" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hyper-params not discussed<a class="anchor-link" href="#Hyper-params-not-discussed"> </a>
 </h3>
@@ -358,7 +365,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="/blog/images/copied_from_nb/images/post_0010/01.png" alt="" title="Figure 1. Underfitting vs Overfitting."></p>
+<p><img src="/blog/images/copied_from_nb/images/post_0010/01.jpeg" alt="" title="Figure 1. Underfitting vs Overfitting."></p>
 
 </div>
 </div>
@@ -366,35 +373,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<figure>
-    <div style="display:flex">
-        <div style="flex:1.81">
-            <figure>
-<figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/images/post_0010/02.png" alt="">
-    
-    
-</figure>
+<p><img src="/blog/images/copied_from_nb/images/post_0010/02.jpeg" alt="" title="Figure 2. Detecting early signs of overfitting."></p>
 
-                <figcaption><center>(a) A bump is observed in top-left corner, similar to the one shown in Figure 1. This is an early sign of overfitting.</center></figcaption>
-            </figure>
-        </div>
-        <div style="flex:1.46">
-            <figure>
-<figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/images/post_0010/03.png" alt="">
-    
-    
-</figure>
-
-                <figcaption><center>(b) Overfitting is observed around 2500 iterations where out valid loss starts becoming worse.</center></figcaption>
-            </figure>
-        </div>
-    </div>
-    <figcaption><center>Figure 2. Detecting early signs of overfitting.</center></figcaption>
-</figure>
 </div>
 </div>
 </div>
@@ -441,35 +421,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<figure>
-    <div style="display:flex">
-        <div style="flex:1">
-            <figure>
-<figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/images/post_0010/04.png" alt="">
-    
-    
-</figure>
+<p><img src="/blog/images/copied_from_nb/images/post_0010/03.jpeg" alt="" title="Figure 3. Underfitting is characterized by a continously decreasing test loss, rather than a horizontal plateau."></p>
 
-                <figcaption><center>(a)</center></figcaption>
-            </figure>
-        </div>
-        <div style="flex:1">
-            <figure>
-<figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/images/post_0010/05.png" alt="">
-    
-    
-</figure>
-
-                <figcaption><center>(b)</center></figcaption>
-            </figure>
-        </div>
-    </div>
-    <figcaption><center>Figure 3. Underfitting is characterized by a continuously decreasing test loss, rather than a horizontal plateau.</center></figcaption>
-</figure>
 </div>
 </div>
 </div>
@@ -487,35 +440,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<figure>
-    <div style="display:flex">
-        <div style="flex:1">
-            <figure>
-<figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/images/post_0010/06.png" alt="">
-    
-    
-</figure>
+<p><img src="/blog/images/copied_from_nb/images/post_0010/04.jpeg" alt="" title="Figure 4. Increasing validation/test loss indicates overfitting. In [a] the sharp increase in loss for yellow curve near lr=0.005 is not a sign of overfitting but is casued by instabilities in the training due to high learning rate."></p>
 
-                <figcaption><center>(a) When using WD=1e-4, the loss reaches a minimum near lr=0.002, then begins to increase displaying overfitting. For WD=4e-3, the loss is stable over a large range of values and attains a lower loss value, indicating that the later WD value is superior to the former</center></figcaption>
-            </figure>
-        </div>
-        <div style="flex:1">
-            <figure>
-<figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/images/post_0010/07.png" alt="">
-    
-    
-</figure>
-
-                <figcaption><center>(b) While the blue curve shows underfiting as the loss keeps decreasing while the red curve shows overfiting where the loss first decreased and then increased.</center></figcaption>
-            </figure>
-        </div>
-    </div>
-    <figcaption><center>Figure 4. Increasing validation/test loss indicates overfitting. In fig (a) the sharp increase in loss for yellow curve near lr=0.005 is not a sign of overfitting but is caused by instabilities in the training due to high learning rate.</center></figcaption>
-</figure>
 </div>
 </div>
 </div>
@@ -537,14 +463,15 @@ window.onload = wrap_img;
 <h3 id="Cyclical-Learning-Rates(CLR)-and-learning-rate-test">
 <a class="anchor" href="#Cyclical-Learning-Rates(CLR)-and-learning-rate-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cyclical Learning Rates(CLR) and learning rate test<a class="anchor-link" href="#Cyclical-Learning-Rates(CLR)-and-learning-rate-test"> </a>
 </h3>
-<p>As a motivation for using this approach see the below figure, just how fast we can get the state of the art results is shown. The reasoning for this is discussed in the next topic.</p>
-<p><figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/Extra/cifar_LR.jpg" alt="">
-    
-    
-</figure>
-</p>
+<p>Figure 5, shows how fast state-of-the-art results can be achieved using CLR.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/images/post_0010/05.jpeg" alt="" title="Figure 5. Model trained using Cyclic Learning Rate converges much faster than using constant learning rate with decay."></p>
 
 </div>
 </div>
@@ -734,8 +661,8 @@ window.onload = wrap_img;
 <h3 id="Resnet-56">
 <a class="anchor" href="#Resnet-56" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resnet-56<a class="anchor-link" href="#Resnet-56"> </a>
 </h3>
-<p>The reason I am not using the original resnet models is due the two downsampling layers in the starting of the resnet model, namely conv and max_pool. If we use these layers than our image size is reduced to 8x8 after just two layers.</p>
-<p>So Resnet-56 was also used in the orginal papers and in genral it is a good model for small size images.</p>
+<p>Original ResNet model is not used due to the two downsampling layers in the starting, namely conv and max_pool. If these layers are used then the image size is reduced to 8x8 after two layers.</p>
+<p>Resnet-56 is also used in the orginal papers and in general is a good model for small images.</p>
 
 </div>
 </div>
@@ -872,14 +799,15 @@ window.onload = wrap_img;
 <h3 id="Cyclic-Learning-Rate">
 <a class="anchor" href="#Cyclic-Learning-Rate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cyclic Learning Rate<a class="anchor-link" href="#Cyclic-Learning-Rate"> </a>
 </h3>
-<p>The essence of this learning rate policy comes from the observation that increasing the learning rate might have a short term negative effect and yet achieve a longer term beneficial. So we vary our learning rate from a small value to large value than back to small value. This is termed as one complete cycle.</p>
-<p><figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/Extra/triangularWindow.png" alt="">
-    
-    
-</figure>
-</p>
+<p>The essence of this learning rate policy comes from the observation that increasing the learning rate might have a short term negative effect and yet achieve a longer term beneficial. So we vary learning rate from a small value to large value than back to small value. This is termed as one complete cycle.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/images/post_0010/06.jpeg" alt="" title="Figure 6."></p>
 
 </div>
 </div>
@@ -930,12 +858,19 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If you have any question on why is the learning rate policy defined as this or in general to the learning rate policy in fastai, I have answered all the questions in the forums which you can check <a href="https://forums.fast.ai/t/shedding-some-light-about-lr-management-in-fastai/43708">here</a>. There I clearly explain why we use a learning rate policy that looks like the one shown above and what are the reasons behind choosing the deafults. (The main reason is we want to train our model at higher learning rates and then fine-tune them at lower learning rates).</p>
-<p>For the implementation of this, you can check <a href="https://github.com/KushajveerSingh/fastai_without_fastai">this</a> where I implement the one-cycle policy in pure pytorch.</p>
+<p>If you have any question on why is the learning rate policy defined as this, or in general to the learning rate policy in fastai, I have answered all these questions in the forums which you can check <a href="https://forums.fast.ai/t/shedding-some-light-about-lr-management-in-fastai/43708">here</a>. There I clearly explain why we use a learning rate policy that looks like the one shown above and what are the reasons behind choosing the deafults. (The main reason is we want to train our model at higher learning rates and then fine-tune them at lower learning rates).</p>
+<p>For the implementation of this, you can check <a href="https://github.com/KushajveerSingh/fastai_without_fastai">KushajveerSingh/fastai_without_fastai</a> where I implement the one-cycle policy in pure pytorch.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Difference-from-original-paper">
 <a class="anchor" href="#Difference-from-original-paper" aria-hidden="true"><span class="octicon octicon-link"></span></a>Difference from original paper<a class="anchor-link" href="#Difference-from-original-paper"> </a>
 </h3>
-<p>There are some changes that you would notice from the original paper. First, in the papers for most of the cases accuracy is used as the metric for most of the graphs, while I use loss values. The reason loss values are used to compare hyper-parameter value is loss is the actual thing that is being optimized we want to reduce it the most.</p>
+<p>There are some changes from the original paper. First, in the papers for most of the cases accuracy is used as the metric, while I use loss values. The reason loss values are used to compare hyper-parameter value is because loss is the actual thing that is being optimized, we want to reduce it the most.</p>
 
 </div>
 </div>
@@ -947,6 +882,13 @@ window.onload = wrap_img;
 <a class="anchor" href="#One-cycle-policy-summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>One-cycle policy summary<a class="anchor-link" href="#One-cycle-policy-summary"> </a>
 </h3>
 <p>There are two phases, first learning rate increases from small lr to maximum value and in the second phase it decreased from the maximum value to the minimum value (the minimum value is smaller than the starting value in the first phase). In implementation, you only need to define the maximum value of the learning rate and the minimum values would be calculated appropriately.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Learning-rate-finder-test">
 <a class="anchor" href="#Learning-rate-finder-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Learning rate finder test<a class="anchor-link" href="#Learning-rate-finder-test"> </a>
 </h3>
@@ -1278,14 +1220,15 @@ window.onload = wrap_img;
 <a class="anchor" href="#Introducing-Superconvergence" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introducing Superconvergence<a class="anchor-link" href="#Introducing-Superconvergence"> </a>
 </h2>
 <p>Now we know what is 1cycle policy and how we can use it for our own work in fastai, next I want to discuss <strong>Superconvergence</strong> which is basically what we are getting using the 1cycle policy.</p>
-<p><figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/Extra/ResNetCifar10Range1.png" alt="" style="max-width: 60%px">
-    
-    
-</figure>
-</p>
-<center>Test accuracy for learning rate range = 0.001 - 1 for ResNet-52, ResNet 56 and ResNet 60</center>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/images/post_0010/07.jpeg" alt="" title="Figure 7. Test accuracy for learning rate from 0.001 to 1 for ResNet-52, ResNet-56 and ResNet-60."></p>
+
 </div>
 </div>
 </div>
@@ -1297,42 +1240,28 @@ window.onload = wrap_img;
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<thead>
-<tr>
-<th>
-<figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/Extra/Cifar10Resnet56TBS1000CLR35SS10k.png" alt="" style="max-width: 700px">
-    
-    
-</figure>
-</th>
-<th><img src="Extra/Cifar10Resnet56TBS1000LR35CLR1.png" width="700"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>(a) Cyclical learning rate between LR=0.1 and LR=0.35 with stepsize=10K</td>
-<td>(b) Super-convergence with CLR = 0.1-1.0 versus standard training with initial LR=0.35</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<center>Fig: Test accuracies for Resnet-56 on CIFAR-10. Note the log scale used for the vertical axis.&lt;/p&gt;
+<p><img src="/blog/images/copied_from_nb/images/post_0010/08.jpeg" alt="" title="Figure 8. Test accuracy for ResNet-56 on CIFAR-10. Log scale is used for the vertical axis."></p>
 
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can see an anomly that occurs as the LR increases from 0.1 to 0.35. The training loss increases sharply by four orders of magnitude at a learning rate of approximately 0.255 but training convergence resumes at larger learning rates. In addition, there are divergenct behaviours between test accuracy and loss curves that are not easily explained.In the first cycle, when the learning rate is increasing from 0.13 to 0.18 the test loss increases but the test accuracy also increases. This simultaneous increase in the test loss and the test accuracy also occurs in the second cycle as the learning rate decrease from 0.35 to 0.1 and in various portions of subsequent cycles.</p>
 <p>Another interesting fact can be see from the second figure. The cyclic learning rate method is able to get 0.93 accuracy after just once cycle and it remains the same for the subsequent cycles, while the standard approach of using a constant learning rate manages to achieve the accuracy close to 0.93 at about 5 times more iterations.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Superconvergence">
-<a class="anchor" href="#Superconvergence" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Superconvergence</strong><a class="anchor-link" href="#Superconvergence"> </a>
+<a class="anchor" href="#Superconvergence" aria-hidden="true"><span class="octicon octicon-link"></span></a>Superconvergence<a class="anchor-link" href="#Superconvergence"> </a>
 </h3>
 <p>Super-convergence refers to this phenomenon where a network is trained to a better final test accuracy compared to tradional training, but with fewer iterations and a much larger learning rate.</p>
 
@@ -1346,14 +1275,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#Testing-linear-interpolation-results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing linear interpolation results<a class="anchor-link" href="#Testing-linear-interpolation-results"> </a>
 </h3>
 <p>In the <em>Exploring Loss Function Topology with Cyclical Learning Rates</em> (only 3 pages) an important topic of networkinterpolation is discussed which shows that the solution found by each cycle is different from each other (intuitively you can think the solutions as belonging to different valleys). So we can interpolate solutions from different cycles and we can except better accuracy. So I test this fact now?</p>
-<p>Interpolation between two values is defined as</p>
-<p><figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/Extra/interpolation.png" alt="" style="max-width: 300px">
-    
-    
-</figure>
-</p>
+<p>Interpolation between two values is defined as $w_{new}=\alpha * w_1+(1-\alpha)*w_2$.</p>
 
 </div>
 </div>
@@ -1365,29 +1287,22 @@ window.onload = wrap_img;
 <a class="anchor" href="#How-it-was-found-in-the-first-place?" aria-hidden="true"><span class="octicon octicon-link"></span></a>How it was found in the first place?<a class="anchor-link" href="#How-it-was-found-in-the-first-place?"> </a>
 </h3>
 <p>Before getting into code, I would discuss how this fact was found. So interpolations between different cycle weights was tested and the plots for interpolation were drawn for the train and test loss. One of the figure is shown below</p>
-<table>
-<thead>
-<tr>
-<th>
-<figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/Extra/test_loss_normalTrainResNet_10k_to_25k_plot.png" alt="" style="max-width: 600px">
-    
-    
-</figure>
-</th>
-<th><img src="Extra/test_loss_resNet2_40k_to_60k_plot.png" width="600"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>(a) Training and test loss for interpolation between two network states from regular ResNet training. If both the values are for the same minima than this is what we would get, two concave shapes.</td>
-<td>Training and test loss for interpolation between two CLR solutions. If there is a peak between two solutions then the two minimas are different solutions.</td>
-</tr>
-</tbody>
-</table>
-<center>Fig: Results of network interpolation for differently trained models</center>
-<p>From this plot it was observed that the solution found by each cycle indeed belonged to different minima. Also an addional noteworthy feature, some amount of regularization is possible through interpolating between two solutions. The minima for training loss are at <code>a=0.0 and 1.0</code> but the test loss minima are slightly offset towards the center.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/images/post_0010/09.jpeg" alt="" title="Figure 9. Results of network interpolation for different trained models."></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From this plot it was observed that the solution found by each cycle indeed belonged to different minima. Also an additional noteworthy feature, some amount of regularization is possible through interpolating between two solutions. The minima for training loss are at <code>a=0.0 and 1.0</code> but the test loss minima are slightly offset towards the center.</p>
 
 </div>
 </div>
@@ -1790,28 +1705,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<thead>
-<tr>
-<th>
-<figure>
-  
-    <img class="docimage" src="/blog/images/copied_from_nb/Extra/maxout_3d.png" alt="" style="max-width: 85%px">
-    
-    
-</figure>
-</th>
-<th><img src="Extra/maxout_3d_zoom.png" width="85%"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>(a) Visualization of how training traverses a loss function topology</td>
-<td>(b) A close up of the end of training for figure (a)</td>
-</tr>
-</tbody>
-</table>
-<center>The 3-D visualizations from Goodfellow et al. [2014]. The z-axis represents the loss potential.</center>
+<p><img src="/blog/images/copied_from_nb/images/post_0010/10.jpeg" alt="" title="Figure 10. The 3-D visualizations from Goodfellow et al. [2014]. The z-axis represents the loss potential."></p>
+
 </div>
 </div>
 </div>
@@ -1825,6 +1720,13 @@ window.onload = wrap_img;
 <li>Now as the slope decreases so does the amount of progress made per iteration and little improvement occurs over the bulk of the iteration. This is the reason why we increase the learning rate to high values, so that we can quickly move over this region.</li>
 <li>As we approach the bottom of the loss surface (you can think of it as bottom of valley with bumps), so here we need to slow down and get to the bottom of these bumps i.e. why we decrease the value of learning rate to minimum value so that we can fine-tune our final result.</li>
 </ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="A-quick-summary">
 <a class="anchor" href="#A-quick-summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>A quick summary<a class="anchor-link" href="#A-quick-summary"> </a>
 </h3>
@@ -2731,18 +2633,12 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Congratulations you made it to the end. You can now set any hyper-parameter value by just visualizing the validation loss for a few epochs and seeing whether our models overfit or not. The content of this notebook has been taken from the four papers by Lesli N. Smith as mentioned in the starting of the notebook and from the fastai courses taught by Jeremy Howard.</p>
-<p>I regularly write about new research being published either or <a href="https://medium.com/@kushajreal">Medium</a> or as I first tried on Jupyter notebooks. You can check my homepage where I list all of my content that I publish <a href="https://kushajveersingh.github.io/">https://kushajveersingh.github.io/</a> (I am still updating the website so if the homepage is not working, just give me a few days of time).</p>
 
 </div>
 </div>
 </div>
-&lt;/div&gt;
- 
+</div>
 
-</center>
-</div>
-</div></div>
-</div>
 
 
   </div><!-- from https://github.com/utterance/utterances -->
