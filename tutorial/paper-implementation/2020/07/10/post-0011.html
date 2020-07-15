@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Deep Learning Model Initialization in Detail (with derivation for Mish+code) | Kushajveer Singh</title>
+<title>Deep Learning Model Initialization in Detail (with derivation for ReLU+code) | Kushajveer Singh</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Deep Learning Model Initialization in Detail (with derivation for Mish+code)" />
+<meta property="og:title" content="Deep Learning Model Initialization in Detail (with derivation for ReLU+code)" />
 <meta name="author" content="Kushajveer Singh" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for Mish activation function is derived." />
-<meta property="og:description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for Mish activation function is derived." />
-<link rel="canonical" href="https://kushajveersingh.github.io/blog/tutorial/2020/07/10/post-0011.html" />
-<meta property="og:url" content="https://kushajveersingh.github.io/blog/tutorial/2020/07/10/post-0011.html" />
+<meta name="description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function." />
+<meta property="og:description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function." />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-07-10T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Kaiming and Fixup initialization are discussed in detail. Initialization function for Mish activation function is derived.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/2020/07/10/post-0011.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/2020/07/10/post-0011.html","headline":"Deep Learning Model Initialization in Detail (with derivation for Mish+code)","dateModified":"2020-07-10T00:00:00-05:00","datePublished":"2020-07-10T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html","headline":"Deep Learning Model Initialization in Detail (with derivation for ReLU+code)","dateModified":"2020-07-10T00:00:00-05:00","datePublished":"2020-07-10T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -25,20 +25,20 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-123402359-3','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Deep Learning Model Initialization in Detail (with derivation for Mish+code) | Kushajveer Singh</title>
+<title>Deep Learning Model Initialization in Detail (with derivation for ReLU+code) | Kushajveer Singh</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Deep Learning Model Initialization in Detail (with derivation for Mish+code)" />
+<meta property="og:title" content="Deep Learning Model Initialization in Detail (with derivation for ReLU+code)" />
 <meta name="author" content="Kushajveer Singh" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for Mish activation function is derived." />
-<meta property="og:description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for Mish activation function is derived." />
-<link rel="canonical" href="https://kushajveersingh.github.io/blog/tutorial/2020/07/10/post-0011.html" />
-<meta property="og:url" content="https://kushajveersingh.github.io/blog/tutorial/2020/07/10/post-0011.html" />
+<meta name="description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function." />
+<meta property="og:description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function." />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-07-10T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Kaiming and Fixup initialization are discussed in detail. Initialization function for Mish activation function is derived.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/2020/07/10/post-0011.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/2020/07/10/post-0011.html","headline":"Deep Learning Model Initialization in Detail (with derivation for Mish+code)","dateModified":"2020-07-10T00:00:00-05:00","datePublished":"2020-07-10T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html","headline":"Deep Learning Model Initialization in Detail (with derivation for ReLU+code)","dateModified":"2020-07-10T00:00:00-05:00","datePublished":"2020-07-10T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -115,7 +115,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Deep Learning Model Initialization in Detail (with derivation for Mish+code)</h1><p class="page-description">Kaiming and Fixup initialization are discussed in detail. Initialization function for Mish activation function is derived.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-10T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Deep Learning Model Initialization in Detail (with derivation for ReLU+code)</h1><p class="page-description">Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-10T00:00:00-05:00" itemprop="datePublished">
         Jul 10, 2020
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -123,7 +123,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      9 min read
+      18 min read
     
 </span></p>
 
@@ -131,6 +131,9 @@ window.onload = wrap_img;
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
         <a class="category-tags-link" href="/blog/categories/#tutorial">tutorial</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#paper-implementation">paper-implementation</a>
         
       
       </p>
@@ -173,7 +176,13 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#Test-above-example-with-Kaiming-Init">Test above example with Kaiming Init </a></li>
-<li class="toc-entry toc-h2"><a href="#Initialization-derivation-for-Mish-activation">Initialization derivation for Mish activation </a></li>
+<li class="toc-entry toc-h2"><a href="#Kaiming-Init-Detailed-Derivation">Kaiming Init Detailed Derivation </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Compute-Variance-of-$\vec{y}_l$">Compute Variance of $\vec{y}_l$ </a></li>
+<li class="toc-entry toc-h3"><a href="#Derivation-for-ReLU-activation-function">Derivation for ReLU activation function </a></li>
+<li class="toc-entry toc-h3"><a href="#General-Recipe-for-any-activation-function">General Recipe for any activation function </a></li>
+</ul>
+</li>
 </ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
@@ -190,6 +199,22 @@ window.onload = wrap_img;
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following papers are discussed in this post:</p>
+<ol>
+<li>Understanding the difficulty of training deep feedforward neural networks <a href="http://proceedings.mlr.press/v9/glorot10a.html">paper</a>
+</li>
+<li>Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification <a href="https://arxiv.org/abs/1502.01852">paper</a>
+</li>
+<li>Fixup Initialization: Residual Learning Without Normalization <a href="https://arxiv.org/abs/1901.09321">paper</a>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -1644,8 +1669,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Initialization-derivation-for-Mish-activation">
-<a class="anchor" href="#Initialization-derivation-for-Mish-activation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialization derivation for Mish activation<a class="anchor-link" href="#Initialization-derivation-for-Mish-activation"> </a>
+<h2 id="Kaiming-Init-Detailed-Derivation">
+<a class="anchor" href="#Kaiming-Init-Detailed-Derivation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kaiming Init Detailed Derivation<a class="anchor-link" href="#Kaiming-Init-Detailed-Derivation"> </a>
 </h2>
 </div>
 </div>
@@ -1653,9 +1678,517 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I have written a previous <a href="https://kushajveersingh.github.io/blog/paper-implementation/2019/11/11/post-007.html">post</a> on Mish activation function, you can check for details about the activation function.</p>
-<p>In this part I will derive the initialization scheme when using Mish activation function. This is using the same method as described in the Kaiming Init paper. Deriving the initialization for Mish would provide variety on how you can use it for your own activation functions.</p>
-<p>I will only derive the initialization formula for the forward pass. In practice we always set the initialization values so as to maintiain the mean, std for the forward pass.</p>
+<p>I will derive the initialization formula for the forward pass only. In practice we always set the initialization values so as to maintain the mean, std for the forward pass.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Consider a layer $l$
+
+$$\vec{y}_l = W_l\vec{x}_l+\vec{b}_l$$
+</p>
+<ul>
+<li>$\vec{x}_l \rightarrow$ is a $(n_l,1)$ vector that represents the activations of the previous layer $\vec{y}_{l-1}$ that were passed through an activation function $f$ i.e. $$\vec{x}_l = f(\vec{y}_{l-1})$$</li>
+<li>$W_l \rightarrow$ is a $(d_l,n_l)$ matrix from layer $l-1$ to layer $l$, with $d_l$ the number of filters of the convolutional layer</li>
+<li>$\vec{b}_l \rightarrow$ is a $(d_l,1)$ vector of biases of layer $l$ (initialized to 0)</li>
+<li>$\vec{y}_l \rightarrow$ is a $(d_l,1)$ vector of activations of layer <em>l</em> before they go through the activation function.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>Vectors are shown with an arrow on top of them. For matrices I do not use any special notation.
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A few assumptions are made:</p>
+<ul>
+<li>Each element in $W_l$ is mutually independent from other elements and all the elements come from the same distribution.</li>
+<li>Same is true for $\vec{x}_l$.</li>
+<li>$\vec{x}_l$ and $W_l$ are independent of each other.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Compute-Variance-of-$\vec{y}_l$">
+<a class="anchor" href="#Compute-Variance-of-%24%5Cvec%7By%7D_l%24" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compute Variance of $\vec{y}_l$<a class="anchor-link" href="#Compute-Variance-of-%24%5Cvec%7By%7D_l%24"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>This is a heavy math section. I have explained the complete derivation step-by-step, but I also assumed that you know the Variance and Expectation formulas and what independence means. The result is what matter the most, so you can skip this section if you want. 
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our end goal is to have unit standard deviation in all layers of the model. To do so, we first compute the variance of the above equation.</p>
+<p>
+$$Var[\vec{y}_l] = Var[W_l\vec{x}_l] + Var[\vec{b}_l] + 2*Cov(W_l\vec{x}_l, \vec{b}_l)$$
+</p>
+<ul>
+<li>$Var[\vec{b}_l] \rightarrow$ is 0, because $\vec{b}_l$ is initialized to a zero vector.</li>
+<li>$Cov(W_l\vec{x}_l, \vec{b}_l) \rightarrow$ is 0, because $\vec{b}_l$ is always initialized to 0, no matter what value the first argument takes.</li>
+</ul>
+<p>Therefore,
+
+$$Var[\vec{y}_l] = Var[W_l\vec{x}_l]$$
+</p>
+<p>Let $W_l = (w_{i,j})_{1\leq i\leq d_l, 1\leq j \leq n_l}$, where all $w_{i,j}$ follow the same distribution. Similarly, let $\vec{x}_l = (x_j)_{1\leq j \leq n_l}$, with all $x_j$ following the same distribution.</p>
+<p>Plugging all this into the variance equation, we have
+$$
+Var[\vec{y}_l] = Var
+\left(
+\begin{bmatrix}
+\sum\limits_{j=1}^{n_l}w_{1,j}x_j \\
+\sum\limits_{j=1}^{n_l}w_{2,j}x_j \\
+\vdots \\
+\sum\limits_{j=1}^{n_l}w_{d_l,j}x_j
+\end{bmatrix}
+\right)
+$$</p>
+<p>To derive the variance of a random vector, check these videos for more details:</p>
+<ol>
+<li>Expectations and variance of a random vector - part 2 <a href="https://youtu.be/idakTYatAp8">link</a>
+</li>
+<li>Expectations and variance of a random vector - part 3 <a href="https://youtu.be/cX47XyPuBgQ">link</a>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Variance of $\vec{y}_l$ is defined as $Var[\vec{y}_l] = \mathbb{E}[(\vec{y}_l - \mu)(\vec{y}_l - \mu)^T]$, where $\mu$ is the expectation/mean of $\vec{y}_l$. This would give us $(n_l,n_l)$ matrix as shown below:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$
+Var[\vec{y}_l] = \mathbb{E}
+\left(
+\begin{bmatrix}
+Var\left(\sum\limits_{j=1}^{n_l}w_{1,j}x_j\right) &amp;
+Cov\left(\sum\limits_{j=1}^{n_l}w_{1,j}x_j,\sum\limits_{j=1}^{n_l}w_{2,j}x_j\right) &amp; 
+\cdots &amp;
+Cov\left(\sum\limits_{j=1}^{n_l}w_{1,j}x_j,\sum\limits_{j=1}^{n_l}w_{d_l,j}x_j\right) \\
+Cov\left(\sum\limits_{j=1}^{n_l}w_{2,j}x_j,\sum\limits_{j=1}^{n_l}w_{1,j}x_j\right) &amp; 
+Var\left(\sum\limits_{j=1}^{n_l}w_{2,j}x_j\right) &amp; 
+\cdots &amp; 
+\vdots \\
+\vdots &amp;
+&amp;
+\ddots&amp;
+Cov\left(\sum\limits_{j=1}^{n_l}w_{d_l-1,j}x_j,\sum\limits_{j=1}^{n_l}w_{d_l,j}x_j\right) \\
+Cov\left(\sum\limits_{j=1}^{n_l}w_{d_l,j}x_j,\sum\limits_{j=1}^{n_l}w_{1,j}x_j\right) &amp; 
+\cdots &amp;
+Cov\left(\sum\limits_{j=1}^{n_l}w_{d_l,j}x_j,\sum\limits_{j=1}^{n_l}w_{d_l-1,j}x_j\right) &amp; 
+Var\left(\sum\limits_{j=1}^{n_l}w_{d_l,j}x_j\right) 
+\end{bmatrix}
+\right)
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now
+
+$$Cov\left(\sum\limits_{j=1}^{n_l}w_{k,j}x_j,\sum\limits_{j=1}^{n_l}w_{l,j}x_j\right) = 0\text{ , for } k\neq l$$
+
+This is because of the assumption the three assumptions that we had defined earlier i.e.</p>
+<ul>
+<li>Each element in $W_l$ is mutually independent from other elements and all the elements come from the same distribution.</li>
+<li>Same is true for $\vec{x}_l$.</li>
+<li>$\vec{x}_l$ and $W_l$ are independent of each other.</li>
+</ul>
+<p>Putting this into the above equation we have
+$$
+Var[\vec{y}_l] = \mathbb{E}
+\left(
+\begin{bmatrix}
+Var\left(\sum\limits_{j=1}^{n_l}w_{1,j}x_j\right) &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; Var\left(\sum\limits_{j=1}^{n_l}w_{2,j}x_j\right) &amp; \cdots &amp; \vdots \\
+\vdots &amp; &amp; \ddots &amp; 0 \\
+0 &amp; \cdots &amp; 0 &amp; Var\left(\sum\limits_{j=1}^{n_l}w_{d_l,j}x_j\right) 
+\end{bmatrix}
+\right)
+$$</p>
+<p>Because all the $w_{i,j}$ and $x_i$ are independent from each other, the variance of the sum is the sum of the variances. Thus:
+$$
+Var[\vec{y}_l] = \mathbb{E}
+\left(
+\begin{bmatrix}
+\sum\limits_{j=1}^{n_l}Var(w_{1,j}x_j) &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; \sum\limits_{j=1}^{n_l}Var(w_{2,j}x_j) &amp; \cdots &amp; \vdots \\
+\vdots &amp; &amp; \ddots &amp; 0 \\
+0 &amp; \cdots &amp; 0 &amp; \sum\limits_{j=1}^{n_l}Var(w_{d_l,j}x_j) 
+\end{bmatrix}
+\right)
+$$</p>
+<p>Now because all the $w_{i,j}$ and $x_i$ follow the same distribution (respectively), all the variances in the sum are equal. Thus:
+$$
+Var[\vec{y}_l] = \mathbb{E}
+\left(
+\begin{bmatrix}
+n_l*Var(w_1x_1) &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; n_l*Var(w_2x_2) &amp; \cdots &amp; \vdots \\
+\vdots &amp; &amp; \ddots &amp; 0 \\
+0 &amp; \cdots &amp; 0 &amp; n_l*Var(w_{d_l}x_{d_l}) 
+\end{bmatrix}
+\right)
+$$</p>
+<p>Next, expectation of a matrix is the expectation of each value (this is also true for a vector).
+$$
+Var[\vec{y}_l] =
+\left(
+\begin{bmatrix}
+\mathbb{E}[n_l*Var(w_1x_1)] &amp; \mathbb{E}[0] &amp; \cdots &amp; \mathbb{E}[0] \\
+\mathbb{E}[0] &amp; \mathbb{E}[n_l*Var(w_2x_2)] &amp; \cdots &amp; \vdots \\
+\vdots &amp; &amp; \ddots &amp; \mathbb{E}[0] \\
+\mathbb{E}[0] &amp; \cdots &amp; \mathbb{E}[0] &amp; \mathbb{E}[n_l*Var(w_{d_l}x_{d_l})] 
+\end{bmatrix}
+\right)
+$$</p>
+<p>Now,</p>
+<ul>
+<li>$\mathbb{E}[n_l*Var(w_ix_i)] = n_l*Var(w_ix_i)$ because $n_l$ is constant and $Var(w_ix_i)$ is also a constant (variance tells us how far we are from the mean (technically it is standard deviation, but you get the point)).</li>
+<li>$\mathbb{E}[0] = 0$ because 0 is a constant.</li>
+</ul>
+<p>Putting this in the equation, we have,
+$$
+Var[\vec{y}_l] = 
+\left(
+\begin{bmatrix}
+n_l*Var(w_1x_1) &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; n_l*Var(w_2x_2) &amp; \cdots &amp; \vdots \\
+\vdots &amp; &amp; \ddots &amp; 0 \\
+0 &amp; \cdots &amp; 0 &amp; n_l*Var(w_{d_l}x_{d_l}) 
+\end{bmatrix}
+\right)
+$$</p>
+<p>We can apply the same logic to expand $Var[\vec{y}_l]$ as we used to expand the right hand side (as demonstrated in the above equations).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The final equation we get is as follows:
+$$
+\begin{equation*}
+\begin{bmatrix}
+y_1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; y_2 &amp; \cdots &amp; \vdots \\
+\vdots &amp; &amp; \ddots &amp; 0 \\
+0 &amp; \cdots &amp; 0 &amp; y_{d_l} 
+\end{bmatrix} = 
+\begin{bmatrix}
+n_l*Var(w_1x_1) &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; n_l*Var(w_2x_2) &amp; \cdots &amp; \vdots \\
+\vdots &amp; &amp; \ddots &amp; 0 \\
+0 &amp; \cdots &amp; 0 &amp; n_l*Var(w_{d_l}x_{d_l}) 
+\end{bmatrix}
+\end{equation*}
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Comparing, both sides we get the value of variance for an activation $y_l$
+
+$$Var[y_l] = n_l*Var[w_lx_l]$$
+
+</p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>$y_l,x_l$ are scalars. $w_l$ is $(1,n_l)$ row-vector. To keep the notation same as the original paper, I did not use the vector notation. From this point on it does not matter much that $w_l$ is a row-vector or not. 
+</div>
+For the derivation below, I drop subscript <em>l</em> (as it would just clutter the equations). I use the standard formula for Variance to expand the above equation as shown.
+$$\begin{equation*}
+\begin{split}
+Var[y] &amp; = n_l*Var[wx] \\
+ &amp; = n_l*\left(\mathbb{E}[(wx)^2]-\mathbb{E}[wx]^2\right) \\
+ &amp; = n_l*\left(\mathbb{E}[w^2x^2]-(\mathbb{E}[w]\mathbb{E}[x]+Cov(w,x))^2\right) \\
+ &amp; = n_l*\left(\underbrace{\mathbb{E}[w^2]\mathbb{E}[x^2]+Cov(w^2,x^2)}_{\mathbb{E}[(wx)^2]}-\underbrace{(\mathbb{E}[w]\mathbb{E}[x]+Cov(w,x))^2}_{\mathbb{E}[wx]^2}\right)
+\end{split}
+\end{equation*}$$
+<p>Now we use the fact that $w_l$ and $x_l$ are independent of each other. This means</p>
+<ul>
+<li>$Cov(w^2,x^2)=0$</li>
+<li>$Cov(w,x)=0$</li>
+</ul>
+<p>Also, the weights ($w_l$) have zero mean, as we are sampling the weights from a random normal distribution. I also used the fact that $Var[w_l]=\mathbb{E}[w_l^2]-\mathbb{E}[w_l]^2$ where the second term is zero.</p>
+$$
+\begin{equation*}
+\begin{split}
+Var[y_l] &amp; =n_l*\left(\underbrace{\mathbb{E}[w_l^2]}_{=Var[w_l]}\mathbb{E}[x_l^2]-\underbrace{\mathbb{E}[w_l]^2}_{=0}\mathbb{E}[x_l]^2\right) \\
+Var[y_l] &amp; = n_lVar[w_l]\mathbb{E}[x_l^2]
+\end{split}
+\end{equation*}
+$$<p>$Var[x_l] = \mathbb{E}[x_l^2] - \mathbb{E}[x_l]^2$. As $x_l$ is output of an activation function (like ReLU), it has non-zero mean, thus $\mathbb{E}[x_l]\neq 0$.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Derivation-for-ReLU-activation-function">
+<a class="anchor" href="#Derivation-for-ReLU-activation-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>Derivation for ReLU activation function<a class="anchor-link" href="#Derivation-for-ReLU-activation-function"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$
+ReLU(x) =
+\begin{cases}
+x\text{ if }x\geq 0 \\
+0\text{ if }x&lt;0
+\end{cases}
+= \max(x,0)
+$$<p>$w_l$ is initialized as a normal distribution. So half the probability lies on left of origin and half on right side of origin.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0A">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our objective is to solve this equation:
+
+$$Var[y_l] = n_lVar[w_l]\mathbb{E}[x_l^2]$$
+</p>
+<p>For this we have to solve $\mathbb{E}[x_l^2]=\mathbb{E}[\max(0,y_{l-1})^2]$.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>$x_l$ is the output of activation function applied to a linear layer.
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We first show that $y_{l-1}$ is symmetric around 0. Formula for $y_{l-1}$ is 
+
+$$y_{l-1}=w_{l-1}x_{l-1}+b_{l-1}$$
+
+Taking the expectation of above gives:
+$$
+\begin{equation*}
+\begin{split}
+\mathbb{E}[y_{l-1}] &amp;= \mathbb{E}[w_{l-1}x_{l-1}]+\underbrace{\mathbb{E}[b_{l-1}]}_{=0\text{ as vector of 0's}} \\
+ &amp;= \underbrace{\mathbb{E}[w_{l-1}]}_{=0}\mathbb{E}[b_{l-1}] \\
+ &amp;= 0
+\end{split}
+\end{equation*}
+$$</p>
+<p>This shows that $y_{l-1}$ is centered around 0. Also, it is symmetric around 0, as $w_{l-1}$ is symmetric around 0, this combined with the fact that $y_{l-1}$ is centered around 0 gives the conclusion that $y_{l-1}$ is symmetric around 0 (i.e. half probability lies on left of origin and half on right of origin).</p>
+<p>The above fact can also be derived mathematically as follows (I drop the $l-1$ subscript for cleaner equations):
+$$
+\begin{equation*}
+\begin{split}
+\mathbb{P}(y&gt;0) &amp;= \mathbb{P}(wx&gt;0) \\
+ &amp;= \mathbb{P}\left(\left(w&gt;0 \text{ and } x&gt;0\right)\text{ or }\left(w&lt;0 \text{ and } x&lt;0\right)\right) \\
+ &amp;= \mathbb{P}(w&gt;0)\mathbb{P}(x&gt;0)+\mathbb{P}(w&lt;0)\mathbb{P}(x&lt;0) \\
+ &amp;= \frac{1}{2}\mathbb{P}(x&gt;0)+\frac{1}{2}\mathbb{P}(x&lt;0) \\
+ &amp;= \frac{1}{2}
+\end{split}
+\end{equation*}
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we are ready to compute $\mathbb{E}[x_l^2]$:
+$$
+\begin{equation*}
+\begin{split}
+\mathbb{E}[x_l^2] &amp;= \mathbb{E}[\max(0,y_{l_1})^2] \\
+ &amp;= \underbrace{\frac{1}{2}\mathbb{E}[0^2]\text{ } \Bigr|_{y_{l-1}\le 0}}_{=0} + \frac{1}{2}\mathbb{E}[y_{l-1}^2]\text{ }\Bigr|_{y_{l-1}&gt;0} \\
+ &amp;= \frac{1}{2}\mathbb{E}[y_{l-1}^2] \\
+ &amp;= \frac{1}{2}Var[y_{l-1}]
+\end{split}
+\end{equation*}
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using this result in the equation of variance we have:
+$$
+\begin{equation*}
+\begin{split}
+Var[y_l] &amp;= n_lVar[w_l]\mathbb{E}[x_l^2] \\
+ &amp;= \frac{1}{2}n_lVar[w_l]Var[y_{l-1}] \\
+\end{split}
+\end{equation*}
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With $L$ layers put together, we have
+$$
+\begin{equation*}
+\begin{split}
+Var[y_L] &amp;= Var[y_1]*Var[y_2]\cdots*Var[y_{L-1}] \\
+ &amp;= Var[y_1]\left(\prod\limits_{l=2}^{L}\frac{1}{2}n_lVar[w_l]\right)
+\end{split}
+\end{equation*}
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This product is the key to the initialization design. A proper initialization method should avoid reducing or magnifying the magnitudes of input signals exponentially. So we expect the product to take a proper scalar (e.g., 1). A sufficient condition is:</p>
+<p>
+$$\frac{1}{2}n_lVar[w_l] = 1, \text{   }\forall l$$
+</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This leads to zero-mean gaussian whose standard deviation is $\sqrt{2/n_l}$ and the biases are initialized to 0.</p>
+<p>And this is it. To initialize the weight matrix we can use the following code:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># PyTorch uses the transpose of the weight matrix internally</span>
+<span class="c1"># so n_l in this case is 784 (i.e. preserve standard deviation</span>
+<span class="c1"># along the forward pass). </span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">784</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="General-Recipe-for-any-activation-function">
+<a class="anchor" href="#General-Recipe-for-any-activation-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>General Recipe for any activation function<a class="anchor-link" href="#General-Recipe-for-any-activation-function"> </a>
+</h3>
+<ol>
+<li>Find $$\mathbb{E}[x_l^2]=\mathbb{E}[\text{activation_function}(y_l)], \text{  where }y_l=w_{l-1}x_{l-1}+b_{l-1}$$ in terms of $Var[y_{l-1}]$. Use the fact that $y_{l-1}$ is symmetric around 0.</li>
+<li>Use the above value to find variance of layer l
+
+$$Var[y_l] = n_lVar[w_l]\mathbb{E}[x_l^2]$$
+</li>
+<li>Compute the variance at the last layer $$Var[y_L] = Var[y_1]*Var[y_2]\cdots*Var[y_{L-1}]$$.</li>
+<li>Find a way to make the variance at the last layer constant.</li>
+</ol>
 
 </div>
 </div>
@@ -1672,7 +2205,7 @@ window.onload = wrap_img;
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/blog/tutorial/2020/07/10/post-0011.html" hidden></a>
+</script><a class="u-url" href="/blog/tutorial/paper-implementation/2020/07/10/post-0011.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
