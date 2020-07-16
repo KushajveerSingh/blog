@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Deep Learning Model Initialization in Detail (with derivation for ReLU+code) | Kushajveer Singh</title>
+<title>Deep Learning Model Initialization in Detail | Kushajveer Singh</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Deep Learning Model Initialization in Detail (with derivation for ReLU+code)" />
+<meta property="og:title" content="Deep Learning Model Initialization in Detail" />
 <meta name="author" content="Kushajveer Singh" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function." />
-<meta property="og:description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function." />
+<meta name="description" content="Kaiming initialization is discussed in detail. Initialization function for ReLU is derived in detail." />
+<meta property="og:description" content="Kaiming initialization is discussed in detail. Initialization function for ReLU is derived in detail." />
 <link rel="canonical" href="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html" />
 <meta property="og:url" content="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-07-10T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html","headline":"Deep Learning Model Initialization in Detail (with derivation for ReLU+code)","dateModified":"2020-07-10T00:00:00-05:00","datePublished":"2020-07-10T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Kaiming initialization is discussed in detail. Initialization function for ReLU is derived in detail.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html","headline":"Deep Learning Model Initialization in Detail","dateModified":"2020-07-10T00:00:00-05:00","datePublished":"2020-07-10T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -25,20 +25,20 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-123402359-3','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Deep Learning Model Initialization in Detail (with derivation for ReLU+code) | Kushajveer Singh</title>
+<title>Deep Learning Model Initialization in Detail | Kushajveer Singh</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Deep Learning Model Initialization in Detail (with derivation for ReLU+code)" />
+<meta property="og:title" content="Deep Learning Model Initialization in Detail" />
 <meta name="author" content="Kushajveer Singh" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function." />
-<meta property="og:description" content="Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function." />
+<meta name="description" content="Kaiming initialization is discussed in detail. Initialization function for ReLU is derived in detail." />
+<meta property="og:description" content="Kaiming initialization is discussed in detail. Initialization function for ReLU is derived in detail." />
 <link rel="canonical" href="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html" />
 <meta property="og:url" content="https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-07-10T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html","headline":"Deep Learning Model Initialization in Detail (with derivation for ReLU+code)","dateModified":"2020-07-10T00:00:00-05:00","datePublished":"2020-07-10T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"Kaiming initialization is discussed in detail. Initialization function for ReLU is derived in detail.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html"},"@type":"BlogPosting","url":"https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html","headline":"Deep Learning Model Initialization in Detail","dateModified":"2020-07-10T00:00:00-05:00","datePublished":"2020-07-10T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -115,7 +115,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Deep Learning Model Initialization in Detail (with derivation for ReLU+code)</h1><p class="page-description">Kaiming and Fixup initialization are discussed in detail. Initialization function for ReLU is derived in detail. Also, provide a general recipe for finding init function of any activation function.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-10T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Deep Learning Model Initialization in Detail</h1><p class="page-description">Kaiming initialization is discussed in detail. Initialization function for ReLU is derived in detail.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-10T00:00:00-05:00" itemprop="datePublished">
         Jul 10, 2020
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -181,8 +181,10 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#Compute-Variance-of-$\vec{y}_l$">Compute Variance of $\vec{y}_l$ </a></li>
 <li class="toc-entry toc-h3"><a href="#Derivation-for-ReLU-activation-function">Derivation for ReLU activation function </a></li>
 <li class="toc-entry toc-h3"><a href="#General-Recipe-for-any-activation-function">General Recipe for any activation function </a></li>
+<li class="toc-entry toc-h3"><a href="#Derivation-for-LeakyReLU-activation-function">Derivation for LeakyReLU activation function </a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
 </ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
@@ -207,8 +209,6 @@ window.onload = wrap_img;
 <li>Understanding the difficulty of training deep feedforward neural networks <a href="http://proceedings.mlr.press/v9/glorot10a.html">paper</a>
 </li>
 <li>Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification <a href="https://arxiv.org/abs/1502.01852">paper</a>
-</li>
-<li>Fixup Initialization: Residual Learning Without Normalization <a href="https://arxiv.org/abs/1901.09321">paper</a>
 </li>
 </ol>
 
@@ -416,7 +416,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We want <strong>activations</strong> in the neural network to have mean=0, std=1. By activation I mean the output of <code>activation_function(Linear(x, w, b))</code>.</p>
+<p>We want <strong>activations</strong> in the neural network to have mean=0, std=1. By activation I mean the output of <code>activation_function(Linear(x, w, b))</code>. Convolution layer can also be represented as a linear layer (take a vector of 0's, replace the 0's where the convolution filter would be applied).</p>
 
 </div>
 </div>
@@ -425,18 +425,10 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p></p>
-<div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
-    <strong>Note: </strong>Convolution layer can also be represented as a linear layer. So convolution layer also fits into the above definition. 
+<div class="flash flash-warn">
+    <svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10 7H6l3-7-9 9h4l-3 7 9-9z"></path></svg>
+    <strong>Important: </strong>Batch Normalization is not used in this post. BatchNorm is still needed because if we just use Kaiming init in ResNet, the weights would explode. This happens due to the shortcut connection which doubles the variance, thus exponentially increasing the weights.
 </div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Batch Normalization is not used in this post</strong>. The purpose of BatchNorm is to normalize the activations and then scale them by using a learned mean and standard deviation. So the idea of batch normalization is to have the same distribution over the entire network for the ease of training. BatchNorm reduces the strong dependence on initialization. However, initialization is still important because we can get into bad local minima's at the start of the training if the networks are not initialized properly. (You can check my other <a href="https://github.com/KushajveerSingh/deep_learning/blob/master/deep_learning/paper_implementations/Leslie%20N.%20Smith%20papers%20notebook/main.ipynb">notebook</a> in which I discuss this in detail). For this reason, I will not include BatchNorm in this discussion.</p>
 
 </div>
 </div>
@@ -1705,7 +1697,7 @@ $$\vec{y}_l = W_l\vec{x}_l+\vec{b}_l$$
 <div class="text_cell_render border-box-sizing rendered_html">
 <p></p>
 <div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
     <strong>Note: </strong>Vectors are shown with an arrow on top of them. For matrices I do not use any special notation.
 </div>
 
@@ -1739,7 +1731,7 @@ $$\vec{y}_l = W_l\vec{x}_l+\vec{b}_l$$
 <div class="text_cell_render border-box-sizing rendered_html">
 <p></p>
 <div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
     <strong>Note: </strong>This is a heavy math section. I have explained the complete derivation step-by-step, but I also assumed that you know the Variance and Expectation formulas and what independence means. The result is what matter the most, so you can skip this section if you want. 
 </div>
 
@@ -1938,7 +1930,7 @@ $$Var[y_l] = n_l*Var[w_lx_l]$$
 
 </p>
 <div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
     <strong>Note: </strong>$y_l,x_l$ are scalars. $w_l$ is $(1,n_l)$ row-vector. To keep the notation same as the original paper, I did not use the vector notation. From this point on it does not matter much that $w_l$ is a row-vector or not. 
 </div>
 For the derivation below, I drop subscript <em>l</em> (as it would just clutter the equations). I use the standard formula for Variance to expand the above equation as shown.
@@ -2043,7 +2035,7 @@ $$Var[y_l] = n_lVar[w_l]\mathbb{E}[x_l^2]$$
 <div class="text_cell_render border-box-sizing rendered_html">
 <p></p>
 <div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
     <strong>Note: </strong>$x_l$ is the output of activation function applied to a linear layer.
 </div>
 
@@ -2189,6 +2181,94 @@ $$Var[y_l] = n_lVar[w_l]\mathbb{E}[x_l^2]$$
 <li>Compute the variance at the last layer $$Var[y_L] = Var[y_1]*Var[y_2]\cdots*Var[y_{L-1}]$$.</li>
 <li>Find a way to make the variance at the last layer constant.</li>
 </ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Derivation-for-LeakyReLU-activation-function">
+<a class="anchor" href="#Derivation-for-LeakyReLU-activation-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>Derivation for LeakyReLU activation function<a class="anchor-link" href="#Derivation-for-LeakyReLU-activation-function"> </a>
+</h3>$$
+LeakyReLU(x) =
+\begin{cases}
+x\text{ if }x\geq 0\\
+ax\text{ if }x&lt;0
+\end{cases}
+= \max(ax,x), a&gt;0
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Step 1</strong>: Find $\mathbb{E}[x_l^2]$ in terms of $Var[y_{l-1}]$.
+$$
+\begin{split}
+\mathbb{E}[x_l^2] &amp;= \mathbb{E}[\max(ay_{l-1},y_{l-1})^2] \\
+ &amp;= \frac{1}{2}\mathbb{E}[a^2y_{l-1}^2]\text{ } \Bigr|_{y_{l-1}\le 0} + \frac{1}{2}\mathbb{E}[y_{l-1}^2]\text{ }\Bigr|_{y_{l-1}&gt;0} \\
+ &amp;= \frac{1}{2}a^2\mathbb{E}[y_{l-1}^2]\text{ } \Bigr|_{y_{l-1}\le 0} + \frac{1}{2}\mathbb{E}[y_{l-1}^2]\text{ }\Bigr|_{y_{l-1}&gt;0} \\
+ &amp;= \frac{1}{2}a^2Var[y_{l-1}]+\frac{1}{2}Var[y_{l-1}] \\
+ &amp;= \frac{1+a^2}{2}Var[y_{l-1}]
+\end{split}
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Step 2</strong>: Compute variance of each layer.
+$$
+Var[y_l] = n_lVar[w_l]\left(\frac{1+a^2}{2}Var[y_{l-1}]\right)
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Step 3</strong>: Compute variance at last layer.
+$$
+Var[y_L] = Var[y_1]\left(\prod\limits_{l=2}^{L}\frac{1+a^2}{2}n_lVar[w_l]\right)
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Step 4</strong>: Make the variance constant (=1 in this case would be enough).
+$$
+\begin{split}
+\frac{1+a^2}{2}n_lVar[w_l] &amp;= 1 \\
+Var[w_l] &amp;= \frac{2}{1+a^2}
+\end{split}
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This leads to a zero-mean gaussian whose standard deviation is $\sqrt{2/(1+a^2)}$ and the biases are initialized to 0.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusion">
+<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
+</h2>
+<p>Weight initialization plays an important role in the training of a model. It can speed up the training process. Kaiming init is a good default initialization technique for most of the tasks.</p>
 
 </div>
 </div>
