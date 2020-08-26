@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://kushajveersingh.github.io/blog/tutorial/2018/09/14/post-0001.html</loc>
+<loc>https://kushajveersingh.github.io/blog/discussion/2018/09/14/post-0001.html</loc>
 <lastmod>2018-09-14T00:00:00-05:00</lastmod>
 </url>
 <url>
-<loc>https://kushajveersingh.github.io/blog/tutorial/2019/02/18/post-0002.html</loc>
+<loc>https://kushajveersingh.github.io/blog/discussion/2019/02/18/post-0002.html</loc>
 <lastmod>2019-02-18T00:00:00-06:00</lastmod>
 </url>
 <url>
@@ -25,7 +25,7 @@
 <lastmod>2019-05-15T00:00:00-05:00</lastmod>
 </url>
 <url>
-<loc>https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2019/06/26/post-0010.html</loc>
+<loc>https://kushajveersingh.github.io/blog/discussion/2019/06/26/post-0010.html</loc>
 <lastmod>2019-06-26T00:00:00-05:00</lastmod>
 </url>
 <url>
@@ -37,12 +37,16 @@
 <lastmod>2020-05-13T00:00:00-05:00</lastmod>
 </url>
 <url>
-<loc>https://kushajveersingh.github.io/blog/notes/conference/2020/06/19/post-0009.html</loc>
+<loc>https://kushajveersingh.github.io/blog/notes/2020/06/19/post-0009.html</loc>
 <lastmod>2020-06-19T00:00:00-05:00</lastmod>
 </url>
 <url>
-<loc>https://kushajveersingh.github.io/blog/tutorial/paper-implementation/2020/07/10/post-0011.html</loc>
+<loc>https://kushajveersingh.github.io/blog/discussion/2020/07/10/post-0011.html</loc>
 <lastmod>2020-07-10T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>https://kushajveersingh.github.io/blog/discussion/2020/08/27/post-0012.html</loc>
+<lastmod>2020-08-27T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>https://kushajveersingh.github.io/blog/about/</loc>
