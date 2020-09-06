@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>fastai Data API from Foundations | Kushajveer Singh</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="fastai Data API from Foundations" />
+<meta name="author" content="Kushajveer Singh" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="TODO" />
+<meta property="og:description" content="TODO" />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/notes/2020/09/07/post-0014.html" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/notes/2020/09/07/post-0014.html" />
+<meta property="og:site_name" content="Kushajveer Singh" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-07T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"TODO","@type":"BlogPosting","headline":"fastai Data API from Foundations","url":"https://kushajveersingh.github.io/blog/notes/2020/09/07/post-0014.html","datePublished":"2020-09-07T00:00:00-05:00","dateModified":"2020-09-07T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/notes/2020/09/07/post-0014.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-123402359-3','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Kushajveer Singh</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About</a><a class="page-link" href="/blog/notebooks/">Notebooks</a><a class="page-link" href="/blog/projects/">Projects</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">fastai Data API from Foundations</h1><p class="page-description">TODO</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-09-07T00:00:00-05:00" itemprop="datePublished">
+        Sep 7, 2020
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Kushajveer Singh</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#notes">notes</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/KushajveerSingh/blog/tree/master/_notebooks/2020-09-07-post-0014.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/KushajveerSingh/blog/master?filepath=_notebooks%2F2020-09-07-post-0014.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/KushajveerSingh/blog/blob/master/_notebooks/2020-09-07-post-0014.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Get-dataset">Get dataset </a></li>
+<li class="toc-entry toc-h2"><a href="#PyTorch-Dataset-class">PyTorch Dataset class </a></li>
+<li class="toc-entry toc-h2"><a href="#Create-DataLoader">Create DataLoader </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Get-(image,-label)-tuple-from-filename">Get (image, label) tuple from filename </a></li>
+<li class="toc-entry toc-h3"><a href="#Apply-some-transforms">Apply some transforms </a></li>
+<li class="toc-entry toc-h3"><a href="#Create-DataLoader">Create DataLoader </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-09-07-post-0014.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Handles all the necessary imports</span>
+<span class="kn">from</span> <span class="nn">fastai.vision.all</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">fastai.callback.fp16</span> <span class="kn">import</span> <span class="n">to_fp16</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Get-dataset">
+<a class="anchor" href="#Get-dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get dataset<a class="anchor-link" href="#Get-dataset"> </a>
+</h2>
+<p>For this post I use <a href="https://github.com/fastai/imagenette">Imagewoof</a> dataset. There is nothing special here. It is an ImageNet style dataset and will provide a basis for the post.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash flash-success">
+    <svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 8.5l-6 6-3-3L8.5 10l1.5 1.5L14.5 7 16 8.5zM5.7 12.2l.8.8H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h7c.55 0 1 .45 1 1v6.5l-.8-.8c-.39-.39-1.03-.39-1.42 0L5.7 10.8a.996.996 0 000 1.41v-.01zM4 4h5V3H4v1zm0 2h5V5H4v1zm0 2h3V7H4v1zM3 9H2v1h1V9zm0-2H2v1h1V7zm0-2H2v1h1V5zm0-2H2v1h1V3z"></path></svg>
+    <strong>Tip: </strong>In fastai if you cannot create a DataLoader, using a <code>csv</code> file is the best option. Define a <code>label</code> column and a <code>valid</code> column and it will just work.
+</div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'/home/kushaj/Desktop/Data/imagewoof2/'</span><span class="p">)</span>
+<span class="n">Path</span><span class="o">.</span><span class="n">BASE_PATH</span> <span class="o">=</span> <span class="n">path</span>
+<span class="n">path</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(#2) [Path('train'),Path('val')]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>tree <span class="o">{</span>path<span class="o">}</span> -L <span class="m">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre><span class="ansi-blue-fg ansi-green-bg">/home/kushaj/Desktop/Data/imagewoof2</span>
+├── <span class="ansi-blue-fg ansi-green-bg">train</span>
+│   ├── <span class="ansi-blue-fg ansi-green-bg">n02086240</span>
+│   ├── <span class="ansi-blue-fg ansi-green-bg">n02087394</span>
+│   ├── <span class="ansi-blue-fg ansi-green-bg">n02088364</span>
+│   ├── <span class="ansi-blue-fg ansi-green-bg">n02089973</span>
+│   ├── <span class="ansi-blue-fg ansi-green-bg">n02093754</span>
+│   ├── <span class="ansi-blue-fg ansi-green-bg">n02096294</span>
+│   ├── <span class="ansi-blue-fg ansi-green-bg">n02099601</span>
+│   ├── <span class="ansi-blue-fg ansi-green-bg">n02105641</span>
+│   ├── <span class="ansi-blue-fg ansi-green-bg">n02111889</span>
+│   └── <span class="ansi-blue-fg ansi-green-bg">n02115641</span>
+└── <span class="ansi-blue-fg ansi-green-bg">val</span>
+    ├── <span class="ansi-blue-fg ansi-green-bg">n02086240</span>
+    ├── <span class="ansi-blue-fg ansi-green-bg">n02087394</span>
+    ├── <span class="ansi-blue-fg ansi-green-bg">n02088364</span>
+    ├── <span class="ansi-blue-fg ansi-green-bg">n02089973</span>
+    ├── <span class="ansi-blue-fg ansi-green-bg">n02093754</span>
+    ├── <span class="ansi-blue-fg ansi-green-bg">n02096294</span>
+    ├── <span class="ansi-blue-fg ansi-green-bg">n02099601</span>
+    ├── <span class="ansi-blue-fg ansi-green-bg">n02105641</span>
+    ├── <span class="ansi-blue-fg ansi-green-bg">n02111889</span>
+    └── <span class="ansi-blue-fg ansi-green-bg">n02115641</span>
+
+22 directories, 0 files
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="PyTorch-Dataset-class">
+<a class="anchor" href="#PyTorch-Dataset-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>PyTorch <code>Dataset</code> class<a class="anchor-link" href="#PyTorch-Dataset-class"> </a>
+</h2>
+<p>The base class to get items from the dataset. It is an instance of <code>torch.utils.data.Dataset</code>. fastai does not do anything special here. The same dataset class used in PyTorch can be used here.</p>
+<p>Let's start by defining the <code>Dataset</code> class for training and validation dataset. What do we need this class to do?</p>
+<p>It should get the name of image files. And that is it. The reason being the <code>DataLoader</code> class in fastai is very powerful (as we will soon see).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>To avoid messing up with fastai imports I use a underscore (_) in front of class names.
+</div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">_Dataset</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">get_image_files</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>            <span class="p">:</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>     <span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+<span class="n">dataset</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'train'</span><span class="p">:</span> <span class="n">_Dataset</span><span class="p">(</span><span class="n">path</span><span class="o">/</span><span class="s1">'train'</span><span class="p">),</span>
+    <span class="s1">'valid'</span><span class="p">:</span> <span class="n">_Dataset</span><span class="p">(</span><span class="n">path</span><span class="o">/</span><span class="s1">'val'</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">'train'</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">'valid'</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(9025, 3929)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="s1">'train'</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Path('train/n02111889/n02111889_11223.JPEG')</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Create-DataLoader">
+<a class="anchor" href="#Create-DataLoader" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create <code>DataLoader</code><a class="anchor-link" href="#Create-DataLoader"> </a>
+</h2>
+<p>The base dataloader class that is defined in <code>fastai.data.load.DataLoader</code> forms the basis of fastai DataBlock API.</p>
+<p>Please refer to my previous post <a href="https://kushajveersingh.github.io/blog/notes/2020/09/05/post-0013.html">Deep dive into fastai DataLoader methods</a> which provides a 2 minute summary of all the important methods of <code>DataLoader</code> class.</p>
+<p>From this point I assume you are comfortable with the methods available in <code>DataLoader</code> class and in what order they operate.</p>
+<p>Now let's start creating our <code>DataLoader</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Get-(image,-label)-tuple-from-filename">
+<a class="anchor" href="#Get-(image,-label)-tuple-from-filename" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get (image, label) tuple from filename<a class="anchor-link" href="#Get-(image,-label)-tuple-from-filename"> </a>
+</h3>
+<p>This can be done using <code>after_item</code>. We need to read the image from disk and resize to a fixed size (224,224 for this example) and extract label of the image. For the labels, I manually create a dictionary to map folder name to integer.</p>
+<p>At this point we are still limiting ourselves by not using <code>Transform</code>s. We will use them in the next section.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'n02086240'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+    <span class="s1">'n02087394'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s1">'n02088364'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+    <span class="s1">'n02089973'</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
+    <span class="s1">'n02093754'</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+    <span class="s1">'n02096294'</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+    <span class="s1">'n02099601'</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span>
+    <span class="s1">'n02105641'</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span>
+    <span class="s1">'n02111889'</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span>
+    <span class="s1">'n02115641'</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">after_item</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+    <span class="c1"># `item` here is dataset[idx] i.e. image file path</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">image2tensor</span><span class="p">(</span><span class="n">load_image</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'RGB'</span><span class="p">)</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">)))</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">vocab</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">label</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">after_item</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">'train'</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(tensor([[[103, 105, 107,  ...,  85,  86,  89],
+          [105, 105, 105,  ...,  81,  78,  81],
+          [109, 109, 109,  ...,  85,  83,  83],
+          ...,
+          [ 50,  44,  39,  ...,  70,  66,  66],
+          [ 47,  51,  57,  ...,  63,  60,  70],
+          [ 43,  49,  45,  ...,  58,  60,  56]],
+ 
+         [[ 77,  79,  82,  ...,  53,  53,  53],
+          [ 78,  78,  80,  ...,  48,  48,  49],
+          [ 80,  80,  82,  ...,  49,  48,  48],
+          ...,
+          [122, 113, 102,  ..., 142, 137, 137],
+          [106, 116, 132,  ..., 136, 137, 139],
+          [ 85, 104,  98,  ..., 134, 136, 137]],
+ 
+         [[ 55,  57,  59,  ...,  38,  34,  32],
+          [ 55,  56,  56,  ...,  34,  31,  33],
+          [ 61,  61,  63,  ...,  32,  32,  34],
+          ...,
+          [118, 107,  99,  ..., 148, 145, 144],
+          [104, 113, 130,  ..., 142, 143, 146],
+          [ 69,  90,  91,  ..., 140, 143, 144]]], dtype=torch.uint8),
+ 8)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Apply-some-transforms">
+<a class="anchor" href="#Apply-some-transforms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apply some transforms<a class="anchor-link" href="#Apply-some-transforms"> </a>
+</h3>
+<p>This is where power of fastai comes into play. We can define the transforms to apply on CPU or on a complete batch on the GPU. <code>after_item</code> can also be considered a form of transform.</p>
+<p>To apply transforms on the complete batch on the GPU we use <code>after_batch</code>. For our example, we need to convert the image tensor to float and then normalize the tensor using imagenet mean and std.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">after_batch</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="c1"># `b` is a tuple of (image, label) </span>
+    <span class="c1"># `image` of shape [batch_size, num_channels, height, width]</span>
+    <span class="c1"># `label` of shape [batch_size]</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">to_device</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+    <span class="n">imgs</span><span class="p">,</span> <span class="n">lbls</span> <span class="o">=</span> <span class="n">b</span>
+    
+    <span class="c1"># convert `imgs` to float</span>
+    <span class="n">imgs</span> <span class="o">=</span> <span class="n">imgs</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mf">255.</span><span class="p">)</span>
+    
+    <span class="c1"># normalize data</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">std</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">imgs</span> <span class="o">=</span> <span class="p">(</span><span class="n">imgs</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span>
+    
+    <span class="k">return</span> <span class="n">imgs</span><span class="p">,</span><span class="n">lbls</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Create-DataLoader">
+<a class="anchor" href="#Create-DataLoader" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create <code>DataLoader</code><a class="anchor-link" href="#Create-DataLoader"> </a>
+</h3>
+<p>Now we are ready to create a <code>DataLoader</code> for training and validation dataset.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_dataloader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">shuffle</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span>
+                      <span class="n">bs</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+                      <span class="n">num_workers</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                      <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                      <span class="n">after_item</span><span class="o">=</span><span class="n">after_item</span><span class="p">,</span>
+                      <span class="n">after_batch</span><span class="o">=</span><span class="n">after_batch</span><span class="p">)</span>
+
+<span class="n">dl</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'train'</span><span class="p">:</span> <span class="n">get_dataloader</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">'train'</span><span class="p">],</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s1">'valid'</span><span class="p">:</span> <span class="n">get_dataloader</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">'valid'</span><span class="p">],</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">dls</span> <span class="o">=</span> <span class="n">DataLoaders</span><span class="p">(</span><span class="n">dl</span><span class="p">[</span><span class="s1">'train'</span><span class="p">],</span> <span class="n">dl</span><span class="p">[</span><span class="s1">'valid'</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>DataLoaders</code> is just a wrapper around a list of <code>DataLoader</code>s.</p>
+<p>And that is it. Now we can create a learner.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn</span> <span class="o">=</span> <span class="n">Learner</span><span class="p">(</span><span class="n">dls</span><span class="p">,</span> 
+                <span class="n">xresnet18</span><span class="p">(),</span> 
+                <span class="n">loss_func</span><span class="o">=</span><span class="n">CrossEntropyLossFlat</span><span class="p">(),</span>
+                <span class="n">pretrained</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">accuracy</span><span class="p">])</span><span class="o">.</span><span class="n">to_fp16</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn</span><span class="o">.</span><span class="n">fit_one_cycle</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>accuracy</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>2.597425</td>
+      <td>2.156052</td>
+      <td>0.234665</td>
+      <td>00:13</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1.891093</td>
+      <td>1.834174</td>
+      <td>0.359888</td>
+      <td>00:11</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1.618509</td>
+      <td>1.609872</td>
+      <td>0.434716</td>
+      <td>00:11</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="KushajveerSingh/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/notes/2020/09/07/post-0014.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/KushajveerSingh" title="KushajveerSingh"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/Kkushaj" title="Kkushaj"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
