@@ -4,20 +4,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>fastai Data API from Foundations | Kushajveer Singh</title>
+<title>fastai DataBlock API from Foundations | Kushajveer Singh</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="fastai Data API from Foundations" />
+<meta property="og:title" content="fastai DataBlock API from Foundations" />
 <meta name="author" content="Kushajveer Singh" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="TODO" />
-<meta property="og:description" content="TODO" />
+<meta name="description" content="TODO SUMMARY" />
+<meta property="og:description" content="TODO SUMMARY" />
 <link rel="canonical" href="https://kushajveersingh.github.io/blog/notes/2020/09/07/post-0014.html" />
 <meta property="og:url" content="https://kushajveersingh.github.io/blog/notes/2020/09/07/post-0014.html" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-09-07T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"TODO","@type":"BlogPosting","headline":"fastai Data API from Foundations","url":"https://kushajveersingh.github.io/blog/notes/2020/09/07/post-0014.html","datePublished":"2020-09-07T00:00:00-05:00","dateModified":"2020-09-07T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/notes/2020/09/07/post-0014.html"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Kushajveer Singh"},"description":"TODO SUMMARY","@type":"BlogPosting","headline":"fastai DataBlock API from Foundations","url":"https://kushajveersingh.github.io/blog/notes/2020/09/07/post-0014.html","datePublished":"2020-09-07T00:00:00-05:00","dateModified":"2020-09-07T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/notes/2020/09/07/post-0014.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -94,7 +94,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">fastai Data API from Foundations</h1><p class="page-description">TODO</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-09-07T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">fastai DataBlock API from Foundations</h1><p class="page-description">TODO SUMMARY</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-09-07T00:00:00-05:00" itemprop="datePublished">
         Sep 7, 2020
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -151,9 +151,10 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#Summary-till-now">Summary till now </a></li>
-<li class="toc-entry toc-h2"><a href="#Setting-up-base-classes-for-Type-Dispatch">Setting up base classes for Type Dispatch </a>
+<li class="toc-entry toc-h2"><a href="#The-real-thing-begins">The real thing begins </a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#ImageBlock">ImageBlock </a></li>
+<li class="toc-entry toc-h3"><a href="#Create-base-class-(PILImage)">Create base class (PILImage) </a></li>
+<li class="toc-entry toc-h3"><a href="#Create-block-(ImageBlock)">Create block (ImageBlock) </a></li>
 </ul>
 </li>
 </ul><!--
@@ -181,7 +182,6 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Handles all the necessary imports</span>
 <span class="kn">from</span> <span class="nn">fastai.vision.all</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">fastai.callback.fp16</span> <span class="kn">import</span> <span class="n">to_fp16</span>
 </pre></div>
 
     </div>
@@ -197,19 +197,7 @@ window.onload = wrap_img;
 <h2 id="Get-dataset">
 <a class="anchor" href="#Get-dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get dataset<a class="anchor-link" href="#Get-dataset"> </a>
 </h2>
-<p>For this post I use <a href="https://github.com/fastai/imagenette">Imagewoof</a> dataset. There is nothing special here. It is an ImageNet style dataset and will provide a basis for the post.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p></p>
-<div class="flash flash-success">
-    <svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 8.5l-6 6-3-3L8.5 10l1.5 1.5L14.5 7 16 8.5zM5.7 12.2l.8.8H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h7c.55 0 1 .45 1 1v6.5l-.8-.8c-.39-.39-1.03-.39-1.42 0L5.7 10.8a.996.996 0 000 1.41v-.01zM4 4h5V3H4v1zm0 2h5V5H4v1zm0 2h3V7H4v1zM3 9H2v1h1V9zm0-2H2v1h1V7zm0-2H2v1h1V5zm0-2H2v1h1V3z"></path></svg>
-    <strong>Tip: </strong>In fastai if you cannot create a DataLoader, using a <code>csv</code> file is the best option. Define a <code>label</code> column and a <code>valid</code> column and it will just work.
-</div>
+<p>For this post I use <a href="https://github.com/fastai/imagenette">Imagewoof</a> dataset. There is nothing special here. It is an ImageNet style dataset and will provide a good basis for the post.</p>
 
 </div>
 </div>
@@ -337,9 +325,9 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">_Dataset</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">get_image_files</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>            <span class="p">:</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>     <span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">get_image_files</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>       <span class="p">:</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     
 <span class="n">dataset</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'train'</span><span class="p">:</span> <span class="n">_Dataset</span><span class="p">(</span><span class="n">path</span><span class="o">/</span><span class="s1">'train'</span><span class="p">),</span>
@@ -426,7 +414,7 @@ window.onload = wrap_img;
 <h2 id="Create-DataLoader">
 <a class="anchor" href="#Create-DataLoader" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create <code>DataLoader</code><a class="anchor-link" href="#Create-DataLoader"> </a>
 </h2>
-<p>The base dataloader class that is defined in <code>fastai.data.load.DataLoader</code> forms the basis of fastai DataBlock API.</p>
+<p>The base dataloader class defined in <code>fastai.data.load.DataLoader</code> forms the basis of fastai DataBlock API.</p>
 <p>Please refer to my previous post <a href="https://kushajveersingh.github.io/blog/notes/2020/09/05/post-0013.html">Deep dive into fastai DataLoader methods</a> which provides a 2 minute summary of all the important methods of <code>DataLoader</code> class.</p>
 <p>From this point I assume you are comfortable with the methods available in <code>DataLoader</code> class and in what order they operate.</p>
 <p>Now let's start creating our <code>DataLoader</code>.</p>
@@ -483,9 +471,10 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">after_item</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
     <span class="c1"># `item` here is dataset[idx] i.e. image file path</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">image2tensor</span><span class="p">(</span><span class="n">load_image</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'RGB'</span><span class="p">)</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">)))</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="n">vocab</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">label</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">'RGB'</span><span class="p">)</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">))</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">image2tensor</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">lbl</span> <span class="o">=</span> <span class="n">vocab</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">img</span><span class="p">,</span> <span class="n">lbl</span>
 </pre></div>
 
     </div>
@@ -575,6 +564,8 @@ window.onload = wrap_img;
     <span class="c1"># `image` of shape [batch_size, num_channels, height, width]</span>
     <span class="c1"># `label` of shape [batch_size]</span>
     <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">)</span>
+    
+    <span class="c1"># move the batch to GPU</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">to_device</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
     <span class="n">imgs</span><span class="p">,</span> <span class="n">lbls</span> <span class="o">=</span> <span class="n">b</span>
     
@@ -640,7 +631,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>DataLoaders</code> is just a wrapper around a list of <code>DataLoader</code>s.</p>
+<p><code>DataLoaders</code> is just a wrapper around a list of <code>DataLoader</code>s. It handles all the internal things that are necessary to use training and validation dataloader in <code>Learner</code>.</p>
 <p>And that is it. Now we can create a learner.</p>
 
 </div>
@@ -701,24 +692,24 @@ window.onload = wrap_img;
   <tbody>
     <tr>
       <td>0</td>
-      <td>2.597425</td>
-      <td>2.156052</td>
-      <td>0.234665</td>
-      <td>00:13</td>
+      <td>2.497939</td>
+      <td>2.082149</td>
+      <td>0.271570</td>
+      <td>00:14</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>1.891093</td>
-      <td>1.834174</td>
-      <td>0.359888</td>
-      <td>00:11</td>
+      <td>1.853111</td>
+      <td>1.753154</td>
+      <td>0.378977</td>
+      <td>00:12</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>1.618509</td>
-      <td>1.609872</td>
-      <td>0.434716</td>
-      <td>00:11</td>
+      <td>1.562037</td>
+      <td>1.554112</td>
+      <td>0.455332</td>
+      <td>00:12</td>
     </tr>
   </tbody>
 </table>
@@ -738,7 +729,7 @@ window.onload = wrap_img;
 <h2 id="Summary-till-now">
 <a class="anchor" href="#Summary-till-now" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary till now<a class="anchor-link" href="#Summary-till-now"> </a>
 </h2>
-<p>Ideally, we are done. We can do almost anything by just using the <code>DataLoader</code> class. But we still improve on some things. Consider the <code>after_batch</code> function that we defined above</p>
+<p>Ideally, we are done. We can do almost anything by just using the <code>DataLoader</code> class. But we can still improve on some things. Consider the <code>after_batch</code> function that we defined above</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">after_batch</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
     <span class="c1"># `b` is a tuple of (image, label) </span>
     <span class="c1"># `image` of shape [batch_size, num_channels, height, width]</span>
@@ -763,7 +754,7 @@ window.onload = wrap_img;
 <li>Convert integer tensor to float.</li>
 <li>Normalize the data.</li>
 </ol>
-<p>Now imagine if we had to add code for data augmentation or we wanted to define different functions for the training and validation split (we do not want to apply data augmentation to validation set). This quickly gets out of hand.</p>
+<p>Now imagine if we had to add code for data augmentation or we wanted to define different functions for the training and validation split (we do not want to apply data augmentation to validation set). This can quickly get out of hand.</p>
 <p>This is where fastai's <a href="https://fastcore.fast.ai/dispatch.html">Type Dispatch</a> and <a href="https://fastcore.fast.ai/transform.html">Transform</a> comes into play. These are incredibly powerful tools.</p>
 
 </div>
@@ -772,15 +763,18 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Setting-up-base-classes-for-Type-Dispatch">
-<a class="anchor" href="#Setting-up-base-classes-for-Type-Dispatch" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setting up base classes for Type Dispatch<a class="anchor-link" href="#Setting-up-base-classes-for-Type-Dispatch"> </a>
+<h2 id="The-real-thing-begins">
+<a class="anchor" href="#The-real-thing-begins" aria-hidden="true"><span class="octicon octicon-link"></span></a>The real thing begins<a class="anchor-link" href="#The-real-thing-begins"> </a>
 </h2>
-<p>For every item in the <code>DataLoader</code> we need to a define a type. In the previous example our <code>DataLoader</code> consists of <code>(image, label)</code>. So we define a base class for these two things. Why are we doing this?</p>
+<p>This section defines how you can define your own <code>DataBlock</code> with all the bells and whistles of fastai.</p>
+<p>For every item in the <code>DataLoader</code> we need to a define a type (i.e. <code>class</code> in python) for that item. In the previous section the <code>DataLoader</code> consists of <code>(image, label)</code>. So we need to define a base class for these two things. Why are we doing this?</p>
 <p>There are two reasons:</p>
 <ol>
-<li>The base class knows how to create the object. In case of image, the base class would know how to open the image from disk and convert to tensor if we wish.</li>
+<li>The base class knows how to create the object. In case of image, the base class would know how to open the image from disk.</li>
 <li>The base class knows how to show the object. In case of image, it would know how to plot the image.</li>
 </ol>
+<p>From model training perspective it is not important to define a <code>show</code> method because it does nothing for training the model. But defining this method can be considered a good practice. This <code>show</code> method allows you to use methods like <code>show_batch</code>, <code>show_results</code> and more which can come handy during debugging of your model and for interpretation of the results.</p>
+<p>After creating the base class we also need to create a <code>Block</code> from that class. This stores all the default transforms for that base class.</p>
 <p>Let's start.</p>
 
 </div>
@@ -789,13 +783,13 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="ImageBlock">
-<a class="anchor" href="#ImageBlock" aria-hidden="true"><span class="octicon octicon-link"></span></a>ImageBlock<a class="anchor-link" href="#ImageBlock"> </a>
+<h3 id="Create-base-class-(PILImage)">
+<a class="anchor" href="#Create-base-class-(PILImage)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create base class (PILImage)<a class="anchor-link" href="#Create-base-class-(PILImage)"> </a>
 </h3>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">_ImageBlock</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">BypassNewMeta</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">_PILImage</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">BypassNewMeta</span><span class="p">)</span>
 </pre></div>
 <p>Using <code>metaclass=BypassNewMeta</code> is important. You can read about this class <a href="https://fastcore.fast.ai/foundation.html#BypassNewMeta">here</a>. In short, it avoids recreating the object passed to constructor.</p>
-<p><code>Image.Image</code>. Considering the fact we are dealing with images and <code>PIL</code> is a very good library to handle images, we can build upon this library.</p>
+<p><code>Image.Image</code>. As we are dealing with images and <code>PIL</code> is a very good library to handle images, we can build upon this library.</p>
 
 </div>
 </div>
@@ -807,7 +801,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">_ImageBlock</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">BypassNewMeta</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">_PILImage</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">BypassNewMeta</span><span class="p">):</span>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">'RGB'</span><span class="p">))</span>
     <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -848,7 +842,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">img_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">/</span><span class="s1">'train'</span><span class="o">/</span><span class="s1">'n02086240'</span><span class="o">/</span><span class="s1">'ILSVRC2012_val_00000907.JPEG'</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">_ImageBlock</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">_PILImage</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -880,7 +874,7 @@ window.onload = wrap_img;
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>__main__._ImageBlock</pre>
+<pre>__main__._PILImage</pre>
 </div>
 
 </div>
@@ -927,8 +921,11 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can improve it further. Whenever we are dealing with images, we need to convert them to float before passing them through the model. So let's add this information to the <code>_ImageBlock</code>, so that we do not have to specify it later.</p>
-<p>Now rather than just adding <code>imgs = imgs.divide(255)</code> in our <code>_ImageBlock</code> class, we can use fastai's <code>Transform</code> class to make things even better.</p>
+<h3 id="Create-block-(ImageBlock)">
+<a class="anchor" href="#Create-block-(ImageBlock)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create block (ImageBlock)<a class="anchor-link" href="#Create-block-(ImageBlock)"> </a>
+</h3>
+<p>Now we need to add some information on what transforms should be applied by default whenever we use this base class (<code>_PILImage</code>). In case of image, the image needs to be converted to float before passing through the model. This information can be added in a <code>Block</code>.</p>
+<p>First, let's define a transform that coverts input image to float.</p>
 
 </div>
 </div>
@@ -940,7 +937,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">_IntToFloatTensor</span><span class="p">(</span><span class="n">Transform</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">_IntToFloatTensor</span><span class="p">(</span><span class="n">DisplayedTransform</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">encodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span> <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">div_</span><span class="p">(</span><span class="mf">255.</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">decodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span> <span class="k">return</span> <span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="mf">255.</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
 </pre></div>
@@ -990,7 +987,7 @@ window.onload = wrap_img;
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>_IntToFloatTensor:
+<pre>_IntToFloatTensor -- {}:
 encodes: (object,object) -&gt; encodes
 decodes: (object,object) -&gt; decodes</pre>
 </div>
@@ -1006,8 +1003,19 @@ decodes: (object,object) -&gt; decodes</pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In practice you might prefer using <a href="https://fastcore.fast.ai/transform.html#DisplayedTransform">DisplayedTransform</a>. It just adds a <code>__repr__</code> method that shows its attributes.</p>
-<p>Now let's add this transform to our <code>_ImageBlock</code>.</p>
+<p><a href="https://fastcore.fast.ai/transform.html#DisplayedTransform">DisplayedTransform</a> is same as <code>Transform</code>. It just adds a <code>__repr__</code> method on top of <code>Transform</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash flash-warn">
+    <svg class="octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap octicon octicon-zap" viewbox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10 7H6l3-7-9 9h4l-3 7 9-9z"></path></svg>
+    <strong>Important: </strong>If you want the transform to be only applied to training split, use <code>split_idx=0</code> in the <code>Transform</code> definition as shown below.
+</div>
 
 </div>
 </div>
@@ -1019,12 +1027,12 @@ decodes: (object,object) -&gt; decodes</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">_ImageBlock</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">BypassNewMeta</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_tfms</span> <span class="o">=</span> <span class="p">[</span><span class="n">_IntToFloatTensor</span><span class="p">]</span>
-        
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">'RGB'</span><span class="p">))</span>
-    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">SomeTransform</span><span class="p">(</span><span class="n">Transform</span><span class="p">):</span>
+    <span class="n">split_idx</span><span class="o">=</span><span class="mi">0</span> <span class="c1"># only applied to training dataset</span>
+    <span class="n">split_idx</span><span class="o">=</span><span class="mi">1</span> <span class="c1"># only applied to validation dataset</span>
+    
+    <span class="k">def</span> <span class="nf">encodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">decodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">pass</span>
 </pre></div>
 
     </div>
@@ -1037,8 +1045,7 @@ decodes: (object,object) -&gt; decodes</pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>And this is it. Using the above steps you can easily create any <strong>Block</strong> for your particular application.</p>
-<p>fastai provides another useful wrapper that we can use to make the __init__ method cleaner. <a href="https://docs.fast.ai/data.block.html#TransformBlock">TransformBlock</a>. This is the entire code of <code>TransformBlock</code>.</p>
+<p>Now to combine the base class and transforms, we use <a href="https://docs.fast.ai/data.block.html#TransformBlock">TransformBlock</a>.</p>
 
 </div>
 </div>
@@ -1050,49 +1057,9 @@ decodes: (object,object) -&gt; decodes</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">TransformBlock</span><span class="p">():</span>
-    <span class="s2">"A basic wrapper that links defaults transforms for the data block API"</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">type_tfms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">item_tfms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">batch_tfms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dl_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dls_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">type_tfms</span>  <span class="o">=</span>            <span class="n">L</span><span class="p">(</span><span class="n">type_tfms</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">item_tfms</span>  <span class="o">=</span> <span class="n">ToTensor</span> <span class="o">+</span> <span class="n">L</span><span class="p">(</span><span class="n">item_tfms</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">batch_tfms</span> <span class="o">=</span>            <span class="n">L</span><span class="p">(</span><span class="n">batch_tfms</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dl_type</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">dls_kwargs</span> <span class="o">=</span> <span class="n">dl_type</span><span class="p">,({}</span> <span class="k">if</span> <span class="n">dls_kwargs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dls_kwargs</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now rather than defining <code>batch_tfms</code>, <code>item_tfms</code> in the __init__ method we can use this class.</p>
-<ul>
-<li>
-<code>type_tfms</code>: this refers to the <code>create</code> method of the Block.</li>
-</ul>
-
-</div>
-</div>
-</div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">BaseClass</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">BypassNewMeta</span><span class="p">):</span>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">'RGB'</span><span class="p">))</span>
-    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        
-<span class="k">def</span> <span class="nf">_ImageBlock</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="n">BaseClass</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">_ImageBlock</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="n">_ImageBlock</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">TransformBlock</span><span class="p">(</span><span class="n">type_tfms</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">,</span>
-                          <span class="n">batch_tfms</span><span class="o">=</span><span class="n">_IntToFloatTensor</span><span class="p">)</span>
+                          <span class="n">batch_tfms</span><span class="o">=</span><span class="p">[</span><span class="n">_IntToFloatTensor</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -1105,66 +1072,11 @@ decodes: (object,object) -&gt; decodes</pre>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is how <strong>Block</strong>s are created in fastai. Just to recap <code>_ImageBlock</code> knows how to create an image and show an image.</p>
+<p>And this is it. Using the above steps you can easily create any <strong>Block</strong> for your particular application. Now we can pass <code>_ImageBlock</code> in <code>DataBlock</code>.</p>
 
 </div>
 </div>
 </div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">_ImageBlock</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
-<span class="n">img</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-74-d503d83d5f84&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>img <span class="ansi-blue-fg">=</span> _ImageBlock<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>create<span class="ansi-blue-fg">(</span>img_path<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> img
-
-<span class="ansi-red-fg">AttributeError</span>: 'TransformBlock' object has no attribute 'create'</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>ImageBlock<span class="o">??</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
 </div>
 
 
