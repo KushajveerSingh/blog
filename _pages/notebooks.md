@@ -4,7 +4,7 @@ title: Notebooks
 permalink: /notebooks/
 ---
 
-I use [Pytorch](https://pytorch.org/) and [fastai](https://www.fast.ai/) as my main deep learning libraries. Check this [repo](https://github.com/KushajveerSingh/deep_learning) for more details.
+Check this [repo](https://github.com/KushajveerSingh/deep_learning) for more details.
 
 Summary of few of my jupyter notebooks
 

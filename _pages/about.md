@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Check [README](https://github.com/KushajveerSingh/deep_learning/) for a collection of my work related to deep learning. [Resume](https://drive.google.com/open?id=1ePhoN3D4O_mrZn-iA8dBxxZboUQ4lDTGmlWWm0tqlT8). [fastai forums](https://forums.fast.ai/u/kushaj/activity) and [pytorch forums](https://discuss.pytorch.org/u/kushaj/activity).
+Check [README](https://github.com/KushajveerSingh/deep_learning/) for a collection of my work related to deep learning. [Resume](https://drive.google.com/open?id=1ePhoN3D4O_mrZn-iA8dBxxZboUQ4lDTGmlWWm0tqlT8). [pytorch forums](https://discuss.pytorch.org/u/kushaj/activity).
 
 Deep Learning Researcher with interest in Computer Vision, Natural Language Processing and Reinforcement Learning. Have worked with GANs, style transfer, image-to-image translation, colorizing segmentation maps, object detection, classification. Currently trying to expand my knowledge in the field of Computer Vision by exploring new topics in the field and experimenting with the stuff. A fan of fastai courses and an active member of fastai community.
 
