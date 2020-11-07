@@ -6,8 +6,6 @@ permalink: /notebooks/
 
 Check this [repo](https://github.com/KushajveerSingh/deep_learning) for more details.
 
-Summary of few of my jupyter notebooks
-
 * **Mish activation function** is tested for transfer learning. Here mish is used only in the last fully-connected layers of a pretrainened Resnet50 model. I test the activation function of CIFAR10, CIFAR100 using three different learning rate values. I found that Mish gave better results than ReLU. [notebook](https://github.com/KushajveerSingh/deep_learning/tree/master/paper_implementations/Study%20of%20Mish%20activation%20function%20in%20transfer%20learning%20with%20code%20and%20discussion), [paper](https://arxiv.org/abs/1908.08681)
 
 * **Multi Sample Dropout** is implemented and tested on CIFAR-100 using cyclic learning. My losses converged 4x faster when using num_samples=8 than using simple dropout. [notebook](https://github.com/KushajveerSingh/deep_learning/tree/master/paper_implementations/Multi%20Sample%20Dropout), [paper](https://arxiv.org/abs/1908.08681)
