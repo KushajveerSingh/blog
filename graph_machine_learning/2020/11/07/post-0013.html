@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>What can neural networks reason about? | Kushajveer Singh</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="What can neural networks reason about?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Neural network structures that align better with the underlying reasoning algorithm generalize better in reasoning tasks." />
+<meta property="og:description" content="Neural network structures that align better with the underlying reasoning algorithm generalize better in reasoning tasks." />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/graph_machine_learning/2020/11/07/post-0013.html" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/graph_machine_learning/2020/11/07/post-0013.html" />
+<meta property="og:site_name" content="Kushajveer Singh" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-07T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://kushajveersingh.github.io/blog/graph_machine_learning/2020/11/07/post-0013.html","@type":"BlogPosting","headline":"What can neural networks reason about?","dateModified":"2020-11-07T00:00:00-06:00","datePublished":"2020-11-07T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/graph_machine_learning/2020/11/07/post-0013.html"},"description":"Neural network structures that align better with the underlying reasoning algorithm generalize better in reasoning tasks.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-123402359-3','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Kushajveer Singh</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About</a><a class="page-link" href="/blog/notebooks/">Notebooks</a><a class="page-link" href="/blog/projects/">Projects</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">What can neural networks reason about?</h1><p class="page-description">Neural network structures that align better with the underlying reasoning algorithm generalize better in reasoning tasks.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-11-07T00:00:00-06:00" itemprop="datePublished">
+        Nov 7, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#graph_machine_learning">graph_machine_learning</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#algorithm-point-of-view">Algorithm point of view</a></li>
+<li class="toc-entry toc-h2"><a href="#algorithm-alignment">Algorithm alignment</a></li>
+<li class="toc-entry toc-h2"><a href="#how-gnns-relate-to-dp">How GNNs relate to DP</a></li>
+<li class="toc-entry toc-h2"><a href="#maximum-value-difference">Maximum value difference</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#mlp">MLP</a></li>
+<li class="toc-entry toc-h3"><a href="#gnn">GNN</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#conclusion">Conclusion</a></li>
+</ul><p><a href="https://arxiv.org/abs/1905.13211">paper</a>, <a href="https://github.com/KushajveerSingh/deep_learning/tree/master/graph_machine_learning/what_can_neural_networks_reason_about">my implementation</a></p>
+
+<p>Recently, a lot of research has focused on building neural networks that can learn to reason. Some examples include simulating particle physics [1], coming up with mathematical equations from data [2].</p>
+
+<p><img src="/blog/images/post_0013/00.png" alt="" title="Figure 1: What are the colors of the furthest pair of objects?"></p>
+
+<p>Figure 1, shows an example of a reasoning task. In these tasks, we have to learn the fundamental properties of the environment given some data. In this example, the model has to first learn the meaning of the words <em>furthest</em>, <em>color</em>, <em>pair</em>.</p>
+
+<p>Many reasoning tasks can be formalized as graph problems and message passing [3] has been shown to be a key component to modern graph neural networks. But why can GNNs solve these problems and MLPs cannot, even though they have the same expressive power? The failure of MLPs to solve these reasoning tasks can further be stated as, why do MLPs fail to generalize to these reasoning tasks?</p>
+
+<p>Formally, we will be trying to answer the following question</p>
+<blockquote>
+  <p>When does a network structure generalize better than other, even if they have same expressive power?</p>
+</blockquote>
+
+<h2 id="algorithm-point-of-view">
+<a class="anchor" href="#algorithm-point-of-view" aria-hidden="true"><span class="octicon octicon-link"></span></a>Algorithm point of view</h2>
+<p>Let us begin by an observation that the reasoning process resemble algorithms. To solve the reasoning problem of Figure 1, we can come up with the following solution</p>
+<ol>
+  <li>Find location of all pairs of objects.</li>
+  <li>Determine the pair that is furthest (this is just a heuristic that you decide).</li>
+  <li>Return the color of the object.</li>
+</ol>
+
+<p>The above three steps resemble an <em>algorithm</em>, where we are defining a step-by-step procedure to solve a problem.</p>
+
+<p>From the paper,</p>
+<blockquote>
+  <p>We will build on this observation and study how well a reasoning algorithm <em>aligns</em> with the computation graph of the network. Intuitively, if they align well, the network only needs to learn simple algorithm steps to simulate the reasoning process, which leads to better efficiency.</p>
+</blockquote>
+
+<p>The authors of the paper formalize the above as <strong>algorithm alignment</strong>.</p>
+
+<h2 id="algorithm-alignment">
+<a class="anchor" href="#algorithm-alignment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Algorithm alignment</h2>
+<p>Every neural network architecture that we build has an underlying computation structure. MLPs resemble a for loop kind of computation structure as they are applied to vector inputs. In case of GNNs, we aggregate information from the neighbors implying a dynamic programming (DP) type of computation (shown in the paper).</p>
+
+<h2 id="how-gnns-relate-to-dp">
+<a class="anchor" href="#how-gnns-relate-to-dp" aria-hidden="true"><span class="octicon octicon-link"></span></a>How GNNs relate to DP</h2>
+<p>Bellman-Ford algorithm [4] is an algorithm used to solve shortest path problem. The main step of the algorithm is</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">Nodes</span><span class="p">:</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_v</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="n">cost</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
+</code></pre></div></div>
+<p>where, k = iteration number (1,2,…,num_nodes-1)</p>
+
+<p>Now let’s see how we will do the same use GNN. The message passing algorithm is</p>
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>h</mi><mi>u</mi><mi>k</mi></msubsup><mo>=</mo><mi>U</mi><mi>P</mi><mi>D</mi><mi>A</mi><mi>T</mi><mi>E</mi><mo stretchy="false">(</mo><msubsup><mi>h</mi><mi>u</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo separator="true">,</mo><mi>A</mi><mi>G</mi><mi>G</mi><mi>R</mi><mi>E</mi><mi>G</mi><mi>A</mi><mi>T</mi><mi>E</mi><mo stretchy="false">(</mo><mi>F</mi><mi>U</mi><mi>N</mi><mi>C</mi><mo stretchy="false">(</mo><msubsup><mi>h</mi><mi>u</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo separator="true">,</mo><msubsup><mi>h</mi><mi>v</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h_u^k = UPDATE(h_u^{k-1}, AGGREGATE(FUNC(h_u^{k-1}, h_v^{k-1})))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.146108em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999998em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.1491079999999998em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999998em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault">G</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault">G</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999998em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999998em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span>
+
+<p>Now let</p>
+<ul>
+  <li>UPDATE = identity function</li>
+  <li>In most cases FUNC is MLP.</li>
+  <li>AGGREGATE = minimum</li>
+</ul>
+
+<p>Using this information the message passing equation becomes
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>h</mi><mi>u</mi><mi>k</mi></msubsup><mo>=</mo><mi>m</mi><mi>i</mi><msub><mi>n</mi><mi>v</mi></msub><mi>M</mi><mi>L</mi><mi>P</mi><mo stretchy="false">(</mo><msubsup><mi>h</mi><mi>u</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo separator="true">,</mo><msubsup><mi>h</mi><mi>v</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h_u^k = min_v MLP(h_u^{k-1}, h_v^{k-1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.096108em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.0991079999999998em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">L</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8491079999999999em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8491079999999999em;"><span style="top:-2.4530000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+
+<p>The above equation now resembles closely with the Bellman-Ford algorithm. If we had used MLP to solve this problem then MLP would have to learn the structure of entire for-loop as its computation structure resembles a for loop which is expensive.</p>
+
+<p>This is the main point of the paper. If we can find a suitable underlying reasoning algorithm for the reasoning task, then we can use neural network structures that better <em>align</em> with the underlying algorithm structure. This will make the task easy to learn and improve generalization.</p>
+
+<h2 id="maximum-value-difference">
+<a class="anchor" href="#maximum-value-difference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Maximum value difference</h2>
+<p>In the paper, they do experiments on four reasoning tasks</p>
+<ul>
+  <li>Maximum value difference</li>
+  <li>Furthest pair</li>
+  <li>Monster trainer</li>
+  <li>Subset sum</li>
+</ul>
+
+<p>I try to reproduce the results of maximum value difference task. The task is simple given a vector find the difference of the maximum and minimum value. But why is it important?</p>
+
+<p>In a lot of reasoning tasks, we are required to answer questions related to summary statistics (like count, min, max). For example, “How many objects are either small cylinders or red things?”. In case of GNNs, we can simulate the reasoning algorithm by using MLP to extract features from nodes and then use aggregation to come up with the answer. In this case MLP, has to only learn to extract local features. On the other hand, if we only used MLPs to solve this problem. Then the MLP must learn a complex for-loop and therefore needs more data to converge.</p>
+
+<p>The maximum value difference task is stated as:</p>
+<ol>
+  <li>A training sample consists of 25 treasures ($X$).</li>
+  <li>For each treasure ($X_i$), we have $X_i = [h_i,h_2,h_3]$ where
+    <ul>
+      <li>$h_1$ is 8-dim location vector sampled uniformly from [0,20]</li>
+      <li>$h_2$ is value sampled uniformly from [0,100]</li>
+      <li>$h_3$ is color sampled uniformly from [1,6]</li>
+    </ul>
+  </li>
+</ol>
+
+<p>For maximum value difference task, we have to find the difference between the maximum value and the minimum value for each training sample.</p>
+
+<h3 id="mlp">
+<a class="anchor" href="#mlp" aria-hidden="true"><span class="octicon octicon-link"></span></a>MLP</h3>
+<p>To input the training sample, we simply concatenate the vector representation of all 25 treasures and then feed them into a MLP. We solve this problem as a classification problem where the task is to predict a value from 0 to 100 i.e. 101 classes.</p>
+
+<p>The code to generate the data is in <a href="https://github.com/KushajveerSingh/deep_learning/blob/master/graph_machine_learning/what_can_neural_networks_reason_about/src/min_max_mlp_data.py">min_max_mlp_data.py</a>. A quick summary of data generation process is shown below</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">min_val</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">max_val</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">location</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">color</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">).</span><span class="n">flatten</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The code to create MLP is in <a href="https://github.com/KushajveerSingh/deep_learning/blob/master/graph_machine_learning/what_can_neural_networks_reason_about/src/model_mlp.py">model_mlp.py</a>.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The code to test the model is in <a href="https://github.com/KushajveerSingh/deep_learning/blob/master/graph_machine_learning/what_can_neural_networks_reason_about/notebooks/mlp.ipynb">mlp.ipynb</a>. MLP achieves around 8% accuracy on the validation data. This is the expected result.</p>
+
+<h3 id="gnn">
+<a class="anchor" href="#gnn" aria-hidden="true"><span class="octicon octicon-link"></span></a>GNN</h3>
+<p>Construct a fully connected graph with 25 nodes (each node representing a treasure). I use <a href="https://github.com/rusty1s/pytorch_geometric">pytorch_geometric</a> to implement the GNN.</p>
+
+<p>The code to generate the data is in <a href="https://github.com/KushajveerSingh/deep_learning/blob/master/graph_machine_learning/what_can_neural_networks_reason_about/src/min_max_graph_data.py">min_max_graph_data.py</a> and the code to construct GNN is in <a href="https://github.com/KushajveerSingh/deep_learning/blob/master/graph_machine_learning/what_can_neural_networks_reason_about/src/model_gnn.py">model_gnn.py</a>.</p>
+
+<p>The best GNN model got to 98.5% accuracy (maybe with hyperparameter search 100% accuracy can be achieved). But it demonstrates the idea that GNN can easily learn summary statistics which are a key component of reasoning problems.</p>
+
+<h2 id="conclusion">
+<a class="anchor" href="#conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion</h2>
+<p>The concept of algorithm alignment can be applied to any reasoning algorithm. If we can come up with a suitable algorithm to solve the reasoning problem, then we can design a network with similar structure to learn it. If we have no prior knowledge about the structure of the reasoning algorithm then neural architecture search over algorithm structures will be needed.</p>
+
+<hr>
+<ul>
+  <li>[1] <a href="https://arxiv.org/abs/2002.09405">Learning to Simulate Complex Physics with Graph Networks</a>
+</li>
+  <li>[2] <a href="https://arxiv.org/abs/2006.11287">Discovering Symbolic Models from Deep Learning with Inductive Biases</a>
+</li>
+  <li>[3] <a href="https://arxiv.org/abs/1806.01261">Relational inductive biases, deep learning, and graph networks</a>
+</li>
+  <li>[4] <a href="https://www.wikiwand.com/en/Bellman%E2%80%93Ford_algorithm">Bellman-Ford algorithm wikipedia</a>
+</li>
+</ul>
+
+<p>If you want to read more about Graph Deep Learning, see my <a href="https://kushajveersingh.github.io/blog/categories/#graph_machine_learning">other posts</a>, or follow me on <a href="https://twitter.com/Kkushaj">twitter</a>.</p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="KushajveerSingh/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/graph_machine_learning/2020/11/07/post-0013.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Intersted in applying Graph Machine Learning to solve intersting problems.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/KushajveerSingh" title="KushajveerSingh"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/Kkushaj" title="Kkushaj"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
