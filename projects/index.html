@@ -83,7 +83,7 @@ window.onload = wrap_img;
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/blog/about/">About</a><a class="page-link" href="/blog/notebooks/">Notebooks</a><a class="page-link" href="/blog/projects/">Projects</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+        <div class="trigger"><a class="page-link" href="/blog/graphml/">Graph Machine Learning</a><a class="page-link" href="/blog/about/">About</a><a class="page-link" href="/blog/projects/">Projects</a><a class="page-link" href="/blog/categories/">Tags</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -126,8 +126,54 @@ window.onload = wrap_img;
   <li>
     <p><a href="https://github.com/KushajveerSingh/Random-Duty-List">Random Duty List</a></p>
 
-    <p>A PHP and MySQL based work where the aim is to assign duties from a list to various stations and make sure the duties are not repeated and the repetition occurs only after the list is exhasuted.</p>
+    <p>A PHP and MySQL based work where the aim is to assign duties from a list to various stations and make sure the duties are not repeated and the repetition occurs only after the list is exhausted.</p>
   </li>
+</ul>
+
+<h2 id="jupyter-notebooks">Jupyter Notebooks</h2>
+
+<ul>
+  <li>
+    <p><strong>Mish activation function</strong> is tested for transfer learning. Here mish is used only in the last fully-connected layers of a pretrainened Resnet50 model. I test the activation function of CIFAR10, CIFAR100 using three different learning rate values. I found that Mish gave better results than ReLU. <a href="https://github.com/KushajveerSingh/deep_learning/tree/master/paper_implementations/Study%20of%20Mish%20activation%20function%20in%20transfer%20learning%20with%20code%20and%20discussion">notebook</a>, <a href="https://arxiv.org/abs/1908.08681">paper</a></p>
+  </li>
+  <li>
+    <p><strong>Multi Sample Dropout</strong> is implemented and tested on CIFAR-100 using cyclic learning. My losses converged 4x faster when using num_samples=8 than using simple dropout. <a href="https://github.com/KushajveerSingh/deep_learning/tree/master/paper_implementations/Multi%20Sample%20Dropout">notebook</a>, <a href="https://arxiv.org/abs/1908.08681">paper</a></p>
+  </li>
+  <li><strong>Data Augmentation in Computer Vision</strong>
+    <ul>
+      <li>Notebook implementing single image data augmentation techniques using just Python <a href="https://github.com/KushajveerSingh/deep_learning/tree/master/paper_implementations/Data%20Augmentation%20in%20Computer%20Vision">notebook</a></li>
+    </ul>
+  </li>
+  <li><strong>Summarizing Leslie N. Smith’s research</strong> in cyclic learning and hyper-parameter setting techniques. <a href="https://github.com/KushajveerSingh/deep_learning/tree/master/paper_implementations/Leslie%20N.%20Smith%20papers%20notebook">notebook</a>
+    <ul>
+      <li>A disciplined approach to neural network hyper-parameters: Part 1 – learning rate, batch size, momentum, and weight decay <a href="https://arxiv.org/abs/1803.09820">paper</a></li>
+      <li>Super-Convergence: Very Fast Training of Neural Networks Using Learning Rates <a href="https://arxiv.org/abs/1708.07120">paper</a></li>
+      <li>Exploring loss function topology with cyclical learning rates <a href="https://arxiv.org/abs/1702.04283">paper</a></li>
+      <li>Cyclical Learning Rates for Training Neural Networks <a href="https://arxiv.org/abs/1506.01186">paper</a></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Photorealisitc Style Transfer</strong>. Implementation of the <em>High-Resolution Network for Photorealistic Style Transfer paper</em>. <a href="https://github.com/KushajveerSingh/Photorealistic-Style-Transfer">notebook</a>, <a href="https://arxiv.org/abs/1904.11617">paper</a></p>
+  </li>
+  <li>
+    <p><strong>Weight Standardization</strong> is implemented and tested using cyclic learning. I find that it does not work well with cyclic learning when using CIFAR-10. <a href="https://github.com/KushajveerSingh/deep_learning/tree/master/paper_implementations/weight_standardization">notebook</a>, <a href="https://arxiv.org/abs/1903.10520">paper</a></p>
+  </li>
+  <li>
+    <p><strong>Learning Rate Finder</strong>. Implementation of learning rate finder as introduced in the paper <a href="https://arxiv.org/abs/1903.10520">Cyclical Learning Rates for Training Neural Networks</a>. A general template for custom models is provided. <a href="https://github.com/KushajveerSingh/fastai_without_fastai/blob/master/notebooks/lr_find.ipynb">notebook</a></p>
+  </li>
+  <li><strong>PyTorch computer vision tutorial</strong>. AlexNet with tips and checks on how to train CNNs. The following things are included: <a href="https://github.com/KushajveerSingh/deep_learning/tree/master/paper_implementations/Training%20AlexNet%20with%20tips%20and%20checks%20on%20how%20to%20train%20CNNs">notebook</a>
+    <ul>
+      <li>Dataloader creation</li>
+      <li>Plotting dataloader results</li>
+      <li>Weight Initialization</li>
+      <li>Simple training loop</li>
+      <li>Overfitting a mini-batch</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/KushajveerSingh/deep_learning/tree/master/paper_implementations/How%20to%20deal%20with%20outliers">How to deal with outliers</a></p>
+  </li>
+  <li><a href="https://github.com/KushajveerSingh/deep_learning/tree/master/paper_implementations/Number%20of%20bins%20of%20a%20Histogram">How to choose number of bins in a histogram</a></li>
 </ul>
 
   </div>
