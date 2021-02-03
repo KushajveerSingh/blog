@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://kushajveersingh.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kushajveersingh.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-02-02T12:37:18-06:00</updated><id>https://kushajveersingh.github.io/blog/feed.xml</id><title type="html">Kushajveer Singh</title><subtitle>Deep Learning Researcher with interest in Computer Vision and Graph Machine Learning.</subtitle><entry><title type="html">What can neural networks reason about?</title><link href="https://kushajveersingh.github.io/blog/graph_machine_learning/2020/11/07/post-0013.html" rel="alternate" type="text/html" title="What can neural networks reason about?" /><published>2020-11-07T00:00:00-06:00</published><updated>2020-11-07T00:00:00-06:00</updated><id>https://kushajveersingh.github.io/blog/graph_machine_learning/2020/11/07/post-0013</id><content type="html" xml:base="https://kushajveersingh.github.io/blog/graph_machine_learning/2020/11/07/post-0013.html">&lt;p&gt;&lt;a href=&quot;https://arxiv.org/abs/1905.13211&quot;&gt;paper&lt;/a&gt;, &lt;a href=&quot;https://github.com/KushajveerSingh/deep_learning/tree/master/graph_machine_learning/what_can_neural_networks_reason_about&quot;&gt;my implementation&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://kushajveersingh.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kushajveersingh.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-02-03T05:14:33-06:00</updated><id>https://kushajveersingh.github.io/blog/feed.xml</id><title type="html">Kushajveer Singh</title><subtitle>Deep Learning Researcher with interest in Computer Vision and Graph Machine Learning.</subtitle><entry><title type="html">What can neural networks reason about?</title><link href="https://kushajveersingh.github.io/blog/graph_machine_learning/2020/11/07/post-0013.html" rel="alternate" type="text/html" title="What can neural networks reason about?" /><published>2020-11-07T00:00:00-06:00</published><updated>2020-11-07T00:00:00-06:00</updated><id>https://kushajveersingh.github.io/blog/graph_machine_learning/2020/11/07/post-0013</id><content type="html" xml:base="https://kushajveersingh.github.io/blog/graph_machine_learning/2020/11/07/post-0013.html">&lt;p&gt;&lt;a href=&quot;https://arxiv.org/abs/1905.13211&quot;&gt;paper&lt;/a&gt;, &lt;a href=&quot;https://github.com/KushajveerSingh/deep_learning/tree/master/graph_machine_learning/what_can_neural_networks_reason_about&quot;&gt;my implementation&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Recently, a lot of research has focused on building neural networks that can learn to reason. Some examples include simulating particle physics [1], coming up with mathematical equations from data [2].&lt;/p&gt;
 
@@ -509,13 +509,6 @@
 
 &lt;div class=&quot;container&quot; id=&quot;notebook-container&quot;&gt;
         
-    
-    
-&lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
-
-&lt;/div&gt;
-    
-
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;The following papers are discussed in this post:&lt;/p&gt;
@@ -621,8 +614,7 @@
 
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Normalize input data (mean=0, std=1)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;train_mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_std&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_std&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;x_train&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;x_valid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;normalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# use training stats for validation set also&lt;/span&gt;
@@ -820,8 +812,7 @@
 
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Get random weights&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;w1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;b1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# bias initialized to 0&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;w2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;b2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -860,8 +851,7 @@
 
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Input is normalized to mean=0, std=1&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1439,8 +1429,7 @@
 
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# A quick training loop&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epoch&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;70&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epoch&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;70&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;running_loss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dataloader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;inputs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
@@ -1729,8 +1718,7 @@
 
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# A quick training loop&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epoch&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;70&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epoch&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;70&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;running_loss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dataloader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;inputs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
@@ -2180,27 +2168,39 @@ $$Var[y_l] = n_l*Var[w_lx_l]$$
     &lt;strong&gt;Note: &lt;/strong&gt;$y_l,x_l$ are scalars. $w_l$ is $(1,n_l)$ row-vector. To keep the notation same as the original paper, I did not use the vector notation. From this point on it does not matter much that $w_l$ is a row-vector or not. 
 &lt;/div&gt;
 For the derivation below, I drop subscript &lt;em&gt;l&lt;/em&gt; (as it would just clutter the equations). I use the standard formula for Variance to expand the above equation as shown.&lt;/p&gt;
-$$
-\begin{split}
-Var[y] &amp;amp; = n_l*Var[wx] \\
- &amp;amp; = n_l*\left(\mathbb{E}[(wx)^2]-\mathbb{E}[wx]^2\right) \\
- &amp;amp; = n_l*\left(\mathbb{E}[w^2x^2]-(\mathbb{E}[w]\mathbb{E}[x]+Cov(w,x))^2\right) \\
- &amp;amp; = n_l*\left(\underbrace{\mathbb{E}[w^2]\mathbb{E}[x^2]+Cov(w^2,x^2)}_{\mathbb{E}[(wx)^2]}-\underbrace{(\mathbb{E}[w]\mathbb{E}[x]+Cov(w,x))^2}_{\mathbb{E}[wx]^2}\right)
-\end{split}
-$$&lt;p&gt;Now we use the fact that $w_l$ and $x_l$ are independent of each other. This means&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/images/copied_from_nb/images/post_0011/07.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;Now we use the fact that $w_l$ and $x_l$ are independent of each other. This means&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$Cov(w^2,x^2)=0$&lt;/li&gt;
 &lt;li&gt;$Cov(w,x)=0$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Also, the weights ($w_l$) have zero mean, as we are sampling the weights from a random normal distribution. I also used the fact that $Var[w_l]=\mathbb{E}[w_l^2]-\mathbb{E}[w_l]^2$ where the second term is zero.&lt;/p&gt;
-$$
-\begin{equation*}
-\begin{split}
-Var[y_l] &amp;amp; =n_l*\left(\underbrace{\mathbb{E}[w_l^2]}_{=Var[w_l]}\mathbb{E}[x_l^2]-\underbrace{\mathbb{E}[w_l]^2}_{=0}\mathbb{E}[x_l]^2\right) \\
-Var[y_l] &amp;amp; = n_lVar[w_l]\mathbb{E}[x_l^2]
-\end{split}
-\end{equation*}
-$$&lt;p&gt;$Var[x_l] = \mathbb{E}[x_l^2] - \mathbb{E}[x_l]^2$. As $x_l$ is output of an activation function (like ReLU), it has non-zero mean, thus $\mathbb{E}[x_l]\neq 0$.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/images/copied_from_nb/images/post_0011/06.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;$Var[x_l] = \mathbb{E}[x_l^2] - \mathbb{E}[x_l]^2$. As $x_l$ is output of an activation function (like ReLU), it has non-zero mean, thus $\mathbb{E}[x_l]\neq 0$.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2287,76 +2287,71 @@ $$Var[y_l] = n_lVar[w_l]\mathbb{E}[x_l^2]$$
 
 $$y_{l-1}=w_{l-1}x_{l-1}+b_{l-1}$$
 
-Taking the expectation of above gives:
-$$
-\begin{equation*}
-\begin{split}
-\mathbb{E}[y_{l-1}] &amp;amp;= \mathbb{E}[w_{l-1}x_{l-1}]+\underbrace{\mathbb{E}[b_{l-1}]}_{=0\text{ as vector of 0's}} \\
- &amp;amp;= \underbrace{\mathbb{E}[w_{l-1}]}_{=0}\mathbb{E}[b_{l-1}] \\
- &amp;amp;= 0
-\end{split}
-\end{equation*}
-$$&lt;/p&gt;
+Taking the expectation of above gives:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/images/copied_from_nb/images/post_0011/05.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;This shows that $y_{l-1}$ is centered around 0. Also, it is symmetric around 0, as $w_{l-1}$ is symmetric around 0, this combined with the fact that $y_{l-1}$ is centered around 0 gives the conclusion that $y_{l-1}$ is symmetric around 0 (i.e. half probability lies on left of origin and half on right of origin).&lt;/p&gt;
-&lt;p&gt;The above fact can also be derived mathematically as follows (I drop the $l-1$ subscript for cleaner equations):
-$$
-\begin{equation*}
-\begin{split}
-\mathbb{P}(y&amp;gt;0) &amp;amp;= \mathbb{P}(wx&amp;gt;0) \\
- &amp;amp;= \mathbb{P}\left(\left(w&amp;gt;0 \text{ and } x&amp;gt;0\right)\text{ or }\left(w&amp;lt;0 \text{ and } x&amp;lt;0\right)\right) \\
- &amp;amp;= \mathbb{P}(w&amp;gt;0)\mathbb{P}(x&amp;gt;0)+\mathbb{P}(w&amp;lt;0)\mathbb{P}(x&amp;lt;0) \\
- &amp;amp;= \frac{1}{2}\mathbb{P}(x&amp;gt;0)+\frac{1}{2}\mathbb{P}(x&amp;lt;0) \\
- &amp;amp;= \frac{1}{2}
-\end{split}
-\end{equation*}
-$$&lt;/p&gt;
+&lt;p&gt;The above fact can also be derived mathematically as follows (I drop the $l-1$ subscript for cleaner equations):&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
-&lt;p&gt;Now we are ready to compute $\mathbb{E}[x_l^2]$:
-$$
-\begin{equation*}
-\begin{split}
-\mathbb{E}[x_l^2] &amp;amp;= \mathbb{E}[\max(0,y_{l_1})^2] \\
- &amp;amp;= \underbrace{\frac{1}{2}\mathbb{E}[0^2]\text{ } \Bigr|_{y_{l-1}\le 0}}_{=0} + \frac{1}{2}\mathbb{E}[y_{l-1}^2]\text{ }\Bigr|_{y_{l-1}&amp;gt;0} \\
- &amp;amp;= \frac{1}{2}\mathbb{E}[y_{l-1}^2] \\
- &amp;amp;= \frac{1}{2}Var[y_{l-1}]
-\end{split}
-\end{equation*}
-$$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/images/copied_from_nb/images/post_0011/03.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
-&lt;p&gt;Using this result in the equation of variance we have:
-$$
-\begin{equation*}
-\begin{split}
-Var[y_l] &amp;amp;= n_lVar[w_l]\mathbb{E}[x_l^2] \\
- &amp;amp;= \frac{1}{2}n_lVar[w_l]Var[y_{l-1}] \\
-\end{split}
-\end{equation*}
-$$&lt;/p&gt;
+&lt;p&gt;Now we are ready to compute $\mathbb{E}[x_l^2]$:&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
-&lt;p&gt;With $L$ layers put together, we have
-$$
-\begin{equation*}
-\begin{split}
-Var[y_L] &amp;amp;= Var[y_1]*Var[y_2]\cdots*Var[y_{L-1}] \\
- &amp;amp;= Var[y_1]\left(\prod\limits_{l=2}^{L}\frac{1}{2}n_lVar[w_l]\right)
-\end{split}
-\end{equation*}
-$$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/images/copied_from_nb/images/post_0011/02.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;Using this result in the equation of variance we have:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/images/copied_from_nb/images/post_0011/04.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;With $L$ layers put together, we have&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/images/copied_from_nb/images/post_0011/01.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2386,8 +2381,7 @@ $$\frac{1}{2}n_lVar[w_l] = 1, \text{   }\forall l$$
 
 &lt;div class=&quot;inner_cell&quot;&gt;
     &lt;div class=&quot;input_area&quot;&gt;
-&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# PyTorch uses the transpose of the weight matrix internally&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# so n_l in this case is 784 (i.e. preserve standard deviation&lt;/span&gt;
+&lt;div class=&quot; highlight hl-ipython3&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# so n_l in this case is 784 (i.e. preserve standard deviation&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# along the forward pass). &lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;784&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;784&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -2402,7 +2396,12 @@ $$\frac{1}{2}n_lVar[w_l] = 1, \text{   }\forall l$$
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;h3 id=&quot;General-Recipe-for-any-activation-function&quot;&gt;General Recipe for any activation function&lt;a class=&quot;anchor-link&quot; href=&quot;#General-Recipe-for-any-activation-function&quot;&gt; &lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;Find $$\mathbb{E}[x_l^2]=\mathbb{E}[\text{activation_function}(y_l)], \text{  where }y_l=w_{l-1}x_{l-1}+b_{l-1}$$ in terms of $Var[y_{l-1}]$. Use the fact that $y_{l-1}$ is symmetric around 0.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Find&lt;/p&gt;
+&lt;p&gt;$$\mathbb{E}[x_l^2]=\mathbb{E}[activation\_function(y_l)],\ where\ y_l=w_{l-1}x_{l-1}+b_{l-1}$$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;in terms of $Var[y_{l-1}]$. Use the fact that $y_{l-1}$ is symmetric around 0.&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;Use the above value to find variance of layer l
 
 $$Var[y_l] = n_lVar[w_l]\mathbb{E}[x_l^2]$$
@@ -2429,16 +2428,14 @@ $$
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
-&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt;: Find $\mathbb{E}[x_l^2]$ in terms of $Var[y_{l-1}]$.
-$$
-\begin{split}
-\mathbb{E}[x_l^2] &amp;amp;= \mathbb{E}[\max(ay_{l-1},y_{l-1})^2] \\
- &amp;amp;= \frac{1}{2}\mathbb{E}[a^2y_{l-1}^2]\text{ } \Bigr|_{y_{l-1}\le 0} + \frac{1}{2}\mathbb{E}[y_{l-1}^2]\text{ }\Bigr|_{y_{l-1}&amp;gt;0} \\
- &amp;amp;= \frac{1}{2}a^2\mathbb{E}[y_{l-1}^2]\text{ } \Bigr|_{y_{l-1}\le 0} + \frac{1}{2}\mathbb{E}[y_{l-1}^2]\text{ }\Bigr|_{y_{l-1}&amp;gt;0} \\
- &amp;amp;= \frac{1}{2}a^2Var[y_{l-1}]+\frac{1}{2}Var[y_{l-1}] \\
- &amp;amp;= \frac{1+a^2}{2}Var[y_{l-1}]
-\end{split}
-$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt;: Find $\mathbb{E}[x_l^2]$ in terms of $Var[y_{l-1}]$.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/images/copied_from_nb/images/post_0011/00.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2472,12 +2469,10 @@ $$&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
-$$
-\begin{split}
-\frac{1+a^2}{2}n_lVar[w_l] &amp;amp;= 1 \\
-Var[w_l] &amp;amp;= \frac{2}{1+a^2}
-\end{split}
-$$
+&lt;p&gt;
+$$\frac{1+a^2}{2}n_lVar[w_l] = 1\\Var[w_l] = \frac{2}{1+a^2}$$
+&lt;/p&gt;
+
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
