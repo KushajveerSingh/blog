@@ -11,14 +11,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Overfitting small batch, manually checking loss. Creating data pipelines. I give a complete and detailed introduction on how to create AlexNet model in PyTorch with code." />
 <meta property="og:description" content="Overfitting small batch, manually checking loss. Creating data pipelines. I give a complete and detailed introduction on how to create AlexNet model in PyTorch with code." />
-<link rel="canonical" href="https://kushajveersingh.github.io/blog/discussion/2019/02/18/post-0002.html" />
-<meta property="og:url" content="https://kushajveersingh.github.io/blog/discussion/2019/02/18/post-0002.html" />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/general/2019/02/18/post-0002.html" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/general/2019/02/18/post-0002.html" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:image" content="https://kushajveersingh.github.io/blog/images/preview/post_002.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-02-18T00:00:00-06:00" />
 <script type="application/ld+json">
-{"url":"https://kushajveersingh.github.io/blog/discussion/2019/02/18/post-0002.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/discussion/2019/02/18/post-0002.html"},"headline":"Training AlexNet with tips and checks on how to train CNNs: Practical CNNs in PyTorch","dateModified":"2019-02-18T00:00:00-06:00","datePublished":"2019-02-18T00:00:00-06:00","author":{"@type":"Person","name":"Kushajveer Singh"},"image":"https://kushajveersingh.github.io/blog/images/preview/post_002.png","description":"Overfitting small batch, manually checking loss. Creating data pipelines. I give a complete and detailed introduction on how to create AlexNet model in PyTorch with code.","@context":"https://schema.org"}</script>
+{"url":"https://kushajveersingh.github.io/blog/general/2019/02/18/post-0002.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/general/2019/02/18/post-0002.html"},"headline":"Training AlexNet with tips and checks on how to train CNNs: Practical CNNs in PyTorch","dateModified":"2019-02-18T00:00:00-06:00","datePublished":"2019-02-18T00:00:00-06:00","author":{"@type":"Person","name":"Kushajveer Singh"},"image":"https://kushajveersingh.github.io/blog/images/preview/post_002.png","description":"Overfitting small batch, manually checking loss. Creating data pipelines. I give a complete and detailed introduction on how to create AlexNet model in PyTorch with code.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -110,7 +110,7 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/blog/categories/#discussion">discussion</a>
+        <a class="category-tags-link" href="/blog/categories/#general">general</a>
         
       
       </p>
@@ -146,13 +146,6 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -241,8 +234,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="n">train_dir</span> <span class="o">=</span> <span class="s1">'../../../Data/ILSVRC2012/train'</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_dir</span> <span class="o">=</span> <span class="s1">'../../../Data/ILSVRC2012/train'</span>
 <span class="n">val_dir</span> <span class="o">=</span> <span class="s1">'../../../Data/ILSVRC2012/val'</span>
 <span class="n">size</span> <span class="o">=</span> <span class="mi">224</span>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
@@ -309,8 +301,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="c1"># As our images are normalized we have to denormalize them and </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># As our images are normalized we have to denormalize them and </span>
 <span class="c1"># convert them to numpy arrays.</span>
 <span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
@@ -354,8 +345,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"../../Data/LOC_synset_mapping.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"../../Data/LOC_synset_mapping.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span>
 <span class="n">labels_dict</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># Get class label by folder name</span>
 <span class="n">labels_list</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Get class label by indexing</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
@@ -407,8 +397,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="k">class</span> <span class="nc">AlexNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">AlexNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">conv_base</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
@@ -513,8 +502,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="n">conv_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">conv_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
 <span class="n">fc_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">conv_list</span><span class="p">:</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">kaiming_normal_</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">conv_base</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
@@ -548,8 +536,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">'cpu'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">'cpu'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 <span class="c1"># Cross entropy loss takes the logits directly, so we don't need to apply softmax in our CNN</span>
 <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
@@ -611,8 +598,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">data_loader</span><span class="p">[</span><span class="s1">'train'</span><span class="p">]))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">data_loader</span><span class="p">[</span><span class="s1">'train'</span><span class="p">]))</span>
 <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 
@@ -705,8 +691,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'../../../Data/cifar_10.npz'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'../../../Data/cifar_10.npz'</span><span class="p">)</span>
 <span class="n">alexnet</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'../../../Data/Pytorch Trained Models/alexnet.pth'</span><span class="p">)</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">'cpu'</span><span class="p">)</span>
 
@@ -734,8 +719,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="c1"># Create data loader</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create data loader</span>
 <span class="k">class</span> <span class="nc">CIFAR_Dataset</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
     <span class="sd">"""</span>
 <span class="sd">    Generally you would not load images in the __init__ as it forces the images</span>
@@ -797,8 +781,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="c1"># Freeze conv layers</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Freeze conv layers</span>
 <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">alexnet</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
     <span class="n">param</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
     
@@ -875,7 +858,7 @@ window.onload = wrap_img;
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/blog/discussion/2019/02/18/post-0002.html" hidden></a>
+</script><a class="u-url" href="/blog/general/2019/02/18/post-0002.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
