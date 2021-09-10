@@ -4,12 +4,15 @@ title: About
 permalink: /about/
 ---
 
-Check [README](https://github.com/KushajveerSingh/deep_learning/) for a collection of my work related to deep learning. [Resume](https://drive.google.com/open?id=1ePhoN3D4O_mrZn-iA8dBxxZboUQ4lDTGmlWWm0tqlT8)(a bit old). [pytorch forums](https://discuss.pytorch.org/u/kushaj/activity).
+- [resume](https://github.com/KushajveerSingh/blog/tree/master/extra/resume.pdf)
+- [pytorch-forums](https://discuss.pytorch.org/u/kushaj/summary)
 
-Interested in Graph Machine Learning. I have previously done various projects related to Computer Vision and have good knowledge on how to train ConvNets for various tasks.
+My research interests include Computer Vision and Graph Machine Learning. I have recently started to work on application side of AI by working on projects in manufacturing under the B-Innovation Lab at UGA.
 
-Completed *B.Tech. in Electronics and Communication Engineering* from Punjab Engineering College, Chandigarh, India (2016-2020). Won Techgig Code Gladiators competition in Artificial Intelligence theme. I was also part of Skill India program where I participated in IT Software Solutions for Business in 2018 and made it to the North-Zone Nationals.
+From 2021-current, I am currently pursuing my M.S. in Computer Science from University of Georgia, Athens, USA.
+- Paper reviewer for workshop on Analysis and Modeling of Faces and Gestures at CVPR 2021
+- Paper reviewer and presentation judge at Georgia Junior Science & Humanities Symposium (GJSHS)
 
-I am a national level handball player.
+From 2016-2020, I completed my B.Tech. in Electronics and Communication Engineering from Punjab Engineering College (Deemed to be University), Chandigarh, India. During this time, I won the Techgig Code Gladiators competition in Artificial Intelligence theme, where I won against 15 other teams selected all across India. I was also part of Skill India program where I won the state championship in IT Software Solutions for Business and made it to the North-Zone nationals.
 
 You can reach me at `kushajreal@gmail.com`.
