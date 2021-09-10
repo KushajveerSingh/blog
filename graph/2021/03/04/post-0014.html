@@ -10,22 +10,31 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="The post starts by exploring the question is depth a problem, then tries to find the reasons why depth is a problem and then the SOTA methods are discussed for solving this issue. Code for all experiments is available." />
 <meta property="og:description" content="The post starts by exploring the question is depth a problem, then tries to find the reasons why depth is a problem and then the SOTA methods are discussed for solving this issue. Code for all experiments is available." />
-<link rel="canonical" href="https://kushajveersingh.github.io/blog/graph_machine_learning/2021/03/04/post-0014.html" />
-<meta property="og:url" content="https://kushajveersingh.github.io/blog/graph_machine_learning/2021/03/04/post-0014.html" />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/graph/2021/03/04/post-0014.html" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/graph/2021/03/04/post-0014.html" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-03-04T00:00:00-06:00" />
 <script type="application/ld+json">
-{"url":"https://kushajveersingh.github.io/blog/graph_machine_learning/2021/03/04/post-0014.html","@type":"BlogPosting","headline":"Exploring the issue of depth in GNNs and exploring ways of solving it","dateModified":"2021-03-04T00:00:00-06:00","datePublished":"2021-03-04T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/graph_machine_learning/2021/03/04/post-0014.html"},"description":"The post starts by exploring the question is depth a problem, then tries to find the reasons why depth is a problem and then the SOTA methods are discussed for solving this issue. Code for all experiments is available.","@context":"https://schema.org"}</script>
+{"description":"The post starts by exploring the question is depth a problem, then tries to find the reasons why depth is a problem and then the SOTA methods are discussed for solving this issue. Code for all experiments is available.","url":"https://kushajveersingh.github.io/blog/graph/2021/03/04/post-0014.html","@type":"BlogPosting","headline":"Exploring the issue of depth in GNNs and exploring ways of solving it","dateModified":"2021-03-04T00:00:00-06:00","datePublished":"2021-03-04T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/graph/2021/03/04/post-0014.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
 
 
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-123402359-3','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123402359-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123402359-3');
+</script>
+
 
 <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
@@ -85,7 +94,7 @@ window.onload = wrap_img;
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/blog/graphml/">Graph Machine Learning</a><a class="page-link" href="/blog/about/">About</a><a class="page-link" href="/blog/projects/">Projects</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+        <div class="trigger"><a class="page-link" href="/blog/about/">About</a><a class="page-link" href="/blog/projects/">Projects</a><a class="page-link" href="/blog/categories/">Tags</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -106,7 +115,7 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/blog/categories/#graph_machine_learning">graph_machine_learning</a>
+        <a class="category-tags-link" href="/blog/categories/#graph">graph</a>
         
       
       </p>
@@ -242,7 +251,7 @@ window.onload = wrap_img;
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/blog/graph_machine_learning/2021/03/04/post-0014.html" hidden></a>
+</script><a class="u-url" href="/blog/graph/2021/03/04/post-0014.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">

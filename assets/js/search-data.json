@@ -133,19 +133,8 @@
 
   
       ,"page1": {
-          "title": "Graph Machine Learning",
-          "content": "Interested in Graph Machine Learning? Check my blog posts. Or you can follow me on twitter. I maintain all my open-source code related to Graph ML in deep_learning/graph_machine_learning repo. . This page is a quick summary page to store all the info in a single location. . Twitter cards . What can neural networks reason about? | . Blogs + Github . Blog post on “What can neural networks reason about?” paper. Results of one of the four experiments presented in the paper are reproduced. blog_post, github, paper, twitter | .",
-          "url": "https://kushajveersingh.github.io/blog/graphml/",
-          "relUrl": "/graphml/",
-          "date": ""
-      }
-      
-  
-
-  
-      ,"page2": {
           "title": "About",
-          "content": "Check README for a collection of my work related to deep learning. Resume(a bit old). pytorch forums. . Interested in Graph Machine Learning. I have previously done various projects related to Computer Vision and have good knowledge on how to train ConvNets for various tasks. . Completed B.Tech. in Electronics and Communication Engineering from Punjab Engineering College, Chandigarh, India (2016-2020). Won Techgig Code Gladiators competition in Artificial Intelligence theme. I was also part of Skill India program where I participated in IT Software Solutions for Business in 2018 and made it to the North-Zone Nationals. . I am a national level handball player. . You can reach me at kushajreal@gmail.com. .",
+          "content": "resume | pytorch-forums | . My research interests include Computer Vision and Graph Machine Learning. I have recently started to work on application side of AI by working on projects in manufacturing under the B-Innovation Lab at UGA. . From 2021-current, I am currently pursuing my M.S. in Computer Science from University of Georgia, Athens, USA. . Paper reviewer for workshop on Analysis and Modeling of Faces and Gestures at CVPR 2021 | Paper reviewer and presentation judge at Georgia Junior Science &amp; Humanities Symposium (GJSHS) | . From 2016-2020, I completed my B.Tech. in Electronics and Communication Engineering from Punjab Engineering College (Deemed to be University), Chandigarh, India. During this time, I won the Techgig Code Gladiators competition in Artificial Intelligence theme, where I won against 15 other teams selected all across India. I was also part of Skill India program where I won the state championship in IT Software Solutions for Business and made it to the North-Zone nationals. . You can reach me at kushajreal@gmail.com. .",
           "url": "https://kushajveersingh.github.io/blog/about/",
           "relUrl": "/about/",
           "date": ""
@@ -156,7 +145,7 @@
   
 
   
-      ,"page4": {
+      ,"page3": {
           "title": "Projects",
           "content": "Check this repo for more details. . Unsupervised Parking Lot Detection . A complete approach to detect parking lot spaces from images and then tell which spaces are occupied or not. Here I do not use any dataset for training my model to detect parking spaces. My implementation can be divided into these three modules: . Object Detection Module :- Use COCO pretrained model, no need to do finetuning. | Label Processing Module :- As out model is not finetuned, there are some tricks that I add to overcome these limitations | Classification Module :- Use the processed labels/bounding_boxes to tell if that parking space is occupied or not. | . | SPADE by Nvidia . Unofficial implementation of SPDAE for image-to-translation from segmentation maps to the colored pictures. Due to compute limit I test it out for a simplified model on Cityscapes dataset and get descent results after 80 epochs with batch_size=2. . | Waste Seggregation using trashnet . Contains the code to train models for trashnet and then export them using ONNX. It was part of a bigger project where we ran these models on Rasberry Pi, which controlled wooden planks to classify the waste into different categories (code for rasberry pi not included here). . | Unscramble game . Python script to solve the unscramble android game. You are given 5 random letters and you have to find 3-letter, 4-letter, 5-letter english words from these 5 random letters. It is a simple brute force method with a english dictionary lookup. . | Random Duty List . A PHP and MySQL based work where the aim is to assign duties from a list to various stations and make sure the duties are not repeated and the repetition occurs only after the list is exhausted. . | . Jupyter Notebooks . Mish activation function is tested for transfer learning. Here mish is used only in the last fully-connected layers of a pretrainened Resnet50 model. I test the activation function of CIFAR10, CIFAR100 using three different learning rate values. I found that Mish gave better results than ReLU. notebook, paper . | Multi Sample Dropout is implemented and tested on CIFAR-100 using cyclic learning. My losses converged 4x faster when using num_samples=8 than using simple dropout. notebook, paper . | Data Augmentation in Computer Vision Notebook implementing single image data augmentation techniques using just Python notebook | . | Summarizing Leslie N. Smith’s research in cyclic learning and hyper-parameter setting techniques. notebook A disciplined approach to neural network hyper-parameters: Part 1 – learning rate, batch size, momentum, and weight decay paper | Super-Convergence: Very Fast Training of Neural Networks Using Learning Rates paper | Exploring loss function topology with cyclical learning rates paper | Cyclical Learning Rates for Training Neural Networks paper | . | Photorealisitc Style Transfer. Implementation of the High-Resolution Network for Photorealistic Style Transfer paper. notebook, paper . | Weight Standardization is implemented and tested using cyclic learning. I find that it does not work well with cyclic learning when using CIFAR-10. notebook, paper . | Learning Rate Finder. Implementation of learning rate finder as introduced in the paper Cyclical Learning Rates for Training Neural Networks. A general template for custom models is provided. notebook . | PyTorch computer vision tutorial. AlexNet with tips and checks on how to train CNNs. The following things are included: notebook Dataloader creation | Plotting dataloader results | Weight Initialization | Simple training loop | Overfitting a mini-batch | . | How to deal with outliers . | How to choose number of bins in a histogram | .",
           "url": "https://kushajveersingh.github.io/blog/projects/",
@@ -170,8 +159,6 @@
   
 
   
-
-  
   
 
   
@@ -183,7 +170,10 @@
   
 
   
-      ,"page11": {
+  
+
+  
+      ,"page10": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://kushajveersingh.github.io/blog/robots.txt",
@@ -191,9 +181,6 @@
           "date": ""
       }
       
-  
-
-  
   
 
 }
