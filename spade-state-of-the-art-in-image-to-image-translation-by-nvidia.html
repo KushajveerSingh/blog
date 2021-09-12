@@ -11,14 +11,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="New state of the art method for generating colored images from segmentation masks. It uses a GAN to learn to produce photorealistic images." />
 <meta property="og:description" content="New state of the art method for generating colored images from segmentation masks. It uses a GAN to learn to produce photorealistic images." />
-<link rel="canonical" href="https://kushajveersingh.github.io/blog/paper-implementation/2019/04/17/post-0004.html" />
-<meta property="og:url" content="https://kushajveersingh.github.io/blog/paper-implementation/2019/04/17/post-0004.html" />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/spade-state-of-the-art-in-image-to-image-translation-by-nvidia" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/spade-state-of-the-art-in-image-to-image-translation-by-nvidia" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:image" content="https://kushajveersingh.github.io/blog/images/preview/post_004.jpeg" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-04-17T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"New state of the art method for generating colored images from segmentation masks. It uses a GAN to learn to produce photorealistic images.","url":"https://kushajveersingh.github.io/blog/paper-implementation/2019/04/17/post-0004.html","@type":"BlogPosting","headline":"SPADE: State of the art in Image-to-Image Translation by Nvidia","dateModified":"2019-04-17T00:00:00-05:00","datePublished":"2019-04-17T00:00:00-05:00","author":{"@type":"Person","name":"Kushajveer Singh"},"image":"https://kushajveersingh.github.io/blog/images/preview/post_004.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/paper-implementation/2019/04/17/post-0004.html"},"@context":"https://schema.org"}</script>
+{"description":"New state of the art method for generating colored images from segmentation masks. It uses a GAN to learn to produce photorealistic images.","url":"https://kushajveersingh.github.io/blog/spade-state-of-the-art-in-image-to-image-translation-by-nvidia","@type":"BlogPosting","headline":"SPADE: State of the art in Image-to-Image Translation by Nvidia","dateModified":"2019-04-17T00:00:00-05:00","datePublished":"2019-04-17T00:00:00-05:00","author":{"@type":"Person","name":"Kushajveer Singh"},"image":"https://kushajveersingh.github.io/blog/images/preview/post_004.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/spade-state-of-the-art-in-image-to-image-translation-by-nvidia"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -156,13 +156,6 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -278,8 +271,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="k">class</span> <span class="nc">SPADE</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">SPADE</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">num_filters</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">spade_filter</span>
@@ -354,8 +346,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="k">class</span> <span class="nc">SPADEResBlk</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">SPADEResBlk</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">kernel_size</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">spade_resblk_kernel</span>
@@ -435,8 +426,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="k">class</span> <span class="nc">SPADEGenerator</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">SPADEGenerator</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gen_input_size</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">gen_hidden_size</span><span class="p">)</span>
@@ -502,8 +492,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="k">def</span> <span class="nf">custom_model1</span><span class="p">(</span><span class="n">in_chan</span><span class="p">,</span> <span class="n">out_chan</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">custom_model1</span><span class="p">(</span><span class="n">in_chan</span><span class="p">,</span> <span class="n">out_chan</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
         <span class="n">spectral_norm</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_chan</span><span class="p">,</span> <span class="n">out_chan</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -571,8 +560,7 @@ $$\mathbb{E}_{(\boldsymbol{\mathrm{s}},\boldsymbol{\mathrm{x}})}[\log D(\boldsym
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="k">class</span> <span class="nc">VGGLoss</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">VGGLoss</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vgg</span> <span class="o">=</span> <span class="n">VGG19</span><span class="p">()</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
@@ -614,8 +602,7 @@ $$\mathbb{E}_{(\boldsymbol{\mathrm{s}},\boldsymbol{\mathrm{x}})}[\log D(\boldsym
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="k">class</span> <span class="nc">GANLoss</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">GANLoss</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">use_lsgan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target_real_label</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">target_fake_label</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
                  <span class="n">tensor</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -681,8 +668,7 @@ $$\mathbb{E}_{(\boldsymbol{\mathrm{s}},\boldsymbol{\mathrm{x}})}[\log D(\boldsym
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="k">def</span> <span class="nf">weights_init</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">weights_init</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
     <span class="n">classname</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
     <span class="k">if</span> <span class="n">classname</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'Conv'</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">normal_</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
@@ -728,8 +714,7 @@ $$\mathbb{E}_{(\boldsymbol{\mathrm{s}},\boldsymbol{\mathrm{x}})}[\log D(\boldsym
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="k">def</span> <span class="nf">conv_inst_lrelu</span><span class="p">(</span><span class="n">in_chan</span><span class="p">,</span> <span class="n">out_chan</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">conv_inst_lrelu</span><span class="p">(</span><span class="n">in_chan</span><span class="p">,</span> <span class="n">out_chan</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_chan</span><span class="p">,</span> <span class="n">out_chan</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">InstanceNorm2d</span><span class="p">(</span><span class="n">out_chan</span><span class="p">),</span>
@@ -848,7 +833,7 @@ $$\mathbb{E}_{(\boldsymbol{\mathrm{s}},\boldsymbol{\mathrm{x}})}[\log D(\boldsym
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/blog/paper-implementation/2019/04/17/post-0004.html" hidden></a>
+</script><a class="u-url" href="/blog/spade-state-of-the-art-in-image-to-image-translation-by-nvidia" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">

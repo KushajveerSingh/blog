@@ -11,14 +11,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Resnet50 model is tested by using Mish in its FClayers. Also, a detailed discussion of the paper is done with code implementation." />
 <meta property="og:description" content="Resnet50 model is tested by using Mish in its FClayers. Also, a detailed discussion of the paper is done with code implementation." />
-<link rel="canonical" href="https://kushajveersingh.github.io/blog/paper-implementation/2019/11/11/post-0007.html" />
-<meta property="og:url" content="https://kushajveersingh.github.io/blog/paper-implementation/2019/11/11/post-0007.html" />
+<link rel="canonical" href="https://kushajveersingh.github.io/blog/study-of-mish-activation-function-in-transfer-learning" />
+<meta property="og:url" content="https://kushajveersingh.github.io/blog/study-of-mish-activation-function-in-transfer-learning" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:image" content="https://kushajveersingh.github.io/blog/images/preview/post_007.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-11-11T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"Resnet50 model is tested by using Mish in its FClayers. Also, a detailed discussion of the paper is done with code implementation.","url":"https://kushajveersingh.github.io/blog/paper-implementation/2019/11/11/post-0007.html","@type":"BlogPosting","headline":"Study of Mish activation function in transfer learning with code and discussion","dateModified":"2019-11-11T00:00:00-06:00","datePublished":"2019-11-11T00:00:00-06:00","author":{"@type":"Person","name":"Kushajveer Singh"},"image":"https://kushajveersingh.github.io/blog/images/preview/post_007.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/paper-implementation/2019/11/11/post-0007.html"},"@context":"https://schema.org"}</script>
+{"description":"Resnet50 model is tested by using Mish in its FClayers. Also, a detailed discussion of the paper is done with code implementation.","url":"https://kushajveersingh.github.io/blog/study-of-mish-activation-function-in-transfer-learning","@type":"BlogPosting","headline":"Study of Mish activation function in transfer learning with code and discussion","dateModified":"2019-11-11T00:00:00-06:00","datePublished":"2019-11-11T00:00:00-06:00","author":{"@type":"Person","name":"Kushajveer Singh"},"image":"https://kushajveersingh.github.io/blog/images/preview/post_007.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/study-of-mish-activation-function-in-transfer-learning"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -144,13 +144,6 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -187,8 +180,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="k">class</span> <span class="nc">Mish</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Mish</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">"""</span>
 <span class="sd">    Mish activation function is proposed in "Mish: A Self </span>
 <span class="sd">    Regularized Non-Monotonic Neural Activation Function" </span>
@@ -231,8 +223,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -332,8 +323,7 @@ $$y=x*\frac{e^{2x}+2e^x}{e^{2x}+2e^x+2}$$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="c1"># AdaptiveConcatPool2d is just combining AdaptiveAvgPool and AdaptiveMaxPool.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># AdaptiveConcatPool2d is just combining AdaptiveAvgPool and AdaptiveMaxPool.</span>
 <span class="n">head</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
     <span class="n">AdaptiveConcatPool2d</span><span class="p">(),</span>
     <span class="n">Flatten</span><span class="p">(),</span>
@@ -399,8 +389,7 @@ $$y=x*\frac{e^{2x}+2e^x}{e^{2x}+2e^x+2}$$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
 <span class="c1"># The following code has been taken from </span>
@@ -472,7 +461,7 @@ $$y=x*\frac{e^{2x}+2e^x}{e^{2x}+2e^x+2}$$
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/blog/paper-implementation/2019/11/11/post-0007.html" hidden></a>
+</script><a class="u-url" href="/blog/study-of-mish-activation-function-in-transfer-learning" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
