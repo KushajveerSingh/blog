@@ -109,7 +109,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      8 min read
+      9 min read
     
 </span></p>
 
@@ -130,6 +130,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#cpu-program-vs-cuda-program">CPU-program vs CUDA-program</a></li>
 <li class="toc-entry toc-h2"><a href="#cuda-vs-triton">CUDA vs Triton</a></li>
 <li class="toc-entry toc-h2"><a href="#adding-two-arrays-using-triton">Adding two arrays using Triton</a></li>
+<li class="toc-entry toc-h2"><a href="#add-for-higher-dim-tensors">Add for higher dim-tensors</a></li>
 </ul><p>With the success of deep learning and the explosion of research papers, it is common to find ourselves in a situation where we come up with a new idea just to find that it is not hardware accelerated. More specifically, when we come up with a new activation function, or a self-attention mechanism and have to rely on the capabilities provided by PyTorch/Tensorflow to handle the forward and backward pass through the Module.</p>
 
 <p>PyTorch JIT is one option in these cases. But PyTorch JIT is a high-level compiler that can only optimize parts of the code but cannot be used to write custom CUDA kernels.</p>
@@ -280,12 +281,12 @@ window.onload = wrap_img;
 </span>    <span class="n">tl</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">output_ptr</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>To use the kernel, we can define a helper function as shown below</p>
+<p>To use the kernel, we define a helper function as shown below</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">arr1</span><span class="p">:</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">arr2</span><span class="p">:</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">):</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
     <span class="n">N</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">numel</span><span class="p">()</span>
 
-    <span class="n">grid</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="n">triton</span><span class="p">.</span><span class="n">cdiv</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">BLOCK_SIZE</span><span class="p">),)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">meta</span><span class="p">:</span> <span class="p">(</span><span class="n">triton</span><span class="p">.</span><span class="n">cdiv</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">BLOCK_SIZE</span><span class="p">),)</span>
 
     <span class="n">add_kernel</span><span class="p">[</span><span class="n">grid</span><span class="p">](</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">output</span>
@@ -293,6 +294,61 @@ window.onload = wrap_img;
 
 <p><code class="language-plaintext highlighter-rouge">grid</code> is basically specifying the space over which we will work. In our case, the grid is 1D and we specify how the data is split along the grid. So if the input arrays are of size then we want to have the grid as following <code class="language-plaintext highlighter-rouge">[0:512], [512:1024]</code>. So in this step, we are basically specifying how to split the input data and pass it to the kernel.</p>
 
+<p>By default, <code class="language-plaintext highlighter-rouge">grid</code> takes one positional argument which we call <code class="language-plaintext highlighter-rouge">meta</code>. The purpose of <code class="language-plaintext highlighter-rouge">meta</code> is to provide information like <code class="language-plaintext highlighter-rouge">BLOCK_SIZE</code> but we used a global variable to define that.</p>
+
+<p>Now we can call the <code class="language-plaintext highlighter-rouge">add</code> function as a normal python function, as shown below (make sure the inputs passed to the function are already on the GPU)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr_size</span> <span class="o">=</span> <span class="mi">100_000</span>
+<span class="n">arr1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">arr_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s">'cuda'</span><span class="p">)</span>
+<span class="n">arr2</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">arr_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s">'cuda'</span><span class="p">)</span>
+
+<span class="n">pytorch_out</span> <span class="o">=</span> <span class="n">arr1</span> <span class="o">+</span> <span class="n">arr2</span>
+<span class="n">triton_out</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">pytorch_out</span> <span class="o">-</span> <span class="n">triton_out</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<p>Out</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ python temp.py
+tensor(0., device='cuda:0')
+</code></pre></div></div>
+
+<h2 id="add-for-higher-dim-tensors">
+<a class="anchor" href="#add-for-higher-dim-tensors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add for higher dim-tensors</h2>
+<p>We can also reuse the same kernel for N-dim tensors. This gives us the flexibility to avoid writing multiple kernels for different number of input dimensions. The idea is simple we reshape the tensor to 1D tensor in the helper function and then reshape the output tensor.</p>
+
+<p>The reshaping operation is not a time consuming operation as we are just modifying the stride values in the tensor class. The modified helper function is shown below.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">arr1</span><span class="p">:</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">arr2</span><span class="p">:</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">):</span>
+    <span class="n">input_shape</span> <span class="o">=</span> <span class="n">arr1</span><span class="p">.</span><span class="n">shape</span>
+    <span class="n">arr1</span> <span class="o">=</span> <span class="n">arr1</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">arr2</span> <span class="o">=</span> <span class="n">arr2</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">numel</span><span class="p">()</span>
+
+    <span class="n">grid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">meta</span><span class="p">:</span> <span class="p">(</span><span class="n">triton</span><span class="p">.</span><span class="n">cdiv</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">BLOCK_SIZE</span><span class="p">),)</span>
+
+    <span class="n">add_kernel</span><span class="p">[</span><span class="n">grid</span><span class="p">](</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+    <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span>
+</code></pre></div></div>
+<p>And then we call the call the function same as before</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">arr1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">arr_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s">'cuda'</span><span class="p">)</span>
+<span class="n">arr2</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">arr_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s">'cuda'</span><span class="p">)</span>
+
+<span class="n">pytorch_out</span> <span class="o">=</span> <span class="n">arr1</span> <span class="o">+</span> <span class="n">arr2</span>
+<span class="n">triton_out</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">pytorch_out</span> <span class="o">-</span> <span class="n">triton_out</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<p>Out</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ python temp.py
+tensor(0., device='cuda:0')
+</code></pre></div></div>
 <p>This was a simple example. But in the case of complex examples like matrix multiplication, how you split the data can have a huge effect on the performance. Triton docs provide a <a href="https://triton-lang.org/getting-started/tutorials/03-matrix-multiplication.html">tutorial</a> on how to write an efficient matrix multiplication kernel which goes into much more detail.</p>
 
 <p>This was a short tutorial introducing GPU programming basics and getting you started with Triton. Check the Triton project on <a href="https://github.com/openai/triton">openai/github</a> if you want to learn more.</p>
