@@ -4,20 +4,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Writing custom CUDA kernels with Triton | Kushajveer Singh</title>
+<title>Data augmentation with Resizer network for Image Classification | Kushajveer Singh</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Writing custom CUDA kernels with Triton" />
+<meta property="og:title" content="Data augmentation with Resizer network for Image Classification" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Triton is a language compiler to write highly optimized CUDA kernels. Learn the basics of GPU programming and how to use Triton." />
-<meta property="og:description" content="Triton is a language compiler to write highly optimized CUDA kernels. Learn the basics of GPU programming and how to use Triton." />
+<meta name="description" content="A CNN model is used to learn data augmentation for image classification task. The generated image of the Resizer model is fed into a standard ResNet model for the downstream task. Model is tested on Imagenette and Imagewoof datasets with code to reproduce the experiments." />
+<meta property="og:description" content="A CNN model is used to learn data augmentation for image classification task. The generated image of the Resizer model is fed into a standard ResNet model for the downstream task. Model is tested on Imagenette and Imagewoof datasets with code to reproduce the experiments." />
 <link rel="canonical" href="https://kushajveersingh.github.io/blog/writing-custom-cuda-kernels-with-triton" />
 <meta property="og:url" content="https://kushajveersingh.github.io/blog/writing-custom-cuda-kernels-with-triton" />
 <meta property="og:site_name" content="Kushajveer Singh" />
-<meta property="og:image" content="https://kushajveersingh.github.io/blog/images/post_0015/01.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-09-12T00:00:00-05:00" />
+<meta property="article:published_time" content="2021-09-17T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"Triton is a language compiler to write highly optimized CUDA kernels. Learn the basics of GPU programming and how to use Triton.","url":"https://kushajveersingh.github.io/blog/writing-custom-cuda-kernels-with-triton","@type":"BlogPosting","headline":"Writing custom CUDA kernels with Triton","dateModified":"2021-09-12T00:00:00-05:00","datePublished":"2021-09-12T00:00:00-05:00","image":"https://kushajveersingh.github.io/blog/images/post_0015/01.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/writing-custom-cuda-kernels-with-triton"},"@context":"https://schema.org"}</script>
+{"description":"A CNN model is used to learn data augmentation for image classification task. The generated image of the Resizer model is fed into a standard ResNet model for the downstream task. Model is tested on Imagenette and Imagewoof datasets with code to reproduce the experiments.","url":"https://kushajveersingh.github.io/blog/writing-custom-cuda-kernels-with-triton","@type":"BlogPosting","headline":"Data augmentation with Resizer network for Image Classification","dateModified":"2021-09-17T00:00:00-05:00","datePublished":"2021-09-17T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/writing-custom-cuda-kernels-with-triton"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -103,20 +102,20 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Writing custom CUDA kernels with Triton</h1><p class="page-description">Triton is a language compiler to write highly optimized CUDA kernels. Learn the basics of GPU programming and how to use Triton.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-12T00:00:00-05:00" itemprop="datePublished">
-        Sep 12, 2021
+    <h1 class="post-title p-name" itemprop="name headline">Data augmentation with Resizer network for Image Classification</h1><p class="page-description">A CNN model is used to learn data augmentation for image classification task. The generated image of the Resizer model is fed into a standard ResNet model for the downstream task. Model is tested on Imagenette and Imagewoof datasets with code to reproduce the experiments.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-17T00:00:00-05:00" itemprop="datePublished">
+        Sep 17, 2021
       </time>
        • <span class="read-time" title="Estimated read time">
     
     
-      9 min read
+      1 min read
     
 </span></p>
 
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/blog/categories/#general">general</a>
+        <a class="category-tags-link" href="/blog/categories/#paper-implementation">paper-implementation</a>
         
       
       </p>
@@ -126,236 +125,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#gpu-programming-basics">GPU programming basics</a></li>
-<li class="toc-entry toc-h2"><a href="#cpu-program-vs-cuda-program">CPU-program vs CUDA-program</a></li>
-<li class="toc-entry toc-h2"><a href="#cuda-vs-triton">CUDA vs Triton</a></li>
-<li class="toc-entry toc-h2"><a href="#adding-two-arrays-using-triton">Adding two arrays using Triton</a></li>
-<li class="toc-entry toc-h2"><a href="#add-for-higher-dim-tensors">Add for higher dim-tensors</a></li>
-</ul><p>With the success of deep learning and the explosion of research papers, it is common to find ourselves in a situation where we come up with a new idea just to find that it is not hardware accelerated. More specifically, when we come up with a new activation function, or a self-attention mechanism and have to rely on the capabilities provided by PyTorch/Tensorflow to handle the forward and backward pass through the Module.</p>
-
-<p>PyTorch JIT is one option in these cases. But PyTorch JIT is a high-level compiler that can only optimize parts of the code but cannot be used to write custom CUDA kernels.</p>
-
-<p>There is another problem with writing CUDA kernels. It is incredibly hard to do. Optimizing the computations for locality and parallelism is very time-consuming and error-prone and it often requires experts who have spent a lot of time learning how to write CUDA code. Also, GPU architectures are rapidly evolving, like the latest edition of tensor cores which means even a bigger challenge writing code that is utilizing the maximum performance out of the hardware.</p>
-
-<p>This is where OpenAI <a href="https://github.com/openai/triton">Triton</a> comes into the picture. Triton has three main components</p>
-
-<p><img src="/blog/images/post_0015/01.png" alt="" title="Figure 1: Overview of main components of Triton."></p>
-
-<ol>
-  <li>Triton-C: A C-like language mainly intended for programmers already familiar with CUDA.</li>
-  <li>Triton-IR: An LLVM-based Intermediate Representation (IR). Triton-IR programs are directly constructed from Triton-C. In short, LLVM provided a lot of hardware-specific optimizations, which means we can directly use Nvidia’s CUDA Compiler (NVCC) to optimize our code specific to the particular hardware.</li>
-  <li>Triton-JIT: A Just-In-Time (JIT) compiler and code generation backend for compiling Triton-IR programs into efficient LLVM bitcode. This also includes many machine-independent optimizations, which means less work for us.</li>
-</ol>
-
-<p>Triton-JIT is the most exciting part of the Triton project for me. It allows programmers with almost no experience with CUDA programming to write highly optimized CUDA kernels in Python. Before discussing Triton, we need to understand how CUDA programs work on GPU.</p>
-
-<p>Useful links</p>
-<ul>
-  <li><a href="http://www.eecs.harvard.edu/~htk/publication/2019-mapl-tillet-kung-cox.pdf">Triton: An Intermediate Language and Compiler for Tiled Neural Network Computations</a></li>
-  <li><a href="https://openai.com/blog/triton/">Introducing Triton: Open-Source GPU Programming for Neural Networks</a></li>
-  <li><a href="https://github.com/openai/triton">triton github</a></li>
-  <li><a href="https://triton-lang.org/">triton documentation</a></li>
-</ul>
-
-<h2 id="gpu-programming-basics">
-<a class="anchor" href="#gpu-programming-basics" aria-hidden="true"><span class="octicon octicon-link"></span></a>GPU programming basics</h2>
-<p>Starting with CPU (host). CPU has access to RAM, storage disks and, all the connected peripherals. GPU (device) on the other hand has no access to RAM or anything. A GPU has its own memory which is called VRAM and data must be copied from CPU-&gt;GPU for GPU to work on it and data must again be copied from GPU-&gt;CPU for CPU to store it in one of the storage devices or share it with the connected peripherals.</p>
-
-<blockquote>
-  <p><strong>Note:</strong> This is the reason why you should minimize data movement between CPU and GPU as much as possible. To do this you have to brainstorm how you can load the data in chunks to process it in parallel or import the data in a way that it can be reused multiple times before importing next data item.</p>
-</blockquote>
-
-<p>In CUDA, we launch many <strong>threads</strong> in groups of thread <strong>blocks</strong> that form a <strong>grid</strong>. All <em>threads</em> in a thread <em>block</em> can communicate with each other. You can launch 1024 threads per block and $2^{32}-1$ blocks in a single launch. Figure 2, shows an example of this.</p>
-
-<p><img src="/blog/images/post_0015/02.png" alt="" title="Figure 2: Architecture of CUDA programs."></p>
-
-<p>The idea behind using <em>blocks</em> is that you do not need to change your code if you get a new GPU in the future. So the new GPU can simply execute more <em>blocks</em> concurrently without change of any code.</p>
-
-<h2 id="cpu-program-vs-cuda-program">
-<a class="anchor" href="#cpu-program-vs-cuda-program" aria-hidden="true"><span class="octicon octicon-link"></span></a>CPU-program vs CUDA-program</h2>
-<p>Without going into technicalities let us consider a simple example of adding two arrays of length 3.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-
-<span class="n">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
-</code></pre></div></div>
-<p>In C++, if we want to add these arrays then we will create a for-loop that will run three times (assuming a single-threaded program).</p>
-
-<p>But in CUDA, we will launch 3 threads, each of which will do addition at a single index, and the for-loop is done in a single step. In reality, the following would take place</p>
-<ol>
-  <li>Copy <code class="language-plaintext highlighter-rouge">arr1</code>, <code class="language-plaintext highlighter-rouge">arr2</code> from CPU to GPU.</li>
-  <li>Create a new array of size 3 (or store the result of the addition in <code class="language-plaintext highlighter-rouge">arr1</code>).</li>
-  <li>Launch 3 threads to do the addition and store the result in the new array.</li>
-  <li>Copy the result from GPU to CPU.</li>
-</ol>
-
-<p>Because GPUs have 1000s of cores, doing simple things like addition, matrix multiplication is much faster on the GPU than the CPU (provided the speedup is more than the time spent to transfer data between the CPU and GPU).</p>
-
-<h2 id="cuda-vs-triton">
-<a class="anchor" href="#cuda-vs-triton" aria-hidden="true"><span class="octicon octicon-link"></span></a>CUDA vs Triton</h2>
-<p>We saw the CUDA execution model above. Now let’s see how Triton differs from the above model.</p>
-
-<p>In CUDA each kernel is associated with a <em>thread block</em> (i.e. a collection of <em>threads</em>). In Triton, each kernel is associated with a single <em>thread</em>. This execution paradigm solves the problem of memory synchronization between threads, inter-thread communication while allowing automatic parallelization.</p>
-
-<p>Now instead of storing threads inside a thread block, a block consists of a <em>range</em> i.e. tiles of pointers to threads. The interesting thing about this is you can have as many ranges as you want. So if your input is 2D you can specify Range(10) for the x-axis and Range(5) on the y-axis for a total of 50 threads. Similarly, you can define ranges along as many dimensions as you want.</p>
-
-<p><img src="/blog/images/post_0015/03.png" alt="" title="Figure 3: CUDA execution model vs Triton execution model."></p>
-
-<h2 id="adding-two-arrays-using-triton">
-<a class="anchor" href="#adding-two-arrays-using-triton" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding two arrays using Triton</h2>
-<p>Now we have a basic understanding of how CUDA and Triton works, we can writing Triton programs. Use the following command to install Triton</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install triton
-</code></pre></div></div>
-<p>A summary of steps is given below:</p>
-<ol>
-  <li>Define <em>block</em>. We know <em>blocks</em> are defined by specifying a range. So in addition, we only need to define range along one dimension. Let it be 512 and we define it as a global <code class="language-plaintext highlighter-rouge">BLOCK_SIZE = 512</code>.</li>
-  <li>The range of 512 actually means we are launching 512 threads to do the computation.</li>
-  <li>
-    <p>Next, we get the index of the input data. Suppose the input array is of size 1000. Because we defined a block size of 512, we will process the input array in chunks of size 512. So the first chunk would be from <code class="language-plaintext highlighter-rouge">0:512</code> and the second chunk from <code class="language-plaintext highlighter-rouge">512:1024</code>. This is done using the code shown below</p>
-
-    <div class="language-python highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> <span class="c1"># Addition is 1D, so we only need to get the index of axis=0
-</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">triton</span><span class="p">.</span><span class="n">language</span><span class="p">.</span><span class="n">program_id</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
- <span class="c1"># Below offsets are a list of pointers
-</span> <span class="n">block_start</span> <span class="o">=</span> <span class="n">pid</span> <span class="o">*</span> <span class="n">BLOCK_SIZE</span>
- <span class="n">offsets</span> <span class="o">=</span> <span class="n">block_start</span> <span class="o">+</span> <span class="n">triton</span><span class="p">.</span><span class="n">language</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BLOCK_SIZE</span><span class="p">)</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Masking to guard memory operations. In the above example, the input array is of size <code class="language-plaintext highlighter-rouge">N=1000</code> but the offset is from <code class="language-plaintext highlighter-rouge">512:1024</code>. So we need to specify a mask that will protect us against out-of-bounds accesses. This mask needs to be specified for each axis.</p>
-
-    <div class="language-python highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> <span class="n">mask</span> <span class="o">=</span> <span class="n">offsets</span> <span class="o">&lt;</span> <span class="n">N</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Load the data. Now that we have defined the offsets and the mask, we can load the data from the RAM and mask out all the extra elements.</p>
-
-    <div class="language-python highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> <span class="k">def</span> <span class="nf">add_kernel</span><span class="p">(</span><span class="n">arr1_ptr</span><span class="p">,</span> <span class="n">arr2_ptr</span><span class="p">,</span> <span class="n">output_ptr</span><span class="p">,</span> <span class="p">...):</span>
-     <span class="p">...</span>
-     <span class="n">arr1</span> <span class="o">=</span> <span class="n">triton</span><span class="p">.</span><span class="n">language</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">arr1_ptr</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-     <span class="n">arr2</span> <span class="o">=</span> <span class="n">triton</span><span class="p">.</span><span class="n">language</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">arr2_ptr</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Do the relevant operation. In this case, we only need to do addition.</p>
-
-    <div class="language-python highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> <span class="n">output</span> <span class="o">=</span> <span class="n">arr1</span> <span class="o">+</span> <span class="n">arr2</span>
-</code></pre></div>    </div>
-  </li>
-  <li>After doing the computation, store the result in RAM. GPU has no access to storage so we have to first move the data to RAM and then we can store the data to disk if we want.
-    <div class="language-python highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> <span class="n">triton</span><span class="p">.</span><span class="n">language</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">output_ptr</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<p>The code for the entire kernel is shown below</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">triton</span>
-<span class="kn">import</span> <span class="nn">triton.language</span> <span class="k">as</span> <span class="n">tl</span>
-
-<span class="n">BLOCK_SIZE</span> <span class="o">=</span> <span class="mi">512</span>
-
-<span class="o">@</span><span class="n">triton</span><span class="p">.</span><span class="n">jit</span>
-<span class="k">def</span> <span class="nf">add_kernel</span><span class="p">(</span><span class="n">arr1_ptr</span><span class="p">,</span> <span class="n">arr2_ptr</span><span class="p">,</span> <span class="n">output_ptr</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
-    <span class="c1"># Step 1: Get range of axis
-</span>    <span class="n">pid</span> <span class="o">=</span> <span class="n">tl</span><span class="p">.</span><span class="n">program_id</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-    <span class="c1"># Step 2: Define the offsets and mask
-</span>    <span class="n">block_start</span> <span class="o">=</span> <span class="n">pid</span> <span class="o">*</span> <span class="n">BLOCK_SIZE</span>
-    <span class="n">offsets</span> <span class="o">=</span> <span class="n">block_start</span> <span class="o">+</span> <span class="n">tl</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">BLOCK_SIZE</span><span class="p">)</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="n">offsets</span> <span class="o">&lt;</span> <span class="n">N</span>
-
-    <span class="c1"># Step 3: Load the data from RAM
-</span>    <span class="n">arr1</span> <span class="o">=</span> <span class="n">tl</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">arr1_ptr</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-    <span class="n">arr2</span> <span class="o">=</span> <span class="n">tl</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">arr2_ptr</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-
-    <span class="c1"># Step 4: Do the computation
-</span>    <span class="n">output</span> <span class="o">=</span> <span class="n">arr1</span> <span class="o">+</span> <span class="n">arr2</span>
-
-    <span class="c1"># Step 5: Store the result in RAM
-</span>    <span class="n">tl</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">output_ptr</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>To use the kernel, we define a helper function as shown below</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">arr1</span><span class="p">:</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">arr2</span><span class="p">:</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">):</span>
-    <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">numel</span><span class="p">()</span>
-
-    <span class="n">grid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">meta</span><span class="p">:</span> <span class="p">(</span><span class="n">triton</span><span class="p">.</span><span class="n">cdiv</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">BLOCK_SIZE</span><span class="p">),)</span>
-
-    <span class="n">add_kernel</span><span class="p">[</span><span class="n">grid</span><span class="p">](</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">output</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">grid</code> is basically specifying the space over which we will work. In our case, the grid is 1D and we specify how the data is split along the grid. So if the input arrays are of size then we want to have the grid as following <code class="language-plaintext highlighter-rouge">[0:512], [512:1024]</code>. So in this step, we are basically specifying how to split the input data and pass it to the kernel.</p>
-
-<p>By default, <code class="language-plaintext highlighter-rouge">grid</code> takes one positional argument which we call <code class="language-plaintext highlighter-rouge">meta</code>. The purpose of <code class="language-plaintext highlighter-rouge">meta</code> is to provide information like <code class="language-plaintext highlighter-rouge">BLOCK_SIZE</code> but we used a global variable to define that.</p>
-
-<p>Now we can call the <code class="language-plaintext highlighter-rouge">add</code> function as a normal python function, as shown below (make sure the inputs passed to the function are already on the GPU)</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr_size</span> <span class="o">=</span> <span class="mi">100_000</span>
-<span class="n">arr1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">arr_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s">'cuda'</span><span class="p">)</span>
-<span class="n">arr2</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">arr_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s">'cuda'</span><span class="p">)</span>
-
-<span class="n">pytorch_out</span> <span class="o">=</span> <span class="n">arr1</span> <span class="o">+</span> <span class="n">arr2</span>
-<span class="n">triton_out</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">pytorch_out</span> <span class="o">-</span> <span class="n">triton_out</span><span class="p">)))</span>
-</code></pre></div></div>
-
-<p>Out</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ python main.py
-tensor(0., device='cuda:0')
-</code></pre></div></div>
-
-<h2 id="add-for-higher-dim-tensors">
-<a class="anchor" href="#add-for-higher-dim-tensors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add for higher dim-tensors</h2>
-<p>We can also reuse the same kernel for N-dim tensors. This gives us the flexibility to avoid writing multiple kernels for a different number of input dimensions. The idea is simple we reshape the tensor to a 1D tensor in the helper function and then reshape the output tensor.</p>
-
-<p>The reshaping operation is not a time-consuming operation as we are just modifying the stride values in the tensor class. The modified helper function is shown below.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">arr1</span><span class="p">:</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">arr2</span><span class="p">:</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">):</span>
-    <span class="n">input_shape</span> <span class="o">=</span> <span class="n">arr1</span><span class="p">.</span><span class="n">shape</span>
-    <span class="n">arr1</span> <span class="o">=</span> <span class="n">arr1</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">arr2</span> <span class="o">=</span> <span class="n">arr2</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">numel</span><span class="p">()</span>
-
-    <span class="n">grid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">meta</span><span class="p">:</span> <span class="p">(</span><span class="n">triton</span><span class="p">.</span><span class="n">cdiv</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">BLOCK_SIZE</span><span class="p">),)</span>
-
-    <span class="n">add_kernel</span><span class="p">[</span><span class="n">grid</span><span class="p">](</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
-
-    <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">output</span>
-</code></pre></div></div>
-<p>And then we call the function the same as before</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">arr1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">arr_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s">'cuda'</span><span class="p">)</span>
-<span class="n">arr2</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">arr_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s">'cuda'</span><span class="p">)</span>
-
-<span class="n">pytorch_out</span> <span class="o">=</span> <span class="n">arr1</span> <span class="o">+</span> <span class="n">arr2</span>
-<span class="n">triton_out</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">pytorch_out</span> <span class="o">-</span> <span class="n">triton_out</span><span class="p">)))</span>
-</code></pre></div></div>
-
-<p>Out</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ python main.py
-tensor(0., device='cuda:0')
-</code></pre></div></div>
-<p>This was a simple example. But in the case of complex examples like matrix multiplication, how you split the data can have a huge effect on the performance. Triton docs provide a <a href="https://triton-lang.org/getting-started/tutorials/03-matrix-multiplication.html">tutorial</a> on how to write an efficient matrix multiplication kernel which goes into much more detail.</p>
-
-<p>This was a short tutorial introducing GPU programming basics and getting you started with Triton. Check the Triton project on <a href="https://github.com/openai/triton">openai/github</a> if you want to learn more.</p>
-
-<hr>
-
-<p><a href="https://twitter.com/Kkushaj">twitter</a>, <a href="https://www.linkedin.com/in/kushaj/">linkedin</a>, <a href="https://github.com/KushajveerSingh">github</a></p>
+</ul><p><a href="https://github.com/KushajveerSingh/resize_network_cv">github</a>, <a href="https://arxiv.org/abs/2103.09950">paper</a></p>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
