@@ -4,9 +4,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Data augmentation with Resizer network for Image Classification | Kushajveer Singh</title>
+<title>Data augmentation with learnable Resizer network for Image Classification | Kushajveer Singh</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Data augmentation with Resizer network for Image Classification" />
+<meta property="og:title" content="Data augmentation with learnable Resizer network for Image Classification" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="A CNN model is used to learn data augmentation for image classification task. The generated image of the Resizer model is fed into a standard ResNet model for the downstream task. Model is tested on Imagenette and Imagewoof datasets with code to reproduce the experiments." />
 <meta property="og:description" content="A CNN model is used to learn data augmentation for image classification task. The generated image of the Resizer model is fed into a standard ResNet model for the downstream task. Model is tested on Imagenette and Imagewoof datasets with code to reproduce the experiments." />
@@ -16,7 +16,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-09-17T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"A CNN model is used to learn data augmentation for image classification task. The generated image of the Resizer model is fed into a standard ResNet model for the downstream task. Model is tested on Imagenette and Imagewoof datasets with code to reproduce the experiments.","url":"https://kushajveersingh.github.io/blog/data-augmentation-with-resizer-network-for-image-classification","@type":"BlogPosting","headline":"Data augmentation with Resizer network for Image Classification","dateModified":"2021-09-17T00:00:00-05:00","datePublished":"2021-09-17T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/data-augmentation-with-resizer-network-for-image-classification"},"@context":"https://schema.org"}</script>
+{"description":"A CNN model is used to learn data augmentation for image classification task. The generated image of the Resizer model is fed into a standard ResNet model for the downstream task. Model is tested on Imagenette and Imagewoof datasets with code to reproduce the experiments.","url":"https://kushajveersingh.github.io/blog/data-augmentation-with-resizer-network-for-image-classification","@type":"BlogPosting","headline":"Data augmentation with learnable Resizer network for Image Classification","dateModified":"2021-09-17T00:00:00-05:00","datePublished":"2021-09-17T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/data-augmentation-with-resizer-network-for-image-classification"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -102,13 +102,13 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Data augmentation with Resizer network for Image Classification</h1><p class="page-description">A CNN model is used to learn data augmentation for image classification task. The generated image of the Resizer model is fed into a standard ResNet model for the downstream task. Model is tested on Imagenette and Imagewoof datasets with code to reproduce the experiments.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-17T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Data augmentation with learnable Resizer network for Image Classification</h1><p class="page-description">A CNN model is used to learn data augmentation for image classification task. The generated image of the Resizer model is fed into a standard ResNet model for the downstream task. Model is tested on Imagenette and Imagewoof datasets with code to reproduce the experiments.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-17T00:00:00-05:00" itemprop="datePublished">
         Sep 17, 2021
       </time>
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      4 min read
     
 </span></p>
 
@@ -125,11 +125,166 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#wip">WIP</a></li>
-</ul><h1 id="wip">
-<a class="anchor" href="#wip" aria-hidden="true"><span class="octicon octicon-link"></span></a>WIP</h1>
+<li class="toc-entry toc-h2"><a href="#why-we-need-to-resize-images">Why we need to resize images?</a></li>
+<li class="toc-entry toc-h2"><a href="#resizer-model">Resizer model</a></li>
+<li class="toc-entry toc-h2"><a href="#dataset">Dataset</a></li>
+</ul><p><a href="https://github.com/KushajveerSingh/resize_network_cv">github</a>, <a href="https://arxiv.org/abs/2103.09950">paper</a></p>
 
-<p><a href="https://github.com/KushajveerSingh/resize_network_cv">github</a>, <a href="https://arxiv.org/abs/2103.09950">paper</a></p>
+<p>In a recent paper, <a href="https://arxiv.org/abs/2103.09950">Learning to Resize Images for Computer Vision Tasks</a> by Google AI, the authors proposed a new way to do resize images before passing it through an image classifier. Normally, we would resize the images to 224x224 spatial resolution using some interpolation method (like bilinear, bicubic) but what if we replaced the fixed resizer with a learnable resizer?</p>
+
+<p>In summary, we want to learn a model that will learn to resize images (e.g. input image size is 448x448 and the output is of size 224x224 which will be passed to an image classifier, like ResNet). The resized images would not have the same visual quality as the original image but instead it will improve task performance. An example is shown in Figure 1.</p>
+
+<p><img src="/blog/images/post_0016/01.png" alt="" title="Figure 1: Examples of the proposed learned resizer model trained with different image classification models on ImageNet."></p>
+
+<h2 id="why-we-need-to-resize-images">
+<a class="anchor" href="#why-we-need-to-resize-images" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why we need to resize images?</h2>
+<p>The first step in almost every image processing pipeline is the down-scaling of images. This can be done using biliearn interpolation, nearest neighbor sampling (in case of image segmentation), cropping the image to desired resolution.</p>
+
+<p>The reasons for doing this include the memoery limitations on the GPU. At high resolution, we have to reduce the batch size and at the same time training and inference are slower. Also, mini-batch gradient descent requires inputs to be of same size.</p>
+
+<h2 id="resizer-model">
+<a class="anchor" href="#resizer-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resizer model</h2>
+<p>The proposed Resizer model is used to down-scale the images. Now due to the inherent limitations discussed above, we have to pass a fixed size images to the Resizer model also, which may seem counterintuitve in the start. But here is the pipiline with and without the resizer model.</p>
+
+<p>Without resizer model</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Original Image -&gt; Downscale to 224x224 -&gt; ResNet
+</code></pre></div></div>
+
+<p>With resizer model</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Original Image -&gt; Downscale to 448x448 -&gt; Resizer to downscale to 224x224 -&gt; ResNet
+</code></pre></div></div>
+
+<p>As we can see from above, we are downscaling the image to 448x448, which has 4x times more pixels that 224x224. This means the model has 4x times more information for the downstream task.</p>
+
+<p>The proposed resizer model is shown in Figure 2 (taken from the paper)</p>
+
+<p><img src="/blog/images/post_0016/02.png" alt="" title="Figure 2: Proposed CNN model for resizing images."></p>
+
+<p>The architecture of the model is pretty simple and the PyTorch code for the network is shown below</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ResBlock</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">negative_slope</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">block</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">channel_size</span><span class="p">,</span> <span class="n">channel_size</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                      <span class="n">bias</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">channel_size</span><span class="p">),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">channel_size</span><span class="p">,</span> <span class="n">channel_size</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                      <span class="n">bias</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">channel_size</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">block</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Resizer</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">interpolate_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s">"bilinear"</span><span class="p">,</span>
+                 <span class="n">input_image_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">448</span><span class="p">,</span>
+                 <span class="n">output_image_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">224</span><span class="p">,</span>
+                 <span class="n">num_kernels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+                 <span class="n">num_resblocks</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                 <span class="n">slope</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+                 <span class="n">in_channels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+                 <span class="n">out_channels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="n">scale_factor</span> <span class="o">=</span> <span class="n">input_image_size</span> <span class="o">/</span> <span class="n">output_image_size</span>
+
+        <span class="n">n</span> <span class="o">=</span> <span class="n">num_kernels</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">num_resblocks</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">module1</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">resblocks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+            <span class="n">resblocks</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">ResBlock</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">slope</span><span class="p">))</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">resblocks</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">resblocks</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">module3</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">module4</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+                                 <span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">interpolate</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">F</span><span class="p">.</span><span class="n">interpolate</span><span class="p">,</span>
+                                   <span class="n">scale_factor</span><span class="o">=</span><span class="n">scale_factor</span><span class="p">,</span>
+                                   <span class="n">mode</span><span class="o">=</span><span class="n">interpolate_mode</span><span class="p">,</span>
+                                   <span class="n">align_corners</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                                   <span class="n">recompute_scale_factor</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">residual</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">module1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">out_residual</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">resblocks</span><span class="p">(</span><span class="n">out_residual</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">module3</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span> <span class="o">+</span> <span class="n">out_residual</span>
+
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">module4</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span> <span class="o">+</span> <span class="n">residual</span>
+
+        <span class="k">return</span> <span class="n">out</span>
+</code></pre></div></div>
+
+<p>Now we can directly pass the output of this model as input to the baseline model (ResNet-50) and do image classification. Both the models would be learned jointly. The code to do this is shown below</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">resizer_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">resizer_model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">base_model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<h2 id="dataset">
+<a class="anchor" href="#dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dataset</h2>
+<p><code class="language-plaintext highlighter-rouge">Imagenette</code> and <code class="language-plaintext highlighter-rouge">Imagewoof</code> datasets are used to test the performance of the proposed model. These datasets contains 10 classes each with <code class="language-plaintext highlighter-rouge">Imagenette</code> being the easier dataset and <code class="language-plaintext highlighter-rouge">Imagewoof</code> containing the 10 hardest classes. The instructions on how to download the datasets are provided in the <a href="https://github.com/KushajveerSingh/resize_network_cv">README</a>.</p>
+
+<p>The results of the model with ResNet-50 as the baseline model are shown below</p>
+<table style="text-align:center">
+    <tr>
+        <th style="text-align:center"> Dataset </th>
+        <th style="text-align:center"> Model </th>
+        <th style="text-align:center"> Acc </th>
+    </tr>
+    <tr>
+        <td rowspan="2"> Imagenette </td>
+        <td> ResNet-50 </td>
+        <td> 81.07 </td>
+    </tr>
+    <tr>
+        <td> Resizer + ResNet-50 </td>
+        <td> 82.16 </td>
+    </tr>
+    <tr>
+        <td rowspan="2"> Imagewoof </td>
+        <td> ResNet-50 </td>
+        <td> 58.13 </td>
+    </tr>
+    <tr>
+        <td> Resizer + ResNet-50 </td>
+        <td> 65.20 </td>
+    </tr>
+</table>
+
+<p>As we can see from the above table, using the proposed Resizer model does give performance improvement. But it also makes the task of model interpretation even harder. Now instead of interpreting the results from a single model, we have to consider two models which may deploying this model even harder. Also, the trained baseline models cannot be directly used for transfer learning as the distribution of the images produced by the resizer model is very different from the original images, which means we have to fine-tune the resizer model during transfer learning.</p>
+
+<p>The instructions on reporducing the experiments are provided in the <a href="https://github.com/KushajveerSingh/resize_network_cv">README</a>.</p>
+
+<hr>
+
+<p><a href="https://twitter.com/Kkushaj">twitter</a>, <a href="https://www.linkedin.com/in/kushaj/">linkedin</a>, <a href="https://github.com/KushajveerSingh">github</a></p>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
