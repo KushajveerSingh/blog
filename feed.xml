@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://kushajveersingh.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kushajveersingh.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-10-06T21:08:28-05:00</updated><id>https://kushajveersingh.github.io/blog/feed.xml</id><title type="html">Kushajveer Singh</title><subtitle>Deep Learning Researcher with interest in Computer Vision and Graph Machine Learning.</subtitle><entry><title type="html">Complete tutorial on building images using Docker</title><link href="https://kushajveersingh.github.io/blog/docker" rel="alternate" type="text/html" title="Complete tutorial on building images using Docker" /><published>2021-10-03T00:00:00-05:00</published><updated>2021-10-03T00:00:00-05:00</updated><id>https://kushajveersingh.github.io/blog/post-0017</id><content type="html" xml:base="https://kushajveersingh.github.io/blog/docker">&lt;p&gt;&lt;a href=&quot;https://docs.docker.com/&quot;&gt;Docker&lt;/a&gt; provides a way to run your programs as containers on top of a host operating system. &lt;a href=&quot;https://docs.docker.com/engine/reference/builder/&quot;&gt;Dockerfile&lt;/a&gt; provides instructions on how to build the images that are then run as containers. This post discusses all the things you need to create Dockerfile’s with an example of setting up &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;, &lt;a href=&quot;https://docs.conda.io/en/latest/miniconda.html&quot;&gt;Miniconda&lt;/a&gt; and &lt;a href=&quot;https://pytorch.org/&quot;&gt;PyTorch&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://kushajveersingh.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kushajveersingh.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-10-06T23:15:11-05:00</updated><id>https://kushajveersingh.github.io/blog/feed.xml</id><title type="html">Kushajveer Singh</title><subtitle>Deep Learning Researcher with interest in Computer Vision and Graph Machine Learning.</subtitle><entry><title type="html">Complete tutorial on building images using Docker</title><link href="https://kushajveersingh.github.io/blog/docker" rel="alternate" type="text/html" title="Complete tutorial on building images using Docker" /><published>2021-10-03T00:00:00-05:00</published><updated>2021-10-03T00:00:00-05:00</updated><id>https://kushajveersingh.github.io/blog/post-0017</id><content type="html" xml:base="https://kushajveersingh.github.io/blog/docker">&lt;p&gt;&lt;a href=&quot;https://docs.docker.com/&quot;&gt;Docker&lt;/a&gt; provides a way to run your programs as containers on top of a host operating system. &lt;a href=&quot;https://docs.docker.com/engine/reference/builder/&quot;&gt;Dockerfile&lt;/a&gt; provides instructions on how to build the images that are then run as containers. This post discusses all the things you need to create Dockerfile’s with an example of setting up &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;, &lt;a href=&quot;https://docs.conda.io/en/latest/miniconda.html&quot;&gt;Miniconda&lt;/a&gt;, and &lt;a href=&quot;https://pytorch.org/&quot;&gt;PyTorch&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;building-the-image&quot;&gt;Building the image&lt;/h2&gt;
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker build&lt;/code&gt; command is used to build an image from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; and a &lt;em&gt;context&lt;/em&gt; (a PATH or URL). &lt;em&gt;context&lt;/em&gt; refers to all the files specified in the build command. The steps to build the image are as follows&lt;/p&gt;
@@ -31,7 +31,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Note:-&lt;/strong&gt; The above command will fail as there is not Dockerfile in the specified location.&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Note:-&lt;/strong&gt; The above command will fail as there is no Dockerfile in the specified location.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
@@ -62,7 +62,7 @@ REPOSITORY                TAG          IMAGE ID       CREATED         SIZE
 &amp;lt;none&amp;gt;                    &amp;lt;none&amp;gt;       e1eaeb418bbb   5 seconds ago   63.1MB
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;You can specify a repository and tag to every docker image which can then be used to easily access the image using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-t&lt;/code&gt; flag. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;REPOSITORY&lt;/code&gt; can be though of like the name of your Github repository and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TAG&lt;/code&gt; is used to specify the version of your image. For example, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ubuntu:18.04&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ubuntu:latest&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can specify a repository and tag to every docker image which can then be used to easily access the image using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-t&lt;/code&gt; flag. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;REPOSITORY&lt;/code&gt; can be thought of like the name of your Github repository and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TAG&lt;/code&gt; is used to specify the version of your image. For example, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ubuntu:18.04&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ubuntu:latest&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; docker build -t test:0.1 .
 
@@ -76,7 +76,7 @@ test                      0.1          e1eaeb418bbb   6 minutes ago   63.1MB
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;docker-image-layers&quot;&gt;Docker image layers&lt;/h3&gt;
-&lt;p&gt;The Docker daemon runs the instructions from top-to-bottom one-by-one. And the result of most of the instructions (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ADD&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COPY&lt;/code&gt;) is committed to a new image. Due to this reason you need to be careful when using these instructions as every single usage of them would result in the creation of a new image which would increase the size of the final image.&lt;/p&gt;
+&lt;p&gt;The Docker daemon runs the instructions from top-to-bottom one-by-one. And the result of most of the instructions (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ADD&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COPY&lt;/code&gt;) is committed to a new image. Due to this reason, you need to be careful when using these instructions as every single usage of them would result in the creation of a new image which would increase the size of the final image.&lt;/p&gt;
 
 &lt;p&gt;Why Docker does this? Consider the following Dockerfile&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM ubuntu:18.04
@@ -136,7 +136,7 @@ RUN COMMAND_1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;escape-character&quot;&gt;Escape character&lt;/h2&gt;
-&lt;p&gt;This is an example of parser directive. Parser directives are specified in the first line of Dockerfile and do not add layers to the build. You can specify the character to break up lines in Dockerfile using this.&lt;/p&gt;
+&lt;p&gt;This is an example of a parser directive. Parser directives are specified in the first line of Dockerfile and do not add layers to the build. You can specify the character to break up lines in Dockerfile using this.&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# escape=\
 FROM ubuntu:18.04
 
@@ -170,15 +170,15 @@ RUN INSTRUCTION_1 `
 &amp;gt; docker run -it --name temp test:0.1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;You will see that it is a bare bones install. It does not have any user or sudo. It provides us with the linux kernel and we have to build everything on top of that.&lt;/p&gt;
+&lt;p&gt;You will see that it is a bare-bones install. It does not have any user or sudo. It provides us with the Linux kernel and we have to build everything on top of that.&lt;/p&gt;
 
-&lt;p&gt;In the next couple of sections we look at all the instructions that we can in the Dockerfile and then we will use all these instructions to build a Ubuntu/Miniconda/PyTorch image.&lt;/p&gt;
+&lt;p&gt;In the next couple of sections, we look at all the instructions that we can in the Dockerfile, and then we will use all these instructions to build a Ubuntu/Miniconda/PyTorch image.&lt;/p&gt;
 
 &lt;h2 id=&quot;arg-and-env&quot;&gt;ARG and ENV&lt;/h2&gt;
 &lt;p&gt;Environment variables are often used to declare variables in the scripts or set up some variables that will persist when the container is run. Docker allows us two ways to set variables: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENV&lt;/code&gt;.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; instruction defines a variables that users will pass at build-time with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker build&lt;/code&gt; command using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--build-arg &amp;lt;name&amp;gt;=&amp;lt;value&amp;gt;&lt;/code&gt; flag. These will only be used in the Dockerfile&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; instruction defines a variables that users will pass at build-time with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker build&lt;/code&gt; command using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--build-arg &amp;lt;name&amp;gt;=&amp;lt;value&amp;gt;&lt;/code&gt; flag. These will only be used in the Dockerfile.&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENV&lt;/code&gt; instruction sets the environment variable in the Dockerfile and the environment variable will persist when a container is run from the resulting image.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -192,7 +192,7 @@ FROM ubuntu:$UBUNTU_VERSION
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; DOCKER_BUILDKIT=1 docker build -t test --build-arg UBUNTU_VERSION=18.04 .
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;We can also specify default value to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; as&lt;/p&gt;
+&lt;p&gt;We can also specify a default value to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; as&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ARG UBUNTU_VERSION=18.04
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -200,13 +200,13 @@ FROM ubuntu:$UBUNTU_VERSION
 
 &lt;p&gt;Using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; for variables that are only needed in the Dockerfile and are not needed when the container is running. In this case, the version of ubuntu is not needed when the container is running.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; that is used before &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt; can only be used in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; used after &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt; can be used anywhere in the Dockerfile (there is an exception to this in case of multi-stage builds i.e. when we use multiple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt; instructions in the same Dockerfile)&lt;/li&gt;
+  &lt;li&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; for variables that are only needed in the Dockerfile and are not needed when the container is running. In this case, the version of Ubuntu is not needed when the container is running.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; that is used before &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt; can only be used in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; used after &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt; can be used anywhere in the Dockerfile (there is an exception to this in the case of multi-stage builds i.e. when we use multiple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt; instructions in the same Dockerfile)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;env&quot;&gt;ENV&lt;/h3&gt;
-&lt;p&gt;This is same as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; except the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENV&lt;/code&gt; will persist when a container is run from the resulting image. An example of this includes&lt;/p&gt;
+&lt;p&gt;This is the same as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; except the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENV&lt;/code&gt; will persist when a container is run from the resulting image. An example of this includes&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ENV PYTORCH_VERSION 1.9.0
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 
@@ -218,7 +218,7 @@ ENV PATH  /home/default/miniconda3/bin:$PATH
 &lt;p&gt;These two instructions can be considered as documentation instructions. Having these instructions in Dockerfile has no effect on the image, these are just used to provide metadata information.&lt;/p&gt;
 
 &lt;h3 id=&quot;label&quot;&gt;LABEL&lt;/h3&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LABEL&lt;/code&gt; can be used to specify information like author of the Dockerfile and other relevant information&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LABEL&lt;/code&gt; can be used to specify information like the author of the Dockerfile and other relevant information&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LABEL author = &quot;Kushajveer Singh&quot;
 LABEL email = &quot;kushajreal@gmail.com&quot;
 LABEL website = &quot;kushajveersingh.github.io&quot;
@@ -260,7 +260,7 @@ COPY [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] &amp;lt;src&amp;gt;...
 COPY --chown=default:sudo script.sh /home/default
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;dest&amp;gt;&lt;/code&gt; path is either absolute path or a path relative to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WORKDIR&lt;/code&gt; which we will discuss later.&lt;/p&gt;
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;dest&amp;gt;&lt;/code&gt; path is either an absolute path or a path relative to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WORKDIR&lt;/code&gt; which we will discuss later.&lt;/p&gt;
 
 &lt;p&gt;Now let’s look at the differences between each instruction.&lt;/p&gt;
 
@@ -300,7 +300,7 @@ WORKDIR ../home
 
 &lt;p&gt;and it will run the command in a shell (by default &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/bin/sh -c&lt;/code&gt; on Linux). Every &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RUN&lt;/code&gt; instruction will create a new layer and due to this reason you should try to group multiple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RUN&lt;/code&gt; instructions into a single logical group.&lt;/p&gt;
 
-&lt;p&gt;To group multiple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RUN&lt;/code&gt; instruction you can either use semicolon or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To group multiple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RUN&lt;/code&gt; instructions you can either use a semicolon or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;RUN &amp;lt;command_1&amp;gt; ; \
     &amp;lt;command_2&amp;gt; ; \
     &amp;lt;command_3&amp;gt;
@@ -317,7 +317,7 @@ RUN &amp;lt;command_1&amp;gt; &amp;amp;&amp;amp; \
 &lt;h2 id=&quot;summary-of-all-commands&quot;&gt;Summary of all commands&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FROM&lt;/code&gt; - Every Dockerfile starts with this instruction and it provides the base image on which we build our image&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; - We can specify command line arguments using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--build-arg&lt;/code&gt; to be used in the Dockerfile only&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARG&lt;/code&gt; - We can specify command-line arguments using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--build-arg&lt;/code&gt; to be used in the Dockerfile only&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENV&lt;/code&gt; - Environment variables that will be used in Dockerfile and will persist when the container is run&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LABEL&lt;/code&gt; - To specify metadata like author name, …&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EXPOSE&lt;/code&gt; - To document the ports that are intended to be used when the container is run&lt;/li&gt;
@@ -330,7 +330,7 @@ RUN &amp;lt;command_1&amp;gt; &amp;amp;&amp;amp; \
 
 &lt;h2 id=&quot;ubuntu-pytorch-dockerfile&quot;&gt;Ubuntu, PyTorch Dockerfile&lt;/h2&gt;
 &lt;h3 id=&quot;base-image&quot;&gt;Base image&lt;/h3&gt;
-&lt;p&gt;We will use &lt;a href=&quot;https://hub.docker.com/_/ubuntu&quot;&gt;Ubuntu&lt;/a&gt; as the base image. As discussed before it provides us with a bare bones Linux distribution and we have to setup everything that we need.&lt;/p&gt;
+&lt;p&gt;We will use &lt;a href=&quot;https://hub.docker.com/_/ubuntu&quot;&gt;Ubuntu&lt;/a&gt; as the base image. As discussed before it provides us with a bare-bones Linux distribution and we have to setup everything that we need.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ARG UBUNTU_VERSION=18.04
 FROM ubuntu:$UBUNTU_VERSION
@@ -348,7 +348,7 @@ FROM ubuntu:$UBUNTU_VERSION
     apt install -y --no-install-recommends
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--fix-missing&lt;/code&gt; is optional. It is used in case we have broken dependencies and using this flag can help us resolve the issue in most of the cases. As we are starting from a clean install, this flag does not do much.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--fix-missing&lt;/code&gt; is optional. It is used in case we have broken dependencies and using this flag can help us resolve the issue in most cases. As we are starting from a clean install, this flag does not do much.&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt install -y --no-install-recommends&lt;/code&gt;. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-y&lt;/code&gt; flag helps us to bypass the yes/no prompt. Each package in Ubuntu comes with three dependencies&lt;/p&gt;
 &lt;ul&gt;
@@ -357,7 +357,7 @@ FROM ubuntu:$UBUNTU_VERSION
   &lt;li&gt;suggested packages&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;By default, Ubuntu will install main and recommended packages (to install suggested packages you need to provide &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--install-suggests&lt;/code&gt; flag to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt install&lt;/code&gt;). Our main goal is to keep the size of the docker image to a minimum and due to this reason we do not want to waste space installing recommended packages. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--no-install-recommends&lt;/code&gt; flag does this and as a result we only install the main dependencies.&lt;/p&gt;
+&lt;p&gt;By default, Ubuntu will install main and recommended packages (to install suggested packages you need to provide &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--install-suggests&lt;/code&gt; flag to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt install&lt;/code&gt;). Our main goal is to keep the size of the docker image to a minimum and due to this reason, we do not want to waste space installing recommended packages. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--no-install-recommends&lt;/code&gt; flag does this and as a result, we only install the main dependencies.&lt;/p&gt;
 
 &lt;p&gt;Now you can install any other package that you may require like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ca-certificates&lt;/code&gt; (required by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt;), &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git&lt;/code&gt;.&lt;/p&gt;
 
@@ -366,7 +366,7 @@ FROM ubuntu:$UBUNTU_VERSION
     rm -rf /var/lib/apt/lists/*
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;When we install packages, Ubuntu maintains a cache of the packages in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/cache&lt;/code&gt;. The reason for doing this is if something goes wrong when upgrading something and we do not have access to a network connection then we can revert to the old version in the cache to downgrade the package. But we do not need this cache for the Docker image, so we can remove it using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt clean&lt;/code&gt;. Specifically, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt clean&lt;/code&gt; with remove the files in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/cache/apt/archives/&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/cache/apt/archives/partial&lt;/code&gt;, leaving out a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lock&lt;/code&gt; file and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;partial&lt;/code&gt; subdirectory.&lt;/p&gt;
+&lt;p&gt;When we install packages, Ubuntu maintains a cache of the packages in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/cache&lt;/code&gt;. The reason for doing this is if something goes wrong when upgrading something and we do not have access to a network connection then we can revert to the old version in the cache to downgrade the package. But we do not need this cache for the Docker image, so we can remove it using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt clean&lt;/code&gt;. Specifically, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt clean&lt;/code&gt; will remove the files in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/cache/apt/archives/&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/cache/apt/archives/partial&lt;/code&gt;, leaving out a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lock&lt;/code&gt; file and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;partial&lt;/code&gt; subdirectory.&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/lib/apt&lt;/code&gt; stores data related to the apt package manager. This data is automatically downloaded each time we run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt update&lt;/code&gt;, so there is no point in storing this data and we can safely remove this to reduce the image size using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rm -rf /var/lib/apt/lists/*&lt;/code&gt;.&lt;/p&gt;
 
@@ -375,7 +375,7 @@ FROM ubuntu:$UBUNTU_VERSION
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;setup-sudo-and-default-user&quot;&gt;Setup sudo and default user&lt;/h3&gt;
-&lt;p&gt;The next step is setting up root account and a default user. The contents of the Dockerfile to do so are shown next&lt;/p&gt;
+&lt;p&gt;The next step is setting up a root account and a default user. The contents of the Dockerfile to do so are shown next&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ARG USERNAME=default
 ARG PASSWORD=default
 RUN useradd -rm -d /home/default -s /bin/bash -g root -G sudo -u 1000 $USERNAME  &amp;amp;&amp;amp; \
@@ -387,11 +387,11 @@ USER $USERNAME
 WORKDIR /home/$USERNAME
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Let’s see what each flag did in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;useradd&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Let’s see what each flag does in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;useradd&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-r&lt;/code&gt; is used to create a system account i.e. an account created by operating system during installation or the root account&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-r&lt;/code&gt; is used to create a system account i.e. an account created by the operating system during installation or the root account&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-m&lt;/code&gt; is used to create a home directory if it does not exist&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d /home/default&lt;/code&gt; is used to provide the location of home directory&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d /home/default&lt;/code&gt; is used to provide the location of the home directory&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-s /bin/bash&lt;/code&gt; is used to specify the name of user’s login shell. You can skip this if you want.&lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-g root -G sudo&lt;/code&gt; This is interesting. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-g&lt;/code&gt; flag is used to specify the group a user belongs to and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-G&lt;/code&gt; is used to provide a list of additional groups that a user belongs to.&lt;/p&gt;
@@ -404,7 +404,7 @@ WORKDIR /home/$USERNAME
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$USERNAME&lt;/code&gt; is the name of the user that will be created&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;By default in Ubuntu the root account has no password set. To set a password we can use the following command&lt;/p&gt;
+&lt;p&gt;By default in Ubuntu, the root account has no password set. To set a password we can use the following command&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;echo &quot;${USERNAME}:${PASSWORD}&quot; | chpasswd
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -414,7 +414,7 @@ WORKDIR /home/$USERNAME
   &lt;li&gt;User &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default&lt;/code&gt; can get root privileges using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo su&lt;/code&gt; and using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default&lt;/code&gt; as the password&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;There is a bug with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo&lt;/code&gt; that is discussed &lt;a href=&quot;https://github.com/sudo-project/sudo/issues/42&quot;&gt;here&lt;/a&gt; in which you will get the following warning message every time you try to execute a sudo command&lt;/p&gt;
+&lt;p&gt;There is a bug with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo&lt;/code&gt; that is discussed &lt;a href=&quot;https://github.com/sudo-project/sudo/issues/42&quot;&gt;here&lt;/a&gt; in which you will get the following warning message every time you try to execute a command with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; sudo hello &amp;gt; /dev/null
 sudo: setrlimit(RLIMIT_CORE): Operation not permitted
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -456,7 +456,7 @@ USER $USERNAME
 WORKDIR /home/$USERNAME
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;We can group all the commands to update ubuntu, setup sudo and default user in a single &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RUN&lt;/code&gt; command to save space.&lt;/p&gt;
+&lt;p&gt;We can group all the commands to update Ubuntu, setup &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo&lt;/code&gt; and default user in a single &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RUN&lt;/code&gt; command to save space.&lt;/p&gt;
 
 &lt;h3 id=&quot;accessing-nvidia-gpu&quot;&gt;Accessing Nvidia GPU&lt;/h3&gt;
 &lt;p&gt;To access host GPU in a Docker container you can specify the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--gpus&lt;/code&gt; flag when running the container&lt;/p&gt;
@@ -468,7 +468,7 @@ WORKDIR /home/$USERNAME
 &lt;p&gt;This only requires you to have the Nvidia driver setup on the host machine and then you can use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvidia-smi&lt;/code&gt; in the Docker container to check if the GPUs are being detected.&lt;/p&gt;
 
 &lt;h3 id=&quot;installing-miniconda&quot;&gt;Installing Miniconda&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.conda.io/en/latest/miniconda.html&quot;&gt;Miniconda&lt;/a&gt; can be used for an easy python setup. Just grab the link of the latest &lt;a href=&quot;https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh&quot;&gt;Linux installer&lt;/a&gt; from the documentation page (in this case it is Python 3.9) and specify the location where you want to install Miniconda&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.conda.io/en/latest/miniconda.html&quot;&gt;Miniconda&lt;/a&gt; can be used for an easy python setup. Just grab the link of the latest &lt;a href=&quot;https://docs.conda.io/en/latest/miniconda.html#linux-installers&quot;&gt;Linux installer&lt;/a&gt; from the documentation page (in this case it is Python 3.9) and specify the location where you want to install Miniconda&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ARG MINICONDA_DOWNLOAD_LINK=https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
 ARG MINICONDA_INSTALL_PATH=/home/$USERNAME
 
@@ -504,7 +504,7 @@ RUN curl $MINICONDA_DOWNLOAD_LINK --create-dirs -o Miniconda.sh &amp;amp;&amp;am
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;remove-condapip-cache&quot;&gt;Remove conda/pip cache&lt;/h3&gt;
-&lt;p&gt;Conda stores index cache, lock files, tarballs and the cache of unused packages. These can be safely removed to save space using the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda clean -afy&lt;/code&gt;. So add this as the last conda command in Dockerfile.&lt;/p&gt;
+&lt;p&gt;Conda stores index cache, lock files, tarballs, and the cache of unused packages. These can be safely removed to save space using the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda clean -afy&lt;/code&gt;. So add this as the last conda command in Dockerfile.&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip&lt;/code&gt; stores cache in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.cache/pip&lt;/code&gt; and this folder can be safely removed using the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rm -rf ~/.cache/pip&lt;/code&gt;.&lt;/p&gt;
 
@@ -518,7 +518,7 @@ RUN curl $MINICONDA_DOWNLOAD_LINK --create-dirs -o Miniconda.sh &amp;amp;&amp;am
 default@a7f862b6bf73:~$ 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;We can try &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvidia-smi&lt;/code&gt; to check if the GPU is being detected&lt;/p&gt;
+&lt;p&gt;We can try &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvidia-smi&lt;/code&gt; to check if the GPUs are being detected&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;default@a7f862b6bf73:~$ nvidia-smi
 Wed Oct  6 05:54:35 2021       
 +-----------------------------------------------------------------------------+
@@ -645,7 +645,7 @@ temp_1
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker stop&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker kill&lt;/code&gt; can be used to stop multiple running containers. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker stop&lt;/code&gt; can be considered as a graceful stop. The difference between the two commands is&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker stop&lt;/code&gt;. Stop a running container. The main process will receive &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SIGTERM&lt;/code&gt; and after a grace period &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SIGKILL&lt;/code&gt; will be received.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker kill&lt;/code&gt;. Kill a running container. The main process will receive &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SIGKILL&lt;/code&gt; or any signal specified by the user.
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker kill&lt;/code&gt;. Kill a running container. The main process will receive &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SIGKILL&lt;/code&gt; or any signal specified by the user using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--signal&lt;/code&gt;.
     &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; docker stop temp_1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
@@ -664,7 +664,7 @@ temp_1
 
 &lt;p&gt;The reference for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker rm&lt;/code&gt; can be accessed &lt;a href=&quot;https://docs.docker.com/engine/reference/commandline/rm/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&quot;creating-a-container&quot;&gt;Creating a container&lt;/h3&gt;
+&lt;h3 id=&quot;running-a-container&quot;&gt;Running a container&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker run&lt;/code&gt; command is used to create a container from an image. There are many useful flags when using this command&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; docker run -it --gpus all --name temp -p 8888:8888 test:0.1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -677,7 +677,7 @@ temp_1
 
 &lt;p&gt;The reference for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker run&lt;/code&gt; can be accessed &lt;a href=&quot;https://docs.docker.com/engine/reference/run/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&quot;connect-terminal-to-container&quot;&gt;Connect terminal to container&lt;/h3&gt;
+&lt;h3 id=&quot;connect-new-terminal-to-container&quot;&gt;Connect new terminal to container&lt;/h3&gt;
 &lt;p&gt;If you want to connect a new terminal to a running container, then you can use the following command&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; docker exec -it {container_name} bash
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -685,7 +685,7 @@ temp_1
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker attach {container_name}&lt;/code&gt; cannot create a new terminal session. It will connect to the old session.&lt;/p&gt;
 
 &lt;h3 id=&quot;delete-all-containerimages&quot;&gt;Delete all container/images&lt;/h3&gt;
-&lt;p&gt;To delete all the docker container and images on your system you can use the following two commands (in the order specified)&lt;/p&gt;
+&lt;p&gt;To delete all the docker containers and images on your system you can use the following two commands (in the order specified)&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Remove all containers
 &amp;gt; docker rm -vf $(docker ps -a -q)
 
@@ -718,12 +718,12 @@ temp_1
 &lt;h2 id=&quot;links&quot;&gt;Links&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/KushajveerSingh/Dockerfile&quot;&gt;KushajveerSingh/Dockerfile&lt;/a&gt; - You can access the Dockerfile’s from this repository to build your own images. Documentation is provided in the &lt;a href=&quot;https://github.com/KushajveerSingh/Dockerfile/blob/main/README.md&quot;&gt;README&lt;/a&gt; for all the available Dockerfile’s.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/u/kushaj&quot;&gt;Dockerhub kushaj&lt;/a&gt; - All the images can be found at this link. If you want to use an image but the contents of the image, then you can access the Dockerfile used to create the image from the above &lt;a href=&quot;https://github.com/KushajveerSingh/Dockerfile&quot;&gt;Github&lt;/a&gt; link and build the image.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/u/kushaj&quot;&gt;Dockerhub kushaj&lt;/a&gt; - All the images can be found at this link. If you want to use an image but the contents of the image are old, then you can access the Dockerfile used to create the image from the above &lt;a href=&quot;https://github.com/KushajveerSingh/Dockerfile&quot;&gt;Github&lt;/a&gt; link and build the image. Instructions to do so are provided in the &lt;a href=&quot;https://github.com/KushajveerSingh/Dockerfile/blob/main/README.md&quot;&gt;READEME&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/Kkushaj&quot;&gt;twitter&lt;/a&gt;, &lt;a href=&quot;https://www.linkedin.com/in/kushaj/&quot;&gt;linkedin&lt;/a&gt;, &lt;a href=&quot;https://github.com/KushajveerSingh&quot;&gt;github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="general" /><summary type="html">Docker provides a way to run your programs as containers on top of a host operating system. Dockerfile provides instructions on how to build the images that are then run as containers. This post discusses all the things you need to create Dockerfile’s with an example of setting up Ubuntu, Miniconda and PyTorch.</summary></entry><entry><title type="html">Data augmentation with learnable Resizer network for Image Classification</title><link href="https://kushajveersingh.github.io/blog/data-augmentation-with-resizer-network-for-image-classification" rel="alternate" type="text/html" title="Data augmentation with learnable Resizer network for Image Classification" /><published>2021-09-17T00:00:00-05:00</published><updated>2021-09-17T00:00:00-05:00</updated><id>https://kushajveersingh.github.io/blog/post-0016</id><content type="html" xml:base="https://kushajveersingh.github.io/blog/data-augmentation-with-resizer-network-for-image-classification">&lt;p&gt;&lt;a href=&quot;https://github.com/KushajveerSingh/resize_network_cv&quot;&gt;github&lt;/a&gt;, &lt;a href=&quot;https://arxiv.org/abs/2103.09950&quot;&gt;paper&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/Kkushaj&quot;&gt;twitter&lt;/a&gt;, &lt;a href=&quot;https://www.linkedin.com/in/kushaj/&quot;&gt;linkedin&lt;/a&gt;, &lt;a href=&quot;https://github.com/KushajveerSingh&quot;&gt;github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="general" /><summary type="html">Docker provides a way to run your programs as containers on top of a host operating system. Dockerfile provides instructions on how to build the images that are then run as containers. This post discusses all the things you need to create Dockerfile’s with an example of setting up Ubuntu, Miniconda, and PyTorch.</summary></entry><entry><title type="html">Data augmentation with learnable Resizer network for Image Classification</title><link href="https://kushajveersingh.github.io/blog/data-augmentation-with-resizer-network-for-image-classification" rel="alternate" type="text/html" title="Data augmentation with learnable Resizer network for Image Classification" /><published>2021-09-17T00:00:00-05:00</published><updated>2021-09-17T00:00:00-05:00</updated><id>https://kushajveersingh.github.io/blog/post-0016</id><content type="html" xml:base="https://kushajveersingh.github.io/blog/data-augmentation-with-resizer-network-for-image-classification">&lt;p&gt;&lt;a href=&quot;https://github.com/KushajveerSingh/resize_network_cv&quot;&gt;github&lt;/a&gt;, &lt;a href=&quot;https://arxiv.org/abs/2103.09950&quot;&gt;paper&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;In a recent paper, &lt;a href=&quot;https://arxiv.org/abs/2103.09950&quot;&gt;Learning to Resize Images for Computer Vision Tasks&lt;/a&gt; by Google AI, the authors proposed a new way to resize images before feeding the image to an image classifier. Normally, we would resize the images to 224x224 spatial resolution using some interpolation method (like bilinear, bicubic) but what if we replaced the fixed resizer with a learnable resizer? This is the question that the paper aims to answer.&lt;/p&gt;
 

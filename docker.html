@@ -8,15 +8,15 @@
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="Complete tutorial on building images using Docker" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Everything you need to know to write Dockerfile and run containers using Docker. An example of setting up Ubuntu, default user, Miniconda, PyTorch is used to show all the necessary Docker commands." />
-<meta property="og:description" content="Everything you need to know to write Dockerfile and run containers using Docker. An example of setting up Ubuntu, default user, Miniconda, PyTorch is used to show all the necessary Docker commands." />
+<meta name="description" content="Everything you need to know to write Dockerfile and run containers using Docker with an example of setting up Ubuntu, default user, Miniconda, PyTorch." />
+<meta property="og:description" content="Everything you need to know to write Dockerfile and run containers using Docker with an example of setting up Ubuntu, default user, Miniconda, PyTorch." />
 <link rel="canonical" href="https://kushajveersingh.github.io/blog/docker" />
 <meta property="og:url" content="https://kushajveersingh.github.io/blog/docker" />
 <meta property="og:site_name" content="Kushajveer Singh" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-10-03T00:00:00-05:00" />
 <script type="application/ld+json">
-{"headline":"Complete tutorial on building images using Docker","url":"https://kushajveersingh.github.io/blog/docker","dateModified":"2021-10-03T00:00:00-05:00","datePublished":"2021-10-03T00:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/docker"},"description":"Everything you need to know to write Dockerfile and run containers using Docker. An example of setting up Ubuntu, default user, Miniconda, PyTorch is used to show all the necessary Docker commands.","@context":"https://schema.org"}</script>
+{"headline":"Complete tutorial on building images using Docker","url":"https://kushajveersingh.github.io/blog/docker","dateModified":"2021-10-03T00:00:00-05:00","datePublished":"2021-10-03T00:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://kushajveersingh.github.io/blog/docker"},"description":"Everything you need to know to write Dockerfile and run containers using Docker with an example of setting up Ubuntu, default user, Miniconda, PyTorch.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kushajveersingh.github.io/blog/feed.xml" title="Kushajveer Singh" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -102,7 +102,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Complete tutorial on building images using Docker</h1><p class="page-description">Everything you need to know to write Dockerfile and run containers using Docker. An example of setting up Ubuntu, default user, Miniconda, PyTorch is used to show all the necessary Docker commands.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-10-03T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Complete tutorial on building images using Docker</h1><p class="page-description">Everything you need to know to write Dockerfile and run containers using Docker with an example of setting up Ubuntu, default user, Miniconda, PyTorch.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-10-03T00:00:00-05:00" itemprop="datePublished">
         Oct 3, 2021
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -182,14 +182,14 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#attaching-to-a-container">Attaching to a container</a></li>
 <li class="toc-entry toc-h3"><a href="#stopping-a-container">Stopping a container</a></li>
 <li class="toc-entry toc-h3"><a href="#deleting-containers">Deleting containers</a></li>
-<li class="toc-entry toc-h3"><a href="#creating-a-container">Creating a container</a></li>
-<li class="toc-entry toc-h3"><a href="#connect-terminal-to-container">Connect terminal to container</a></li>
+<li class="toc-entry toc-h3"><a href="#running-a-container">Running a container</a></li>
+<li class="toc-entry toc-h3"><a href="#connect-new-terminal-to-container">Connect new terminal to container</a></li>
 <li class="toc-entry toc-h3"><a href="#delete-all-containerimages">Delete all container/images</a></li>
 <li class="toc-entry toc-h3"><a href="#push-image-to-dockerhub">Push image to Dockerhub</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#links">Links</a></li>
-</ul><p><a href="https://docs.docker.com/">Docker</a> provides a way to run your programs as containers on top of a host operating system. <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> provides instructions on how to build the images that are then run as containers. This post discusses all the things you need to create Dockerfile’s with an example of setting up <a href="https://ubuntu.com/">Ubuntu</a>, <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> and <a href="https://pytorch.org/">PyTorch</a>.</p>
+</ul><p><a href="https://docs.docker.com/">Docker</a> provides a way to run your programs as containers on top of a host operating system. <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> provides instructions on how to build the images that are then run as containers. This post discusses all the things you need to create Dockerfile’s with an example of setting up <a href="https://ubuntu.com/">Ubuntu</a>, <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>, and <a href="https://pytorch.org/">PyTorch</a>.</p>
 
 <h2 id="building-the-image">
 <a class="anchor" href="#building-the-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building the image</h2>
@@ -225,7 +225,7 @@ window.onload = wrap_img;
 </code></pre></div></div>
 
 <blockquote>
-  <p><strong>Note:-</strong> The above command will fail as there is not Dockerfile in the specified location.</p>
+  <p><strong>Note:-</strong> The above command will fail as there is no Dockerfile in the specified location.</p>
 </blockquote>
 
 <blockquote>
@@ -258,7 +258,7 @@ REPOSITORY                TAG          IMAGE ID       CREATED         SIZE
 &lt;none&gt;                    &lt;none&gt;       e1eaeb418bbb   5 seconds ago   63.1MB
 </code></pre></div></div>
 
-<p>You can specify a repository and tag to every docker image which can then be used to easily access the image using <code class="language-plaintext highlighter-rouge">-t</code> flag. <code class="language-plaintext highlighter-rouge">REPOSITORY</code> can be though of like the name of your Github repository and <code class="language-plaintext highlighter-rouge">TAG</code> is used to specify the version of your image. For example, <code class="language-plaintext highlighter-rouge">ubuntu:18.04</code>, <code class="language-plaintext highlighter-rouge">ubuntu:latest</code>.</p>
+<p>You can specify a repository and tag to every docker image which can then be used to easily access the image using <code class="language-plaintext highlighter-rouge">-t</code> flag. <code class="language-plaintext highlighter-rouge">REPOSITORY</code> can be thought of like the name of your Github repository and <code class="language-plaintext highlighter-rouge">TAG</code> is used to specify the version of your image. For example, <code class="language-plaintext highlighter-rouge">ubuntu:18.04</code>, <code class="language-plaintext highlighter-rouge">ubuntu:latest</code>.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; docker build -t test:0.1 .
 
@@ -273,7 +273,7 @@ test                      0.1          e1eaeb418bbb   6 minutes ago   63.1MB
 
 <h3 id="docker-image-layers">
 <a class="anchor" href="#docker-image-layers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Docker image layers</h3>
-<p>The Docker daemon runs the instructions from top-to-bottom one-by-one. And the result of most of the instructions (<code class="language-plaintext highlighter-rouge">FROM</code>, <code class="language-plaintext highlighter-rouge">ADD</code>, <code class="language-plaintext highlighter-rouge">COPY</code>) is committed to a new image. Due to this reason you need to be careful when using these instructions as every single usage of them would result in the creation of a new image which would increase the size of the final image.</p>
+<p>The Docker daemon runs the instructions from top-to-bottom one-by-one. And the result of most of the instructions (<code class="language-plaintext highlighter-rouge">FROM</code>, <code class="language-plaintext highlighter-rouge">ADD</code>, <code class="language-plaintext highlighter-rouge">COPY</code>) is committed to a new image. Due to this reason, you need to be careful when using these instructions as every single usage of them would result in the creation of a new image which would increase the size of the final image.</p>
 
 <p>Why Docker does this? Consider the following Dockerfile</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM ubuntu:18.04
@@ -339,7 +339,7 @@ RUN COMMAND_1
 
 <h2 id="escape-character">
 <a class="anchor" href="#escape-character" aria-hidden="true"><span class="octicon octicon-link"></span></a>Escape character</h2>
-<p>This is an example of parser directive. Parser directives are specified in the first line of Dockerfile and do not add layers to the build. You can specify the character to break up lines in Dockerfile using this.</p>
+<p>This is an example of a parser directive. Parser directives are specified in the first line of Dockerfile and do not add layers to the build. You can specify the character to break up lines in Dockerfile using this.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># escape=\
 FROM ubuntu:18.04
 
@@ -374,9 +374,9 @@ RUN INSTRUCTION_1 `
 &gt; docker run -it --name temp test:0.1
 </code></pre></div></div>
 
-<p>You will see that it is a bare bones install. It does not have any user or sudo. It provides us with the linux kernel and we have to build everything on top of that.</p>
+<p>You will see that it is a bare-bones install. It does not have any user or sudo. It provides us with the Linux kernel and we have to build everything on top of that.</p>
 
-<p>In the next couple of sections we look at all the instructions that we can in the Dockerfile and then we will use all these instructions to build a Ubuntu/Miniconda/PyTorch image.</p>
+<p>In the next couple of sections, we look at all the instructions that we can in the Dockerfile, and then we will use all these instructions to build a Ubuntu/Miniconda/PyTorch image.</p>
 
 <h2 id="arg-and-env">
 <a class="anchor" href="#arg-and-env" aria-hidden="true"><span class="octicon octicon-link"></span></a>ARG and ENV</h2>
@@ -384,7 +384,7 @@ RUN INSTRUCTION_1 `
 
 <ul>
   <li>
-<code class="language-plaintext highlighter-rouge">ARG</code> instruction defines a variables that users will pass at build-time with the <code class="language-plaintext highlighter-rouge">docker build</code> command using <code class="language-plaintext highlighter-rouge">--build-arg &lt;name&gt;=&lt;value&gt;</code> flag. These will only be used in the Dockerfile</li>
+<code class="language-plaintext highlighter-rouge">ARG</code> instruction defines a variables that users will pass at build-time with the <code class="language-plaintext highlighter-rouge">docker build</code> command using <code class="language-plaintext highlighter-rouge">--build-arg &lt;name&gt;=&lt;value&gt;</code> flag. These will only be used in the Dockerfile.</li>
   <li>
 <code class="language-plaintext highlighter-rouge">ENV</code> instruction sets the environment variable in the Dockerfile and the environment variable will persist when a container is run from the resulting image.</li>
 </ul>
@@ -400,7 +400,7 @@ FROM ubuntu:$UBUNTU_VERSION
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; DOCKER_BUILDKIT=1 docker build -t test --build-arg UBUNTU_VERSION=18.04 .
 </code></pre></div></div>
 
-<p>We can also specify default value to <code class="language-plaintext highlighter-rouge">ARG</code> as</p>
+<p>We can also specify a default value to <code class="language-plaintext highlighter-rouge">ARG</code> as</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ARG UBUNTU_VERSION=18.04
 </code></pre></div></div>
 
@@ -408,16 +408,17 @@ FROM ubuntu:$UBUNTU_VERSION
 
 <p>Using <code class="language-plaintext highlighter-rouge">ARG</code></p>
 <ul>
-  <li>Use <code class="language-plaintext highlighter-rouge">ARG</code> for variables that are only needed in the Dockerfile and are not needed when the container is running. In this case, the version of ubuntu is not needed when the container is running.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">ARG</code> for variables that are only needed in the Dockerfile and are not needed when the container is running. In this case, the version of Ubuntu is not needed when the container is running.</li>
   <li>
-<code class="language-plaintext highlighter-rouge">ARG</code> that is used before <code class="language-plaintext highlighter-rouge">FROM</code> can only be used in <code class="language-plaintext highlighter-rouge">FROM</code>.</li>
+<code class="language-plaintext highlighter-rouge">ARG</code> that is used before <code class="language-plaintext highlighter-rouge">FROM</code> can only be used in <code class="language-plaintext highlighter-rouge">FROM</code>
+</li>
   <li>
-<code class="language-plaintext highlighter-rouge">ARG</code> used after <code class="language-plaintext highlighter-rouge">FROM</code> can be used anywhere in the Dockerfile (there is an exception to this in case of multi-stage builds i.e. when we use multiple <code class="language-plaintext highlighter-rouge">FROM</code> instructions in the same Dockerfile)</li>
+<code class="language-plaintext highlighter-rouge">ARG</code> used after <code class="language-plaintext highlighter-rouge">FROM</code> can be used anywhere in the Dockerfile (there is an exception to this in the case of multi-stage builds i.e. when we use multiple <code class="language-plaintext highlighter-rouge">FROM</code> instructions in the same Dockerfile)</li>
 </ul>
 
 <h3 id="env">
 <a class="anchor" href="#env" aria-hidden="true"><span class="octicon octicon-link"></span></a>ENV</h3>
-<p>This is same as <code class="language-plaintext highlighter-rouge">ARG</code> except the <code class="language-plaintext highlighter-rouge">ENV</code> will persist when a container is run from the resulting image. An example of this includes</p>
+<p>This is the same as <code class="language-plaintext highlighter-rouge">ARG</code> except the <code class="language-plaintext highlighter-rouge">ENV</code> will persist when a container is run from the resulting image. An example of this includes</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ENV PYTORCH_VERSION 1.9.0
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 
@@ -431,7 +432,7 @@ ENV PATH  /home/default/miniconda3/bin:$PATH
 
 <h3 id="label">
 <a class="anchor" href="#label" aria-hidden="true"><span class="octicon octicon-link"></span></a>LABEL</h3>
-<p><code class="language-plaintext highlighter-rouge">LABEL</code> can be used to specify information like author of the Dockerfile and other relevant information</p>
+<p><code class="language-plaintext highlighter-rouge">LABEL</code> can be used to specify information like the author of the Dockerfile and other relevant information</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LABEL author = "Kushajveer Singh"
 LABEL email = "kushajreal@gmail.com"
 LABEL website = "kushajveersingh.github.io"
@@ -475,7 +476,7 @@ COPY [--chown=&lt;user&gt;:&lt;group&gt;] &lt;src&gt;... &lt;dest&gt;
 COPY --chown=default:sudo script.sh /home/default
 </code></pre></div></div>
 
-<p>The <code class="language-plaintext highlighter-rouge">&lt;dest&gt;</code> path is either absolute path or a path relative to <code class="language-plaintext highlighter-rouge">WORKDIR</code> which we will discuss later.</p>
+<p>The <code class="language-plaintext highlighter-rouge">&lt;dest&gt;</code> path is either an absolute path or a path relative to <code class="language-plaintext highlighter-rouge">WORKDIR</code> which we will discuss later.</p>
 
 <p>Now let’s look at the differences between each instruction.</p>
 
@@ -520,7 +521,7 @@ WORKDIR ../home
 
 <p>and it will run the command in a shell (by default <code class="language-plaintext highlighter-rouge">/bin/sh -c</code> on Linux). Every <code class="language-plaintext highlighter-rouge">RUN</code> instruction will create a new layer and due to this reason you should try to group multiple <code class="language-plaintext highlighter-rouge">RUN</code> instructions into a single logical group.</p>
 
-<p>To group multiple <code class="language-plaintext highlighter-rouge">RUN</code> instruction you can either use semicolon or <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>.</p>
+<p>To group multiple <code class="language-plaintext highlighter-rouge">RUN</code> instructions you can either use a semicolon or <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RUN &lt;command_1&gt; ; \
     &lt;command_2&gt; ; \
     &lt;command_3&gt;
@@ -540,7 +541,7 @@ RUN &lt;command_1&gt; &amp;&amp; \
   <li>
 <code class="language-plaintext highlighter-rouge">FROM</code> - Every Dockerfile starts with this instruction and it provides the base image on which we build our image</li>
   <li>
-<code class="language-plaintext highlighter-rouge">ARG</code> - We can specify command line arguments using <code class="language-plaintext highlighter-rouge">--build-arg</code> to be used in the Dockerfile only</li>
+<code class="language-plaintext highlighter-rouge">ARG</code> - We can specify command-line arguments using <code class="language-plaintext highlighter-rouge">--build-arg</code> to be used in the Dockerfile only</li>
   <li>
 <code class="language-plaintext highlighter-rouge">ENV</code> - Environment variables that will be used in Dockerfile and will persist when the container is run</li>
   <li>
@@ -563,7 +564,7 @@ RUN &lt;command_1&gt; &amp;&amp; \
 <a class="anchor" href="#ubuntu-pytorch-dockerfile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ubuntu, PyTorch Dockerfile</h2>
 <h3 id="base-image">
 <a class="anchor" href="#base-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>Base image</h3>
-<p>We will use <a href="https://hub.docker.com/_/ubuntu">Ubuntu</a> as the base image. As discussed before it provides us with a bare bones Linux distribution and we have to setup everything that we need.</p>
+<p>We will use <a href="https://hub.docker.com/_/ubuntu">Ubuntu</a> as the base image. As discussed before it provides us with a bare-bones Linux distribution and we have to setup everything that we need.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ARG UBUNTU_VERSION=18.04
 FROM ubuntu:$UBUNTU_VERSION
@@ -582,7 +583,7 @@ FROM ubuntu:$UBUNTU_VERSION
     apt install -y --no-install-recommends
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">--fix-missing</code> is optional. It is used in case we have broken dependencies and using this flag can help us resolve the issue in most of the cases. As we are starting from a clean install, this flag does not do much.</p>
+<p><code class="language-plaintext highlighter-rouge">--fix-missing</code> is optional. It is used in case we have broken dependencies and using this flag can help us resolve the issue in most cases. As we are starting from a clean install, this flag does not do much.</p>
 
 <p><code class="language-plaintext highlighter-rouge">apt install -y --no-install-recommends</code>. The <code class="language-plaintext highlighter-rouge">-y</code> flag helps us to bypass the yes/no prompt. Each package in Ubuntu comes with three dependencies</p>
 <ul>
@@ -591,7 +592,7 @@ FROM ubuntu:$UBUNTU_VERSION
   <li>suggested packages</li>
 </ul>
 
-<p>By default, Ubuntu will install main and recommended packages (to install suggested packages you need to provide <code class="language-plaintext highlighter-rouge">--install-suggests</code> flag to <code class="language-plaintext highlighter-rouge">apt install</code>). Our main goal is to keep the size of the docker image to a minimum and due to this reason we do not want to waste space installing recommended packages. The <code class="language-plaintext highlighter-rouge">--no-install-recommends</code> flag does this and as a result we only install the main dependencies.</p>
+<p>By default, Ubuntu will install main and recommended packages (to install suggested packages you need to provide <code class="language-plaintext highlighter-rouge">--install-suggests</code> flag to <code class="language-plaintext highlighter-rouge">apt install</code>). Our main goal is to keep the size of the docker image to a minimum and due to this reason, we do not want to waste space installing recommended packages. The <code class="language-plaintext highlighter-rouge">--no-install-recommends</code> flag does this and as a result, we only install the main dependencies.</p>
 
 <p>Now you can install any other package that you may require like <code class="language-plaintext highlighter-rouge">ca-certificates</code> (required by <code class="language-plaintext highlighter-rouge">curl</code>), <code class="language-plaintext highlighter-rouge">sudo</code>, <code class="language-plaintext highlighter-rouge">curl</code>, <code class="language-plaintext highlighter-rouge">git</code>.</p>
 
@@ -600,7 +601,7 @@ FROM ubuntu:$UBUNTU_VERSION
     rm -rf /var/lib/apt/lists/*
 </code></pre></div></div>
 
-<p>When we install packages, Ubuntu maintains a cache of the packages in <code class="language-plaintext highlighter-rouge">/var/cache</code>. The reason for doing this is if something goes wrong when upgrading something and we do not have access to a network connection then we can revert to the old version in the cache to downgrade the package. But we do not need this cache for the Docker image, so we can remove it using <code class="language-plaintext highlighter-rouge">apt clean</code>. Specifically, <code class="language-plaintext highlighter-rouge">apt clean</code> with remove the files in <code class="language-plaintext highlighter-rouge">/var/cache/apt/archives/</code> and <code class="language-plaintext highlighter-rouge">/var/cache/apt/archives/partial</code>, leaving out a <code class="language-plaintext highlighter-rouge">lock</code> file and <code class="language-plaintext highlighter-rouge">partial</code> subdirectory.</p>
+<p>When we install packages, Ubuntu maintains a cache of the packages in <code class="language-plaintext highlighter-rouge">/var/cache</code>. The reason for doing this is if something goes wrong when upgrading something and we do not have access to a network connection then we can revert to the old version in the cache to downgrade the package. But we do not need this cache for the Docker image, so we can remove it using <code class="language-plaintext highlighter-rouge">apt clean</code>. Specifically, <code class="language-plaintext highlighter-rouge">apt clean</code> will remove the files in <code class="language-plaintext highlighter-rouge">/var/cache/apt/archives/</code> and <code class="language-plaintext highlighter-rouge">/var/cache/apt/archives/partial</code>, leaving out a <code class="language-plaintext highlighter-rouge">lock</code> file and <code class="language-plaintext highlighter-rouge">partial</code> subdirectory.</p>
 
 <p><code class="language-plaintext highlighter-rouge">/var/lib/apt</code> stores data related to the apt package manager. This data is automatically downloaded each time we run <code class="language-plaintext highlighter-rouge">apt update</code>, so there is no point in storing this data and we can safely remove this to reduce the image size using <code class="language-plaintext highlighter-rouge">rm -rf /var/lib/apt/lists/*</code>.</p>
 
@@ -610,7 +611,7 @@ FROM ubuntu:$UBUNTU_VERSION
 
 <h3 id="setup-sudo-and-default-user">
 <a class="anchor" href="#setup-sudo-and-default-user" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup sudo and default user</h3>
-<p>The next step is setting up root account and a default user. The contents of the Dockerfile to do so are shown next</p>
+<p>The next step is setting up a root account and a default user. The contents of the Dockerfile to do so are shown next</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ARG USERNAME=default
 ARG PASSWORD=default
 RUN useradd -rm -d /home/default -s /bin/bash -g root -G sudo -u 1000 $USERNAME  &amp;&amp; \
@@ -622,14 +623,14 @@ USER $USERNAME
 WORKDIR /home/$USERNAME
 </code></pre></div></div>
 
-<p>Let’s see what each flag did in <code class="language-plaintext highlighter-rouge">useradd</code></p>
+<p>Let’s see what each flag does in <code class="language-plaintext highlighter-rouge">useradd</code></p>
 <ul>
   <li>
-<code class="language-plaintext highlighter-rouge">-r</code> is used to create a system account i.e. an account created by operating system during installation or the root account</li>
+<code class="language-plaintext highlighter-rouge">-r</code> is used to create a system account i.e. an account created by the operating system during installation or the root account</li>
   <li>
 <code class="language-plaintext highlighter-rouge">-m</code> is used to create a home directory if it does not exist</li>
   <li>
-<code class="language-plaintext highlighter-rouge">-d /home/default</code> is used to provide the location of home directory</li>
+<code class="language-plaintext highlighter-rouge">-d /home/default</code> is used to provide the location of the home directory</li>
   <li>
 <code class="language-plaintext highlighter-rouge">-s /bin/bash</code> is used to specify the name of user’s login shell. You can skip this if you want.</li>
   <li>
@@ -645,7 +646,7 @@ WORKDIR /home/$USERNAME
 <code class="language-plaintext highlighter-rouge">$USERNAME</code> is the name of the user that will be created</li>
 </ul>
 
-<p>By default in Ubuntu the root account has no password set. To set a password we can use the following command</p>
+<p>By default in Ubuntu, the root account has no password set. To set a password we can use the following command</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "${USERNAME}:${PASSWORD}" | chpasswd
 </code></pre></div></div>
 
@@ -656,7 +657,7 @@ WORKDIR /home/$USERNAME
   <li>User <code class="language-plaintext highlighter-rouge">default</code> can get root privileges using <code class="language-plaintext highlighter-rouge">sudo su</code> and using <code class="language-plaintext highlighter-rouge">default</code> as the password</li>
 </ul>
 
-<p>There is a bug with <code class="language-plaintext highlighter-rouge">sudo</code> that is discussed <a href="https://github.com/sudo-project/sudo/issues/42">here</a> in which you will get the following warning message every time you try to execute a sudo command</p>
+<p>There is a bug with <code class="language-plaintext highlighter-rouge">sudo</code> that is discussed <a href="https://github.com/sudo-project/sudo/issues/42">here</a> in which you will get the following warning message every time you try to execute a command with <code class="language-plaintext highlighter-rouge">sudo</code></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; sudo hello &gt; /dev/null
 sudo: setrlimit(RLIMIT_CORE): Operation not permitted
 </code></pre></div></div>
@@ -699,7 +700,7 @@ USER $USERNAME
 WORKDIR /home/$USERNAME
 </code></pre></div></div>
 
-<p>We can group all the commands to update ubuntu, setup sudo and default user in a single <code class="language-plaintext highlighter-rouge">RUN</code> command to save space.</p>
+<p>We can group all the commands to update Ubuntu, setup <code class="language-plaintext highlighter-rouge">sudo</code> and default user in a single <code class="language-plaintext highlighter-rouge">RUN</code> command to save space.</p>
 
 <h3 id="accessing-nvidia-gpu">
 <a class="anchor" href="#accessing-nvidia-gpu" aria-hidden="true"><span class="octicon octicon-link"></span></a>Accessing Nvidia GPU</h3>
@@ -713,7 +714,7 @@ WORKDIR /home/$USERNAME
 
 <h3 id="installing-miniconda">
 <a class="anchor" href="#installing-miniconda" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing Miniconda</h3>
-<p><a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> can be used for an easy python setup. Just grab the link of the latest <a href="https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh">Linux installer</a> from the documentation page (in this case it is Python 3.9) and specify the location where you want to install Miniconda</p>
+<p><a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> can be used for an easy python setup. Just grab the link of the latest <a href="https://docs.conda.io/en/latest/miniconda.html#linux-installers">Linux installer</a> from the documentation page (in this case it is Python 3.9) and specify the location where you want to install Miniconda</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ARG MINICONDA_DOWNLOAD_LINK=https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
 ARG MINICONDA_INSTALL_PATH=/home/$USERNAME
 
@@ -756,7 +757,7 @@ RUN curl $MINICONDA_DOWNLOAD_LINK --create-dirs -o Miniconda.sh &amp;&amp; \
 
 <h3 id="remove-condapip-cache">
 <a class="anchor" href="#remove-condapip-cache" aria-hidden="true"><span class="octicon octicon-link"></span></a>Remove conda/pip cache</h3>
-<p>Conda stores index cache, lock files, tarballs and the cache of unused packages. These can be safely removed to save space using the command <code class="language-plaintext highlighter-rouge">conda clean -afy</code>. So add this as the last conda command in Dockerfile.</p>
+<p>Conda stores index cache, lock files, tarballs, and the cache of unused packages. These can be safely removed to save space using the command <code class="language-plaintext highlighter-rouge">conda clean -afy</code>. So add this as the last conda command in Dockerfile.</p>
 
 <p><code class="language-plaintext highlighter-rouge">pip</code> stores cache in <code class="language-plaintext highlighter-rouge">~/.cache/pip</code> and this folder can be safely removed using the command <code class="language-plaintext highlighter-rouge">rm -rf ~/.cache/pip</code>.</p>
 
@@ -771,7 +772,7 @@ RUN curl $MINICONDA_DOWNLOAD_LINK --create-dirs -o Miniconda.sh &amp;&amp; \
 default@a7f862b6bf73:~$ 
 </code></pre></div></div>
 
-<p>We can try <code class="language-plaintext highlighter-rouge">nvidia-smi</code> to check if the GPU is being detected</p>
+<p>We can try <code class="language-plaintext highlighter-rouge">nvidia-smi</code> to check if the GPUs are being detected</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>default@a7f862b6bf73:~$ nvidia-smi
 Wed Oct  6 05:54:35 2021       
 +-----------------------------------------------------------------------------+
@@ -908,7 +909,7 @@ temp_1
   <li>
 <code class="language-plaintext highlighter-rouge">docker stop</code>. Stop a running container. The main process will receive <code class="language-plaintext highlighter-rouge">SIGTERM</code> and after a grace period <code class="language-plaintext highlighter-rouge">SIGKILL</code> will be received.</li>
   <li>
-<code class="language-plaintext highlighter-rouge">docker kill</code>. Kill a running container. The main process will receive <code class="language-plaintext highlighter-rouge">SIGKILL</code> or any signal specified by the user.
+<code class="language-plaintext highlighter-rouge">docker kill</code>. Kill a running container. The main process will receive <code class="language-plaintext highlighter-rouge">SIGKILL</code> or any signal specified by the user using <code class="language-plaintext highlighter-rouge">--signal</code>.
     <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>&gt; docker stop temp_1
 </code></pre></div>    </div>
@@ -929,8 +930,8 @@ temp_1
 
 <p>The reference for <code class="language-plaintext highlighter-rouge">docker rm</code> can be accessed <a href="https://docs.docker.com/engine/reference/commandline/rm/">here</a>.</p>
 
-<h3 id="creating-a-container">
-<a class="anchor" href="#creating-a-container" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a container</h3>
+<h3 id="running-a-container">
+<a class="anchor" href="#running-a-container" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running a container</h3>
 <p><code class="language-plaintext highlighter-rouge">docker run</code> command is used to create a container from an image. There are many useful flags when using this command</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; docker run -it --gpus all --name temp -p 8888:8888 test:0.1
 </code></pre></div></div>
@@ -947,8 +948,8 @@ temp_1
 
 <p>The reference for <code class="language-plaintext highlighter-rouge">docker run</code> can be accessed <a href="https://docs.docker.com/engine/reference/run/">here</a>.</p>
 
-<h3 id="connect-terminal-to-container">
-<a class="anchor" href="#connect-terminal-to-container" aria-hidden="true"><span class="octicon octicon-link"></span></a>Connect terminal to container</h3>
+<h3 id="connect-new-terminal-to-container">
+<a class="anchor" href="#connect-new-terminal-to-container" aria-hidden="true"><span class="octicon octicon-link"></span></a>Connect new terminal to container</h3>
 <p>If you want to connect a new terminal to a running container, then you can use the following command</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; docker exec -it {container_name} bash
 </code></pre></div></div>
@@ -957,7 +958,7 @@ temp_1
 
 <h3 id="delete-all-containerimages">
 <a class="anchor" href="#delete-all-containerimages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Delete all container/images</h3>
-<p>To delete all the docker container and images on your system you can use the following two commands (in the order specified)</p>
+<p>To delete all the docker containers and images on your system you can use the following two commands (in the order specified)</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Remove all containers
 &gt; docker rm -vf $(docker ps -a -q)
 
@@ -1000,7 +1001,7 @@ temp_1
   <li>
 <a href="https://github.com/KushajveerSingh/Dockerfile">KushajveerSingh/Dockerfile</a> - You can access the Dockerfile’s from this repository to build your own images. Documentation is provided in the <a href="https://github.com/KushajveerSingh/Dockerfile/blob/main/README.md">README</a> for all the available Dockerfile’s.</li>
   <li>
-<a href="https://hub.docker.com/u/kushaj">Dockerhub kushaj</a> - All the images can be found at this link. If you want to use an image but the contents of the image, then you can access the Dockerfile used to create the image from the above <a href="https://github.com/KushajveerSingh/Dockerfile">Github</a> link and build the image.</li>
+<a href="https://hub.docker.com/u/kushaj">Dockerhub kushaj</a> - All the images can be found at this link. If you want to use an image but the contents of the image are old, then you can access the Dockerfile used to create the image from the above <a href="https://github.com/KushajveerSingh/Dockerfile">Github</a> link and build the image. Instructions to do so are provided in the <a href="https://github.com/KushajveerSingh/Dockerfile/blob/main/README.md">READEME</a>.</li>
 </ul>
 
 <hr>
