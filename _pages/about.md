@@ -64,23 +64,23 @@ permalink: /projects/
     - Showcased the work to high school students at Punjab Engineering College (Chandigarh, India) IEEE Project showcase
 
 ### Projects
-- **JSON Graph Visualizer** (Sep 2022, UGA \| Athens, GA)
+- **JSON Graph Visualizer** (Sep 2022)
     - Build *Next.js*/*TypeScript*/*Redux*/*Material-UI*/*styled-components* application to convert JSON data into a graph
     - Generated multi-level graph allows easier reading of JSON data
     - Deployed the application on Github Pages
 
-- **Sorting Visualizer** (Aug 2022 - Sep 2022, UGA \| Athens, GA)
+- **Sorting Visualizer** (Aug 2022 - Sep 2022)
     - Built *Next.js*/*TypeScript*/*Redux*/*Material-UI*/*styled-components*/*Framer Motion* application for visualizing over 30 sorting algorithms
     - Can add custom delay, change speed of animation, 5 different ways to provide input array, and multiple algorithms can be run in parallel
     - Deployed the application on Github Pages
 
-- **3D Human Reconstruction** (Aug 2022, UGA \| Athens, GA)
+- **3D Human Reconstruction** (Aug 2022)
     - Engineered a machine learning project to generate a full human body 3D object from random noise
     - Combined GAN, Pose Estimation, RGB-to-3D object models from 3 different repositories
     - Upgraded PyTorch dependency from 0.4.0, 1.4.0, 1.9.0 to 1.11.1 and upgraded all repositories to CUDA 11.3
     - Built *Next.js*/*TypeScript*/*ThreeJS* application to show the results and deployed it on Github Pages
 
-- **Bookstore application** ()
+- **Bookstore application** (Jun 2021 - Aug 2021)
 
 Check this [repo](https://github.com/KushajveerSingh/deep_learning) for more details.
 
