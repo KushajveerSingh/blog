@@ -15,21 +15,23 @@ permalink: /projects/
 - **Full Stack Developer** (Jul 2022 - current, UGA)
     - Worked in the IT department of the College of Agriculture and Environmental Sciences, University of Georgia (Athens, GA, USA).
     - Migrated a legacy *Microsoft Access* database to *PostgreSQL* with 18 years of data in it.
-    - In order to maintain the existing 217 legacy programs, wrote a parser in *Node.js* and *Express* which converts Access queries to PostgreSQL queries on the fly.
-    - Created the development and production servers, which included doing IP whitelisting, backup configuration with a local storage server, periodically syncing development and production servers, and implementing the best Linux security practices.
-    - To prevent people from accessing the SQL queries from outside, wrote a program in *Node.js* using which queries can be written in a text file, that is never shared with the public, and refer to them using a special function in *JavaScript*.
-    - Automated the data entry pipeline for handwritten submission forms using *Python* and *JavaScript*, resulting in a reduction of time from 2 minutes per form to 25 seconds on average. This was done by adding autocomplete functionality for various fields of the form like name, address, contact info and merging that with the existing database interface. 
-    - Used *Selenium* to automate browser-related tasks, like downloading an invoice from UPS and emailing it internally.
-    - To send results to the client, a codebase built on top of a proprietary language created by the IT manager was being used which converts information from the database into a PDF. Rewrote that entire codebase using *React*, *TypeScript*, *Material-UI*, *Redux*. This included converting information from a 200-page manual to a React program and updating the queries from Access to PostgreSQL.
-    - Agile development was used. Email and github issues were used to track and communicate daily status and a weekly retrospective meeting was conducted to review the successes of the week and areas of improvement from the previous week.
+    - Created a parser in *Node.js* and *Express* to convert *Access* queries to *PostgreSQL* queries on the fly to maintain the existing 217 programs.
+    - Created the development and production servers, which included doing IP whitelisting, backup configuration with a local storage server, and periodically syncing development and production servers.
+    - To prevent people from accessing the SQL queries from outside, built a program in *Node.js* using which queries can be written in a text file, that is never shared with the public, and refer to them using a special function in *JavaScript*.
+    - Automated the data entry pipeline using *Python* and *JavaScript*, resulting in a reduction of time from 2 minutes per handwritten form to 25 seconds on average. This was done by implementing autocomplete functionality for various fields, like name, address, contact info and merging it with the existing database interface. 
+    - Used *Selenium* to automate browser-related tasks, like downloading an invoice from UPS and downloading reports.
+    - Used *Next.js*/*TypeScript*/*Redux*/*Material-UI* to convert 3 existing programs from *JavaScript*/*jQuery*
+    - Rewrote the entire codebase for a proprietary language, which included converting information from a 200-page manual to a *Next.js* application and updating the queries from *Access* to *PostgreSQL*.
 
 - **Graduate Teaching Assistant** (Jan 2022 - Aug 2022, UGA)
     - Worked in the Computer Science department, University of Georgia (Athens, GA, USA).
-    - Led weekly meetings and facilitated group discussions for the course *Discrete Mathematics for CS*.
-    - Held one-on-one office hours for 2 transfer students and went through the entire course content in detail, along with discussing practical applications of the course content.
-
+    - Led weekly meetings and facilitated group discussions for the course *Discrete Mathematics for Computer Science*
+    - Held one-on-one office hours for 2 transfer students, covering the entire course in detail and discussing practical applications of the content
 
 ### Additional Experience
+- **Google CS Research Mentorship Program** (Sep 2022 - Dec 2022)
+    - Selected for a 12-week competitive Google CS Research Mentorship Program (CSRMP 2022B)
+
 - **Poster submission, School of Computing Research Day** (Sep 2022 - Oct 2022)
     - Submitted 2 posters for the School of Computing, Research Day at University of Georgia (Athens, GA, USA)
     - Created a GlobalConsistency module that improves the robustness of graph neural networks against adversarial attacks
