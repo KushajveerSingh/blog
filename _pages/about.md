@@ -5,11 +5,21 @@ permalink: /projects/
 ---
 
 ### Table of contents
+- [Education](#education)
 - [Work Experience](#work-experience)
 - [Additional Experience](#additional-experience)
 - [Projects](#projects)
 - [Blogs](#blogs)
 - [Certifications](#certifications)
+
+### Education
+- **Master of Science** in Computer Science
+  - University of Georgia, Athens, GA, USA (Jan 2021 - Dec 2022)
+  - GPA: 3.82 / 4.00
+
+- **Bachelor of Technology** in Electronics and Communication Engineering 
+  - Punjab Engineering College (Deemed to be University), Chandigarh, India (Aug 2016 - Jun 2020)
+  - CGPA: 7.0 / 10.0
 
 ### Work Experience
 - **Full Stack Developer** (Jul 2022 - current, UGA)
@@ -23,20 +33,21 @@ permalink: /projects/
     - Used *Next.js*/*TypeScript*/*Redux*/*Material-UI* to convert 3 existing programs from *JavaScript*/*jQuery*
     - Rewrote the entire codebase for a proprietary language, which included converting information from a 200-page manual to a *Next.js* application and updating the queries from *Access* to *PostgreSQL*.
 
+### Additional Experience
+- **Google CS Research Mentorship Program** (Sep 2022 - Dec 2022)
+    - Selected for a 12-week competitive Google CS Research Mentorship Program (CSRMP 2022B) among 50 candidates selected from all across USA and Canada.
+    - Google-to-student mentorship program that inspires students from Historically Marginalized Groups (HMGs) to pursue and persist in CS research careers.
+
+- **Poster submission, School of Computing Research Day** (Sep 2022 - Oct 2022)
+    - Submitted 2 posters for the School of Computing, Research Day at University of Georgia (Athens, GA, USA)
+    - Created a module that improves the robustness of Graph Neural Networks (GNNs) against adversarial attacks
+    - Proposed module beats state-of-the-art in 3 out of 4 datasets, while only adding 5 lines of code
+    - Presented a poster on generating full human body 3D scans from random noise
+
 - **Graduate Teaching Assistant** (Jan 2022 - Aug 2022, UGA)
     - Worked in the Computer Science department, University of Georgia (Athens, GA, USA).
     - Led weekly meetings and facilitated group discussions for the course *Discrete Mathematics for Computer Science*
     - Held one-on-one office hours for 2 transfer students, covering the entire course in detail and discussing practical applications of the content
-
-### Additional Experience
-- **Google CS Research Mentorship Program** (Sep 2022 - Dec 2022)
-    - Selected for a 12-week competitive Google CS Research Mentorship Program (CSRMP 2022B)
-
-- **Poster submission, School of Computing Research Day** (Sep 2022 - Oct 2022)
-    - Submitted 2 posters for the School of Computing, Research Day at University of Georgia (Athens, GA, USA)
-    - Created a GlobalConsistency module that improves the robustness of graph neural networks against adversarial attacks
-    - Proposed module beats state-of-the-art in 3 out of 4 datasets, while adding 4 lines of code
-    - Presented a poster on generating full human body 3D scans from random noise
 
 - **Workshop paper reviewer, CVPR 2021** (Apr 2021)
     - Reviewed 2 papers for the *Biometrics Workshop, jointly with the Workshop on Analysis and Modeling of Faces and Gestures, CVPR 2021*
@@ -64,50 +75,68 @@ permalink: /projects/
     - Showcased the work to high school students at Punjab Engineering College (Chandigarh, India) IEEE Project showcase
 
 ### Projects
-- **JSON Graph Visualizer** (Sep 2022)
-    - Build *Next.js*/*TypeScript*/*Redux*/*Material-UI*/*styled-components* application to convert JSON data into a graph
-    - Generated multi-level graph allows easier reading of JSON data
-    - Deployed the application on Github Pages
+- **Youtube Video Platform** [github](https://github.com/KushajveerSingh/youtube_video_platform), [demo](https://kushaj-youtube-video.vercel.app/)
+  - Built a fully responsive *React*/*Next.js*/*Material-UI* web app using Youtube API and deployed on *Vercel*
+  - Implemented video section, category section, responsive channel and video cards, channel pages, video pages with ability to play videos and see related videos
 
-- **Sorting Visualizer** (Aug 2022 - Sep 2022)
-    - Built *Next.js*/*TypeScript*/*Redux*/*Material-UI*/*styled-components*/*Framer Motion* application for visualizing over 30 sorting algorithms
-    - Can add custom delay, change speed of animation, 5 different ways to provide input array, and multiple algorithms can be run in parallel
-    - Deployed the application on Github Pages
+- **Group Video Chat** [github](https://github.com/KushajveerSingh/video-chat-app), [demo](https://kushaj-video-chat.vercel.app)
+  - Built a group video chat app built using *Agora*, and deployed the backend on *Heroku* and frontend on *Vercel*.
+  - Conference chat with multiple people at same time, screen sharing capabilities, private and group messaging, admin controls, create polls
+  - Worked with an enterprise size codebase and added features on top of it
 
-- **3D Human Reconstruction** (Aug 2022)
+- **Chat Messaging App** (WORK IN PROGRESS)
+  - Built a fully-responsive full-stack realtime chat messaging application 
+  - Support for authentication, Twilio SMS notification, direct and group chats, emojis and reactions, GIF support, edit/delete messages
+  - Built *React* frontend using *Stream Chat* API and deployed on *Vercel*
+  - Built *Express* backend and deployed on *Heroku*
+
+- **Sort Visualizer** [github](https://github.com/KushajveerSingh/sort_visualizer), [demo](https://kushaj-sort-visualizer.vercel.app/)
+  - Built *React*/*Redux*/*Material-UI* web application for visualizing sorting algorithms and deployed on *Vercel*
+  - Implemented over 30 sorting algorithms, with ability to view upto 9 algorithms in parallel
+
+- **3D Human Reconstruction** [github](https://github.com/KushajveerSingh/human_3d_reconstruction)
     - Engineered a machine learning project to generate a full human body 3D object from random noise
     - Combined GAN, Pose Estimation, RGB-to-3D object models from 3 different repositories
-    - Upgraded PyTorch dependency from 0.4.0, 1.4.0, 1.9.0 to 1.11.1 and upgraded all repositories to CUDA 11.3
-    - Built *Next.js*/*TypeScript*/*ThreeJS* application to show the results and deployed it on Github Pages
+    - Upgraded PyTorch dependency from 0.4.0, 1.4.0, 1.9.0 to 1.11.1 and upgraded all repositories to CUDA 11.3 from 10.x versions
 
-- **Bookstore application** (Jun 2021 - Aug 2021)
+- **Bookstore application** [github](https://github.com/KushajveerSingh/genlib)
+  - Built a full-stack bookstore application using *Django*/*SQLite*
+  - Implemented user authentication with email, change/forget password, edit profile, advanced search options, cart management and placing an order
 
-Check this [repo](https://github.com/KushajveerSingh/deep_learning) for more details.
+- **JSON/YAML Graph Visualizer** (WORK IN PROGRESS)
+    - Build *Next.js*/*Redux*/*Material-UI* application to convert JSON/YAML data into a graph for improved readability deployed on *Vercel*
+    - Wrote a parser in *TypeScript* to convert YAML to JSON
 
-* [Unsupervised Parking Lot Detection](https://github.com/KushajveerSingh/Unsupervised-Parking-Lot-Detection)
-  
-    A complete approach to detect parking lot spaces from images and then tell which spaces are occupied or not. Here I do not use any dataset for training my model to detect parking spaces. My implementation can be divided into these three modules:
-    - *Object Detection Module* :- Use COCO pretrained model, no need to do finetuning.
-    - *Label Processing Module* :- As out model is not finetuned, there are some tricks that I add to overcome these limitations
-    - *Classification Module* :- Use the processed labels/bounding_boxes to tell if that parking space is occupied or not.
-* [SPADE by Nvidia](https://github.com/KushajveerSingh/SPADE-PyTorch)
-  
-    Unofficial implementation of SPDAE for image-to-translation from segmentation maps to the colored pictures. Due to compute limit I test it out for a simplified model on Cityscapes dataset and get descent results after 80 epochs with batch_size=2.
+- **Credit Assessment** [github](https://github.com/KushajveerSingh/ds_cup)
+  - Created a fair and explainable model to approve credit card requests
+  - Used *LIME* predictions and built *PySimpleGUI* to explain the predictions
 
-* [Waste Seggregation using trashnet](https://github.com/KushajveerSingh/deep_learning/tree/master/projects/Waste_Seggregation_using_trashnet)
+- **Resizer Network for Computer Vision** [github](https://github.com/KushajveerSingh/resize_network_cv), [blog](https://www.kushajveersingh.com/blog/data-augmentation-with-resizer-network-for-image-classification)
+  - Built *PyTorch* model to resize images for downstream tasks, based on Google AI *Learning to Resize Images for Computer VIsion Tasks*
+  - Tested model on 2 subsets of ImageNet dataset and demonstrated the improved performance using the proposed model
 
-    Contains the code to train models for trashnet and then export them using ONNX. It was part of a bigger project where we ran these models on Rasberry Pi, which controlled wooden planks to classify the waste into different categories (code for rasberry pi not included here).
+- **Parking Lot Detection** [github](https://github.com/KushajveerSingh/Unsupervised-Parking-Lot-Detection)
+  - Built a fully deployable and unsupervised parking space detection system using *PyTorch*
+  - Ability to adjust the predictions based on where cars are parked over time
+  - Combine results from multiple frames to fill spots and make the predictions more robust
 
-* [Unscramble game](https://github.com/KushajveerSingh/deep_learning/tree/master/random/unscramble_android_game)
-  
-    Python script to solve the unscramble android game. You are given 5 random letters and you have to find 3-letter, 4-letter, 5-letter english words from these 5 random letters. It is a simple brute force method with a english dictionary lookup.
+- **Semantic Image Synthesis** [github](https://github.com/KushajveerSingh/SPADE-PyTorch), [blog](https://www.kushajveersingh.com/blog/spade-state-of-the-art-in-image-to-image-translation-by-nvidia)
+  - Open-sourced the first public implementation of GauGAN paper by Nvidia
+  - Implemented *PyTorch* GAN model to convert an image map into a realistic image
 
-* [Random Duty List](https://github.com/KushajveerSingh/Random-Duty-List)
-  
-    A PHP and MySQL based work where the aim is to assign duties from a list to various stations and make sure the duties are not repeated and the repetition occurs only after the list is exhausted.
+- **Style Transfer** [github](https://github.com/KushajveerSingh/Photorealistic-Style-Transfer), [blog](https://www.kushajveersingh.com/blog/all-you-need-for-photorealistic-style-transfer-in-pytorch)
+  - Implemented *PyTorch* model to transfer style between images
+
+- **Unscramble Game Solver** [github](https://github.com/KushajveerSingh/deep_learning/tree/master/random/unscramble_android_game)
+  - Created a *Python* program to solve *Unscramble* android game
+  - Implemented an efficient English dictionary lookup
+
+- **Random Duty List** [github](https://github.com/KushajveerSingh/Random-Duty-List)
+  - Built PHP/MySQL program for Chandigarh, India police department
+  - Assign duties at various stations without repetition between days
 
 
-## Jupyter Notebooks
+### Jupyter Notebooks
 
 * **Mish activation function** is tested for transfer learning. Here mish is used only in the last fully-connected layers of a pretrainened Resnet50 model. I test the activation function of CIFAR10, CIFAR100 using three different learning rate values. I found that Mish gave better results than ReLU. [notebook](https://github.com/KushajveerSingh/deep_learning/tree/master/paper_implementations/Study%20of%20Mish%20activation%20function%20in%20transfer%20learning%20with%20code%20and%20discussion), [paper](https://arxiv.org/abs/1908.08681)
 
@@ -135,8 +164,27 @@ Check this [repo](https://github.com/KushajveerSingh/deep_learning) for more det
     - Simple training loop
     - Overfitting a mini-batch
 
+
+* **Waste Seggregation using trashnet** [github](https://github.com/KushajveerSingh/deep_learning/tree/master/projects/Waste_Seggregation_using_trashnet). Contains the code to train models for trashnet and then export them using ONNX. It was part of a bigger project where we ran these models on Rasberry Pi, which controlled wooden planks to classify the waste into different categories (code for rasberry pi not included here).
+
+
 ### Blogs
-All my blog posts can be found at [kushajveersingh.com/blog/](https://www.kushajveersingh.com/blog/).
+- Complete tutorial on building images using Docker [link](https://www.kushajveersingh.com/blog/docker)
+- Data augmentation with learnable Resizer network for Image Classification [link](https://www.kushajveersingh.com/blog/data-augmentation-with-resizer-network-for-image-classification)
+- Writing custom CUDA kernels with Triton [link](https://www.kushajveersingh.com/blog/writing-custom-cuda-kernels-with-triton)
+- Complete tutorial on how to use Hydra in Machine Learning projects [link](https://www.kushajveersingh.com/blog/complete-tutorial-on-how-to-use-hydra-in-machine-learning-projects)
+- What can neural networks reason about? [link](https://www.kushajveersingh.com/blog/what-can-neural-networks-reason-about)
+- ImageNet Dataset Advancements [link](https://www.kushajveersingh.com/blog/imagenet-dataset-advancements)
+- Deep Learning Model Initialization in Detail [link](https://www.kushajveersingh.com/blog/deep-learning-model-initialization-in-detail)
+- How to setup personal blog using Ghost and Github hosting [link](https://www.kushajveersingh.com/blog/how-to-setup-personal-blog-using-ghost-and-github-hosting)
+- Study of Mish activation function in transfer learning with code and discussion [link](https://www.kushajveersingh.com/blog/study-of-mish-activation-function-in-transfer-learning)
+- Reproducing Cyclic Learning papers + SuperConvergence using fastai [link](https://www.kushajveersingh.com/blog/reproducing-cyclic-learning-papers-and-superconvergence)
+- How to become an expert in NLP in 2019 [link](https://www.kushajveersingh.com/blog/how-to-become-an-expert-in-nlp-in-2019)
+- All you need for Photorealistic Style Transfer in PyTorch [link](https://www.kushajveersingh.com/blog/all-you-need-for-photorealistic-style-transfer-in-pytorch)
+- SPADE: State of the art in Image-to-Image Translation by Nvidia [link](https://www.kushajveersingh.com/blog/spade-state-of-the-art-in-image-to-image-translation-by-nvidia)
+- Weight Standardization: A new normalization in town [link](https://www.kushajveersingh.com/blog/weight-standardization-a-new-normalization-in-town)
+- Training AlexNet with tips and checks on how to train CNNs: Practical CNNs in PyTorch [link](https://www.kushajveersingh.com/blog/training-alexnet-with-tips-and-checks-on-how-train-cnns-practical-cnns-in-pytorch)
+- Theoretical Machine Learning: Probabilities and Statistical Math [link](https://www.kushajveersingh.com/blog/theoretical-machine-learning-probalistic-and-statistical-math)
 
 ### Certifications
 - GCP Essentials (Qwiklabs) [link](https://www.cloudskillsboost.google/public_profiles/00544d10-99eb-435c-bba0-8099796ee428)
@@ -167,4 +215,4 @@ All my blog posts can be found at [kushajveersingh.com/blog/](https://www.kushaj
     - Introduction to Genomic Technologies [link](https://www.coursera.org/account/accomplishments/verify/DQ69PEMKN58C)
     - Python for Genomic Data Science [link](https://www.coursera.org/account/accomplishments/verify/WDWT49566AQ6)
 - Algorithms Specialization (Stanford, Coursera)
-    - Divide and Conquer, Sorting and Searching, and Randomized Algorithms [[link](https://www.coursera.org/account/accomplishments/verify/P4BGEXSGJEJA)
+    - Divide and Conquer, Sorting and Searching, and Randomized Algorithms [link](https://www.coursera.org/account/accomplishments/verify/P4BGEXSGJEJA)
