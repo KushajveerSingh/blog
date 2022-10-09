@@ -33,21 +33,21 @@ permalink: /projects/
     - Used *Next.js*/*TypeScript*/*Redux*/*Material-UI* to convert 3 existing programs from *JavaScript*/*jQuery*
     - Rewrote the entire codebase for a proprietary language, which included converting information from a 200-page manual to a *Next.js* application and updating the queries from *Access* to *PostgreSQL*.
 
+- **Graduate Teaching Assistant** (Jan 2022 - Aug 2022, UGA)
+    - Worked in the Computer Science department, University of Georgia (Athens, GA, USA).
+    - Led weekly meetings and facilitated group discussions for the course *Discrete Mathematics for Computer Science*
+    - Held one-on-one office hours for 2 transfer students, covering the entire course in detail and discussing practical applications of the content
+
 ### Additional Experience
 - **Google CS Research Mentorship Program** (Sep 2022 - Dec 2022)
     - Selected for a 12-week competitive Google CS Research Mentorship Program (CSRMP 2022B) among 50 candidates selected from all across USA and Canada.
-    - Google-to-student mentorship program that inspires students from Historically Marginalized Groups (HMGs) to pursue and persist in CS research careers.
+    - The mentorship program inspires students from Historically Marginalized Groups (HMGs) to pursue and persist a career in CS research.
 
 - **Poster submission, School of Computing Research Day** (Sep 2022 - Oct 2022)
     - Submitted 2 posters for the School of Computing, Research Day at University of Georgia (Athens, GA, USA)
     - Created a module that improves the robustness of Graph Neural Networks (GNNs) against adversarial attacks
     - Proposed module beats state-of-the-art in 3 out of 4 datasets, while only adding 5 lines of code
     - Presented a poster on generating full human body 3D scans from random noise
-
-- **Graduate Teaching Assistant** (Jan 2022 - Aug 2022, UGA)
-    - Worked in the Computer Science department, University of Georgia (Athens, GA, USA).
-    - Led weekly meetings and facilitated group discussions for the course *Discrete Mathematics for Computer Science*
-    - Held one-on-one office hours for 2 transfer students, covering the entire course in detail and discussing practical applications of the content
 
 - **Workshop paper reviewer, CVPR 2021** (Apr 2021)
     - Reviewed 2 papers for the *Biometrics Workshop, jointly with the Workshop on Analysis and Modeling of Faces and Gestures, CVPR 2021*
