@@ -4,6 +4,8 @@ title: Projects
 permalink: /projects/
 ---
 
+Full-stack developer experienced with creating fully-responsive mobile-first web applications and doing API integrations, reading documentation to add new features to an existing codebase, code review processes, CI/CD testing. Self-motivated and passionate to learn new technologies and build projects on top of it. Experienced with deploying 5 [projects](#projects) on Vercel, contributing to open-source projects on [GitHub](https://github.com/KushajveerSingh) for over 5 years, and maintaining a technical [blog](#blogs) with 16 published posts.
+
 ### Table of contents
 - [Education](#education)
 - [Work Experience](#work-experience)
@@ -14,98 +16,122 @@ permalink: /projects/
 
 ### Education
 - **Master of Science** in Computer Science
-  - University of Georgia, Athens, GA, USA (Jan 2021 - Dec 2022)
-  - GPA: 3.82 / 4.00
+    - University of Georgia, Athens, GA, USA (Jan 2021 - Dec 2022)
+    - GPA: 3.82 / 4.00
 
 - **Bachelor of Technology** in Electronics and Communication Engineering 
-  - Punjab Engineering College (Deemed to be University), Chandigarh, India (Aug 2016 - Jun 2020)
-  - CGPA: 7.0 / 10.0
+    - Punjab Engineering College (Deemed to be University), Chandigarh, India (Aug 2016 - Jun 2020)
+    - CGPA: 7.0 / 10.0
 
 ### Work Experience
-- **Full Stack Developer** (Jul 2022 - current, UGA)
-    - Worked in the IT department of the College of Agriculture and Environmental Sciences, University of Georgia (Athens, GA, USA).
-    - Migrated a legacy *Microsoft Access* database to *PostgreSQL* with 18 years of data in it.
-    - Created a parser in *Node.js* and *Express* to convert *Access* queries to *PostgreSQL* queries on the fly to maintain the existing 217 programs.
-    - Created the development and production servers, which included doing IP whitelisting, backup configuration with a local storage server, and periodically syncing development and production servers.
-    - To prevent people from accessing the SQL queries from outside, built a program in *Node.js* using which queries can be written in a text file, that is never shared with the public, and refer to them using a special function in *JavaScript*.
-    - Automated the data entry pipeline using *Python* and *JavaScript*, resulting in a reduction of time from 2 minutes per handwritten form to 25 seconds on average. This was done by implementing autocomplete functionality for various fields, like name, address, contact info and merging it with the existing database interface. 
-    - Used *Selenium* to automate browser-related tasks, like downloading an invoice from UPS and downloading reports.
-    - Used *Next.js*/*TypeScript*/*Redux*/*Material-UI* to convert 3 existing programs from *JavaScript*/*jQuery*
-    - Rewrote the entire codebase for a proprietary language, which included converting information from a 200-page manual to a *Next.js* application and updating the queries from *Access* to *PostgreSQL*.
+- **Full Stack Developer** (Jul 2022 - Dec 2022) (UGA)
+    - Worked in the IT department of the *College of Agriculture and Environmental Sciences, University of Georgia (Athens, GA, USA)*
+    - Implemented *Node.js/Express* parser to do real time *Microsoft Access* to *PostgreSQL* query conversion
+    - Brought up development and production servers, including IP whitelisting and backup configuration with periodic syncing, and migrated 18 years of data from Access to PostgreSQL database
+    - Automated data entry pipeline using *Python/TypeScript*, resulting in a reduction of time from 2 minutes per handwritten form to 25 seconds on average, by implementing autocomplete functionality for various fields
+    - Rewrote the entire codebase for a proprietary language, which included converting information from a 200-page manual to a *TypeScript/Next.js* application and updating the queries from *Access* to *PostgreSQL*
 
-- **Graduate Teaching Assistant** (Jan 2022 - Aug 2022, UGA)
-    - Worked in the Computer Science department, University of Georgia (Athens, GA, USA).
+- **Graduate Teaching Assistant** (Jan 2022 - Aug 2022) (UGA)
+    - Worked in the *Computer Science department, University of Georgia (Athens, GA, USA)*
     - Led weekly meetings and facilitated group discussions for the course *Discrete Mathematics for Computer Science*
-    - Held one-on-one office hours for 2 transfer students, covering the entire course in detail and discussing practical applications of the content
+    - Held one-on-one office hours for 2 transfer students, covering the entire course in detail while covering practical applications of the content and mentored students on the career paths in computer science
 
 ### Additional Experience
-- **Google CS Research Mentorship Program** (Sep 2022 - Dec 2022)
+- **Google CS Research Mentorship Program** (Sep 2022 - Dec 2022) (Athens, GA, USA (Remote))
     - Selected for a 12-week competitive Google CS Research Mentorship Program (CSRMP 2022B) among 50 candidates selected from all across USA and Canada.
     - The mentorship program inspires students from Historically Marginalized Groups (HMGs) to pursue and persist a career in CS research.
 
-- **Poster submission, School of Computing Research Day** (Sep 2022 - Oct 2022)
+- **Poster submission, School of Computing Research Day** (Sep 2022 - Oct 2022) (UGA)
     - Submitted 2 posters for the School of Computing, Research Day at University of Georgia (Athens, GA, USA)
     - Created a module that improves the robustness of Graph Neural Networks (GNNs) against adversarial attacks
     - Proposed module beats state-of-the-art in 3 out of 4 datasets, while only adding 5 lines of code
     - Presented a poster on generating full human body 3D scans from random noise
 
-- **Workshop paper reviewer, CVPR 2021** (Apr 2021)
+- **Workshop paper reviewer, CVPR 2021** (Apr 2021) (UGA)
     - Reviewed 2 papers for the *Biometrics Workshop, jointly with the Workshop on Analysis and Modeling of Faces and Gestures, CVPR 2021*
     - Split the review into summary, strengths, weaknesses
 
-- **Paper reviewer and presentation judge, GJSHS 2021** (Feb 2021 - Mar 2021)
+- **Paper reviewer and presentation judge, GJSHS 2021** (Feb 2021 - Mar 2021) (UGA)
     - Reviewed 6 papers for the 46th *Georgia Junior Science & Humanities Symposium (GJSHS)* from high-school students.
     - The review included detailed feedback on the strengths and weaknesses of the paper and suggestions for improvement based on the recent research in the field
     - Presentation judge for the final round of the competition.
 
-- **Winner TechGig CodeGladiators hackathon** (May 2019 - July 2019)
+- **Winner TechGig CodeGladiators hackathon** (May 2019 - July 2019) (Mumbai, Maharashtra, India)
     - Won the first sole place in TechGig CodeGladiators, in the Artificial Intelligence theme where 15 teams were selected from all across India from a pool of 0.5 million candidates.
     - Implemented a fully-deployable parking space detection system using *PyTorch* from video.
     - Detections from multiple frames can be combined and adjusted over time depending on where the cars are being parked.
     - Frame can be split into a 3x3 grid allowing to make finer and more robust predictions and the result is combined into a single frame.  
 
-- **Third place at IndiaSkills Nationals** (Sep 2018 - Nov 2018)
+- **Third place at IndiaSkills Nationals** (Sep 2018 - Nov 2018) (Chandigarh, India)
     - Won third place at the North-Zone regional finals in *IT Software Solutions for Business* at IndiaSkills, representing my state Chandigarh (India)
     - Build a desktop application using *C#* and an android application using *Java*.
     - Both applications required a database setup using *MySQL* and *phpMyAdmin*.
 
-- **8-bit computer at PEC IEEE showcase** (Feb 2017 - Apr 2017)
+- **8-bit computer at PEC IEEE showcase** (Feb 2017 - Apr 2017) (PEC, Chandigarh, India)
     - Created an 8-bit computer on breadboard using NAND chips.
     - Implemented Add, Subtract logic and 2 byte memory module using *Flip Flops*
     - Showcased the work to high school students at Punjab Engineering College (Chandigarh, India) IEEE Project showcase
 
 ### Projects
-- **Youtube Video Platform** [github](https://github.com/KushajveerSingh/youtube_video_platform), [demo](https://kushaj-youtube-video.vercel.app/)
-  - Built a fully responsive *React*/*Next.js*/*Material-UI* web app using Youtube API and deployed on *Vercel*
-  - Implemented video section, category section, responsive channel and video cards, channel pages, video pages with ability to play videos and see related videos
+- **Youtube Video Platform** [github](https://github.com/KushajveerSingh/youtube_video_platform), [demo](https://kushaj-youtube-video-platform.vercel.app/)
+    - Built fully-responsive *React/Next.js/TypeScript/Material-UI* web app using *YouTube API* and deployed on *Vercel*
+    - Implemented video section, category section, responsive channel and video cards, channel pages, video pages with ability to play videos straight from the app and see related videos
 
-- **Group Video Chat** [github](https://github.com/KushajveerSingh/video-chat-app), [demo](https://kushaj-video-chat.vercel.app)
-  - Built a group video chat app built using *Agora*, and deployed the backend on *Heroku* and frontend on *Vercel*.
-  - Conference chat with multiple people at same time, screen sharing capabilities, private and group messaging, admin controls, create polls
-  - Worked with an enterprise size codebase and added features on top of it
+- **Video Sharing App** [github](https://github.com/KushajveerSingh/video_sharing_app), [demo](https://kushaj-video-sharing-app.vercel.app/)
+    - Built fully-responsive full-stack video sharing social media app using *React/Next.js/TypeScript/Tailwind CSS/Zustand/Sanity* and deployed on *Vercel*
+    - *Google auth* to register and login user, ability to upload, publish, share, comment on and like the videos
+    - Advanced search functionalities, filter by categories, profile pages, and see suggested accounts
 
-- **Chat Messaging App** (WORK IN PROGRESS)
-  - Built a fully-responsive full-stack realtime chat messaging application 
-  - Support for authentication, Twilio SMS notification, direct and group chats, emojis and reactions, GIF support, edit/delete messages
-  - Built *React* frontend using *Stream Chat* API and deployed on *Vercel*
-  - Built *Express* backend and deployed on *Heroku*
+- **Chat Messaging App** [github](https://github.com/KushajveerSingh/chat_messaging_app), [demo](https://kushaj-chat-messaging-app.vercel.app/)
+    - Built fully-responsive full-stack chat messaging application using *React/TypeScript/Bcrypt/Stream Chat API*
+    - Support for authentication, *Twilio* SMS notification, direct and group chats, emojis and reactions, GIF support
+    - Deployed *React* frontend on *Vercel*, and deployed *Express.js* backend on *Heroku*
+
+- **Ecommerce Website** [github](https://github.com/KushajveerSingh/ecommerce_full_stack), [demo](https://kushaj-ecommerce-website.vercel.app/)
+    - Built full-responsive and scalable modern ecommerce website using *Next.js/TypeScript* and deployed on *Vercel*
+    - Used *Next.js* as backend endpoint, *Stripe* for managing payments, shipping rates and entire checkout process
+    - Manage entire content of website using *Sanity*, change details of products or add new products on the go
+
+- **Music Player and Discovery App** [github](https://github.com/KushajveerSingh/music_player_application), [demo](https://kushaj-music-player-application.vercel.app/)
+    - Built fully-responsive modern music player app using *React/Next.js/Tailwind CSS/TypeScript/Redux/Shazam API*
+    - Choose genre and view top songs, see top charts and artists for the country or worldwide
+    - Music player with controls to go to next/previous song, repeat, shuffle, fast forward, adjust volume
+    - Fully functional search and pages to explore most popular songs in the country, using *IP Geolocation API*
+    - View song’s lyrics and official video, related songs, and other songs by the artist
 
 - **Sort Visualizer** [github](https://github.com/KushajveerSingh/sort_visualizer), [demo](https://kushaj-sort-visualizer.vercel.app/)
   - Built *React*/*Redux*/*Material-UI* web application for visualizing sorting algorithms and deployed on *Vercel*
   - Implemented over 30 sorting algorithms, with ability to view upto 9 algorithms in parallel
 
+- **Group Video Chat** [github](https://github.com/KushajveerSingh/group_video_chat), [demo](https://kushaj-group-video-chat.vercel.app/create)
+    - Built group video chat app using *JavaScript/Agora*, and deployed the backend on *Heroku* and frontend on *Vercel*
+    - Conference chat with multiple people at same time, screen share, private/group messaging, admin controls, polls
+    - Worked with an enterprise scale codebase and added features on top of it by reading documentation
+
+- **Restaurant Website** [github](https://github.com/KushajveerSingh/restaurant_website), [demo](https://kushaj-restaurant-website.vercel.app/)
+    - Converted *Figma* design into fully-responsive *Next.js/TypeScript/CSS(BEM)* web app and deployed on *Vercel*
+    - Modern UI/UX website built using *CSS Flexbox/Grid*, animations, and gradients
+
+- **Pathfinding Visualizer** [github](https://github.com/KushajveerSingh/pathfinding_visualizer), [demo](https://kushaj-pathfinding-visualizer.vercel.app/)
+    - Built fully-responsive *React/Next.js/TypeScript/Redux* web app for visualizing path-finding algorithms, maze-generation algorithms and deployed on *Vercel*
+    - Implemented 9 different path-finding algorithms and added random weight generation methods to visualize weighted shortest cost algorithms
+
+- **Sort Visualizer** [github](https://github.com/KushajveerSingh/sort_visualizer), [demo](https://kushaj-sort-visualizer.vercel.app/)
+    - Deployed fully-responsive *React/Next.js/TypeScript/Redux* web app for visualizing sorting algorithms on *Vercel*
+    - Implemented over 30 sorting algorithms, view multiple algorithms in parallel, generate 4 types of random array
+
+- **JSON/YAML Graph Visualizer** [github](https://github.com/KushajveerSingh/json_yaml_visuazlier), [demo](https://kushaj-json-yaml-visualizer.vercel.app/)
+    - Built *React/Next.js/Redux/Material-UI* web app to convert *JSON/YAML* data into graph for improved readability
+    - Wrote *YAML* to *JSON* parser in *TypeScript*
+
+- **Bookstore application** [github](https://github.com/KushajveerSingh/genlib)
+    - Built full-stack bookstore application using *HTML/CSS/JavaScript* for frontend and *Django/SQLite* for backend
+    - Implemented user authentication with email, change/forgot password, edit profile, advanced search options, cart management, apply promotions, entire process for placing an order
+
 - **3D Human Reconstruction** [github](https://github.com/KushajveerSingh/human_3d_reconstruction)
     - Engineered a machine learning project to generate a full human body 3D object from random noise
     - Combined GAN, Pose Estimation, RGB-to-3D object models from 3 different repositories
     - Upgraded PyTorch dependency from 0.4.0, 1.4.0, 1.9.0 to 1.11.1 and upgraded all repositories to CUDA 11.3 from 10.x versions
-
-- **Bookstore application** [github](https://github.com/KushajveerSingh/genlib)
-  - Built a full-stack bookstore application using *Django*/*SQLite*
-  - Implemented user authentication with email, change/forget password, edit profile, advanced search options, cart management and placing an order
-
-- **JSON/YAML Graph Visualizer** (WORK IN PROGRESS)
-    - Build *Next.js*/*Redux*/*Material-UI* application to convert JSON/YAML data into a graph for improved readability deployed on *Vercel*
-    - Wrote a parser in *TypeScript* to convert YAML to JSON
 
 - **Credit Assessment** [github](https://github.com/KushajveerSingh/ds_cup)
   - Created a fair and explainable model to approve credit card requests
