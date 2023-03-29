@@ -4,7 +4,11 @@ title: Projects
 permalink: /projects/
 ---
 
-Full-stack developer experienced with creating fully-responsive mobile-first web applications and doing API integrations, reading documentation to add new features to an existing codebase, code review processes, CI/CD testing. Self-motivated and passionate to learn new technologies and build projects on top of it. Experienced with deploying 5 [projects](#projects) on Vercel, contributing to open-source projects on [GitHub](https://github.com/KushajveerSingh) for over 5 years, and maintaining a technical [blog](#blogs) with 16 published posts.
+Full Stack Engineer with a Master’s in Computer Science degree and 10+ months of experience at Agriculture and Environmental Science lab. Responsible for designing and developing tools and services for staff and clients across 159 counties in Georgia and the neighboring states, with a focus on creating accessible and user-friendly solutions, for people of all ages, that drive operational efficiency and positive impact.
+
+Skilled in developing fully-responsive, mobile-first web applications using React/TypeScript and integrating APIs. Adept at reading documentation to add new features to existing codebases, participating in code review processes, and conducting CI/CD testing. Self-motivated and passionate to learn new technologies and build projects on top of it. Contributing to open-source projects on GitHub for over 5 years and have successfully deployed projects on Vercel.
+
+You can reach me out at `kushajreal@gmail.com`.
 
 ### Table of contents
 - [Education](#education)
@@ -15,41 +19,36 @@ Full-stack developer experienced with creating fully-responsive mobile-first web
 - [Certifications](#certifications)
 
 ### Education
-- **Master of Science** in Computer Science
+- **Master of Science** in *Computer Science*
     - University of Georgia, Athens, GA, USA (Jan 2021 - Dec 2022)
     - GPA: 3.82 / 4.00
 
-- **Bachelor of Technology** in Electronics and Communication Engineering 
+- **Bachelor of Technology** in *Electronics and Communication Engineering*
     - Punjab Engineering College (Deemed to be University), Chandigarh, India (Aug 2016 - Jun 2020)
     - CGPA: 7.0 / 10.0
 
 ### Work Experience
-- **Full Stack Developer** (Jul 2022 - Dec 2022) (UGA)
-    - Worked in the IT department of the *College of Agriculture and Environmental Sciences, University of Georgia (Athens, GA, USA)*
-    - Implemented *Node.js/Express* parser to do real time *Microsoft Access* to *PostgreSQL* query conversion
-    - Brought up development and production servers, including IP whitelisting and backup configuration with periodic syncing, and migrated 18 years of data from Access to PostgreSQL database
-    - Automated data entry pipeline using *Python/TypeScript*, resulting in a reduction of time from 2 minutes per handwritten form to 25 seconds on average, by implementing autocomplete functionality for various fields
-    - Rewrote the entire codebase for a proprietary language, which included converting information from a 200-page manual to a *TypeScript/Next.js* application and updating the queries from *Access* to *PostgreSQL*
+- **Temporary Technical Professional** at *College of Agriculture and Environmental Sciences (AESL), UGA* (Athens, GA, USA) from Jul 2022 - current (UGA).
+    Worked as **Graduate Student Assistant** from Jul 2022 - Dec 2022 with the same responsibilities.
+    - AESL is a testing lab that provides services to 159 counties in Georgia and neighboring states, including the mortgage industry. It maintains a 7 TB Microsoft Access database, with ongoing efforts to migrate to PostgreSQL.
+    - Designed and developed a real-time soil ph monitoring website using React/Next.js/TypeScript in 1 month, enabling the technicians to view live results, and reducing the testing time from 4 minutes to 15 seconds per set.
+    - Automated data entry pipeline using Python/TypeScript, resulting in a reduction of time from 2 minutes per handwritten form to 25 seconds on average, by implementing autocomplete functionality for various fields.
+    - Rewrote the entire codebase for a proprietary language over the course of 3 months, converting information from a 200-page manual to a TypeScript/Next.js application and updating the queries from Access to PostgreSQL.
+    - Brought up development and production servers, including IP whitelisting and backup configuration with periodic syncing. Achieved this by learning Microsoft PowerShell and Windows Task Scheduler and working with a coworker over the course of a month and helped to automate some of their jobs also.
 
-- **Graduate Teaching Assistant** (Jan 2022 - Aug 2022) (UGA)
-    - Worked in the *Computer Science department, University of Georgia (Athens, GA, USA)*
-    - Led weekly meetings and facilitated group discussions for the course *Discrete Mathematics for Computer Science*
-    - Held one-on-one office hours for 2 transfer students, covering the entire course in detail while covering practical applications of the content and mentored students on the career paths in computer science
+- **Graduate Teaching Assistant** at *Franklin College of Arts and Sciences, UGA* (Athens, GA, USA) from (Jan 2022 - Aug 2022)
+    - Led weekly meetings and facilitated group discussions for the course *Discrete Mathematics for Computer Science*.
+    - Updated course materials to address students’ questions and concerns, improving their understanding in a class of 180 students.
+    - Mentored 2 transfer students for the whole semester, covering the entire course in detail and emphasizing practical applications.
 
 ### Additional Experience
-- **Google CS Research Mentorship Program** (Sep 2022 - Dec 2022) (Athens, GA, USA (Remote))
-    - Selected for a 12-week competitive Google CS Research Mentorship Program (CSRMP 2022B) among 50 candidates selected from all across USA and Canada.
-    - The mentorship program inspires students from Historically Marginalized Groups (HMGs) to pursue and persist a career in CS research.
-
-- **Poster submission, School of Computing Research Day** (Sep 2022 - Oct 2022) (UGA)
-    - Submitted 2 posters for the School of Computing, Research Day at University of Georgia (Athens, GA, USA)
-    - Created a module that improves the robustness of Graph Neural Networks (GNNs) against adversarial attacks
-    - Proposed module beats state-of-the-art in 3 out of 4 datasets, while only adding 5 lines of code
-    - Presented a poster on generating full human body 3D scans from random noise
+- **Google CS Research Mentorship Program** (Sep 2022 - Dec 2022) (Athens, GA, USA)(Remote)
+    - SSelected to participate in a 12-week Google Research program.
+    - Engaged in discussions with a Google mentor and peers on topics related to computer science research, including diversity and the impact of AI.
 
 - **Workshop paper reviewer, CVPR 2021** (Apr 2021) (UGA)
     - Reviewed 2 papers for the *Biometrics Workshop, jointly with the Workshop on Analysis and Modeling of Faces and Gestures, CVPR 2021*
-    - Split the review into summary, strengths, weaknesses
+    - Split the review into summary, strengths, weaknesses.
 
 - **Paper reviewer and presentation judge, GJSHS 2021** (Feb 2021 - Mar 2021) (UGA)
     - Reviewed 6 papers for the 46th *Georgia Junior Science & Humanities Symposium (GJSHS)* from high-school students.
@@ -57,10 +56,9 @@ Full-stack developer experienced with creating fully-responsive mobile-first web
     - Presentation judge for the final round of the competition.
 
 - **Winner TechGig CodeGladiators hackathon** (May 2019 - July 2019) (Mumbai, Maharashtra, India)
-    - Won the first sole place in TechGig CodeGladiators, in the Artificial Intelligence theme where 15 teams were selected from all across India from a pool of 0.5 million candidates.
-    - Implemented a fully-deployable parking space detection system using *PyTorch* from video.
-    - Detections from multiple frames can be combined and adjusted over time depending on where the cars are being parked.
-    - Frame can be split into a 3x3 grid allowing to make finer and more robust predictions and the result is combined into a single frame.  
+    - Won first place in a nationwide hackathon, from a pool of 0.6 million candidates.
+    - Built a unique, fully deployable parking space detection system using PyTorch and OpenCV.
+    - Developed and designed the only submission to use video as input, enabling predictions to adjust dynamically in response to camera movements and changes in environment.   
 
 - **Third place at IndiaSkills Nationals** (Sep 2018 - Nov 2018) (Chandigarh, India)
     - Won third place at the North-Zone regional finals in *IT Software Solutions for Business* at IndiaSkills, representing my state Chandigarh (India)
@@ -74,61 +72,43 @@ Full-stack developer experienced with creating fully-responsive mobile-first web
 
 ### Projects
 - **Youtube Video Platform** [github](https://github.com/KushajveerSingh/youtube_video_platform), [demo](https://kushaj-youtube-video-platform.vercel.app/)
-    - Built fully-responsive *React/Next.js/TypeScript/Material-UI* web app using *YouTube API* and deployed on *Vercel*
-    - Implemented video section, category section, responsive channel and video cards, channel pages, video pages with ability to play videos straight from the app and see related videos
+    - Developed and deployed a YouTube clone application on Vercel in React/Next.js and TypeScript, leveraging Material UI for a visually appealing and responsive design, and using RapidAPI to access YouTube v3 API endpoints for fetching video and channel data.
+    - Acquired expertise in React functional components and their reusability, efficient file and folder structure, and mastery of Material UI, enabling the ability to build any API-driven web application.
+    - Ensured optimal responsiveness across devices using well-crafted media queries, and utilized RapidAPI Vscode extension for API testing, demonstrating proficiency in creating a seamless, fully-functional video browsing experience.
 
-- **Video Sharing App** [github](https://github.com/KushajveerSingh/video_sharing_app), [demo](https://kushaj-video-sharing-app.vercel.app/)
-    - Built fully-responsive full-stack video sharing social media app using *React/Next.js/TypeScript/Tailwind CSS/Zustand/Sanity* and deployed on *Vercel*
-    - *Google auth* to register and login user, ability to upload, publish, share, comment on and like the videos
-    - Advanced search functionalities, filter by categories, profile pages, and see suggested accounts
-
-- **Chat Messaging App** [github](https://github.com/KushajveerSingh/chat_messaging_app), [demo](https://kushaj-chat-messaging-app.vercel.app/)
-    - Built fully-responsive full-stack chat messaging application using *React/TypeScript/Bcrypt/Stream Chat API*
-    - Support for authentication, *Twilio* SMS notification, direct and group chats, emojis and reactions, GIF support
-    - Deployed *React* frontend on *Vercel*, and deployed *Express.js* backend on *Heroku*
+- **Chat Messaging App** [github](https://github.com/KushajveerSingh/chat_messaging_app), [demo](https://kushaj-chat-app.vercel.app/)
+    - Developed and deployed a full-stack chat application with authentication, Twilio SMS notifications, and a wide array of features, including direct/group chats, emojis, reactions, GIF support, and message editing, using JavaScript, React, Node.js, Express and Stream API.
+    - Implemented advanced React best practices, custom hooks, and React Context API to create a responsive, and scalable chat interface; and acquired skills to create fully custom chat applications by doing this project.
+    - Seamlessly integrated Twilio for real-time SMS notifications for offline users and employed Vercel for deploying the frontend application and Render for deploying the Express server, showcasing proficiency in diverse technology stacks and third-party APIs for a complete, mobile-responsive chat experience.
 
 - **Ecommerce Website** [github](https://github.com/KushajveerSingh/ecommerce_full_stack), [demo](https://kushaj-ecommerce-website.vercel.app/)
-    - Built full-responsive and scalable modern ecommerce website using *Next.js/TypeScript* and deployed on *Vercel*
-    - Used *Next.js* as backend endpoint, *Stripe* for managing payments, shipping rates and entire checkout process
-    - Manage entire content of website using *Sanity*, change details of products or add new products on the go
-
-- **Music Player and Discovery App** [github](https://github.com/KushajveerSingh/music_player_application), [demo](https://kushaj-music-player-application.vercel.app/)
-    - Built fully-responsive modern music player app using *React/Next.js/Tailwind CSS/TypeScript/Redux/Shazam API*
-    - Choose genre and view top songs, see top charts and artists for the country or worldwide
-    - Music player with controls to go to next/previous song, repeat, shuffle, fast forward, adjust volume
-    - Fully functional search and pages to explore most popular songs in the country, using *IP Geolocation API*
-    - View song’s lyrics and official video, related songs, and other songs by the artist
+    - Developed and deployed a fully responsive, modern full-stack e-commerce application on Vercel using React/Next.js/TypeScript with integrated Stripe payments, advanced cart functionalities, and dynamic content management using Sanity for seamless content updates.
+    - Employed advanced React and Next.js best practices, such as hooks, refs, state management with React Context API, file-based routing, server-side rendering, and static generation for optimal website performance and user experience.
+    - Implemented engaging UI features such as hover animations, dynamic product details pages, and animated recommendations, ensuring an optimal shopping experience across all devices.
+    - Implemented Stripe integration for secure payment processing, shipping method selection, and checkout, resulting in a seamless and efficient purchasing experience for customers.
 
 - **Sort Visualizer** [github](https://github.com/KushajveerSingh/sort_visualizer), [demo](https://kushaj-sort-visualizer.vercel.app/)
-  - Built *React*/*Redux*/*Material-UI* web application for visualizing sorting algorithms and deployed on *Vercel*
-  - Implemented over 30 sorting algorithms, with ability to view upto 9 algorithms in parallel
+    - Developed a comprehensive sorting algorithm visualizer website featuring over 30 unique algorithms, built using React, Redux, and Styled Components to facilitate learning and understanding of various sorting concepts.
+    - Integrated Material UI, Framer Motion, react-animate-height, and react-code-blocks to enhance user experience with interactive icons, sliders, responsive sidebars, modals, and collapsible list elements.
+    - Utilized Create React App for initial project template, allowing for rapid development and customization of the educational tool to provide custom delay times and input array sizes for an optimized learning experience.
 
 - **Group Video Chat** [github](https://github.com/KushajveerSingh/group_video_chat), [demo](https://kushaj-group-video-chat.vercel.app/create)
-    - Built group video chat app using *JavaScript/Agora*, and deployed the backend on *Heroku* and frontend on *Vercel*
-    - Conference chat with multiple people at same time, screen share, private/group messaging, admin controls, polls
-    - Worked with an enterprise scale codebase and added features on top of it by reading documentation
+    - Developed a group video chat application with support for multiple participants, screen sharing, private and group messaging, admin controls, and polling, using Agora's chat builder for scalability and rapid development.
+    - Enhanced existing Agora codebase with additional features such as a polling system, showcasing the ability to work effectively in large codebases and integrate new functionalities.
+    - Implemented user-friendly features such as meeting creation and sharing, admin controls for muting and managing participants, and options for private or group chats, promoting an engaging user experience.
+    - Deployed the frontend on Vercel and the backend on Heroku.
 
 - **Restaurant Website** [github](https://github.com/KushajveerSingh/restaurant_website), [demo](https://kushaj-restaurant-website.vercel.app/)
-    - Converted *Figma* design into fully-responsive *Next.js/TypeScript/CSS(BEM)* web app and deployed on *Vercel*
-    - Modern UI/UX website built using *CSS Flexbox/Grid*, animations, and gradients
-
-- **Pathfinding Visualizer** [github](https://github.com/KushajveerSingh/pathfinding_visualizer), [demo](https://kushaj-pathfinding-visualizer.vercel.app/)
-    - Built fully-responsive *React/Next.js/TypeScript/Redux* web app for visualizing path-finding algorithms, maze-generation algorithms and deployed on *Vercel*
-    - Implemented 9 different path-finding algorithms and added random weight generation methods to visualize weighted shortest cost algorithms
-
-- **Sort Visualizer** [github](https://github.com/KushajveerSingh/sort_visualizer), [demo](https://kushaj-sort-visualizer.vercel.app/)
-    - Deployed fully-responsive *React/Next.js/TypeScript/Redux* web app for visualizing sorting algorithms on *Vercel*
-    - Implemented over 30 sorting algorithms, view multiple algorithms in parallel, generate 4 types of random array
-
-- **JSON/YAML Graph Visualizer** [github](https://github.com/KushajveerSingh/json_yaml_visuazlier), [demo](https://kushaj-json-yaml-visualizer.vercel.app/)
-    - Built *React/Next.js/Redux/Material-UI* web app to convert *JSON/YAML* data into graph for improved readability
-    - Wrote *YAML* to *JSON* parser in *TypeScript*
+    - Transformed a Figma design into a fully responsive website with modern UI/UX using React, Next.js, and TypeScript, showcasing proficiency in design-to-development implementation and seamless deployment.
+    - Leveraged React functional components and reusable code, adhering to best practices in file and folder structure, resulting in a well-organized and maintainable web application.
+    - Mastered essential CSS properties for flex and grid layouts, applied BEM methodology for scalable styling, and integrated soft animations and complex gradients, along with carefully crafted media queries for optimal responsiveness across various devices.
 
 - **Bookstore application** [github](https://github.com/KushajveerSingh/genlib)
-    - Built full-stack bookstore application using *HTML/CSS/JavaScript* for frontend and *Django/SQLite* for backend
-    - Implemented user authentication with email, change/forgot password, edit profile, advanced search options, cart management, apply promotions, entire process for placing an order
+    - Developed on online bookstore application using Django and HTML/CSS/JavaScript, featuring secure user authentication, account activation, profile editing, and password management with automated email notifications to enhance user experience and security.
+    - Implemented advanced search functionality, allowing users to filter books by category, author/publisher, ratings, and price, alongside a seamless ordering process, including promotion code integration, order summary, and reordering options.
+    - Enabled admin capabilities to add and manage promotions, with automatic email notifications to opted-in users, while incorporating inventory checks for reordering and ensuring promotion validity, resulting in a comprehensive and user-friendly e-commerce platform.
 
-- **3D Human Reconstruction** [github](https://github.com/KushajveerSingh/human_3d_reconstruction)
+- **3D Human Reconstruction** [github](https://github.com/KushajveerSingh/deep_learning/tree/main/projects/human_3d_reconstruction)
     - Engineered a machine learning project to generate a full human body 3D object from random noise
     - Combined GAN, Pose Estimation, RGB-to-3D object models from 3 different repositories
     - Upgraded PyTorch dependency from 0.4.0, 1.4.0, 1.9.0 to 1.11.1 and upgraded all repositories to CUDA 11.3 from 10.x versions
